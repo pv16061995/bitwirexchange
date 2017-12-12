@@ -1,5 +1,14 @@
 
-<?php include_once 'config/config.php';?>
+<?php
+include 'config/config.php';
+include 'apis/common.php';
+$obj=NEW allapi();
+$data=$obj->getallcategory();
+$result=json_decode($data);
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
 <head>
@@ -137,12 +146,10 @@
 	#ul-bid-list li:nth-child(31) .price:before{ content: 'Buy31'}
 	#ul-bid-list li:nth-child(32) .price:before{ content: 'Buy32'}
 
-/*币币交易HEADER*/
 	.top-up a,.login_lan .lang-option,.top-up .ask_ans,.gateio-nav > li > a{ color: #dbe2e4}
 	div.top-up {float:right;width:auto;background:none;margin-top:6px;padding-left:0;}
 	div.top-dn {width:auto;height:45px;float:left;padding:0 20px;clear:none; float: none}
 	.gateio-nav >li >a .caret:before{color:#151b23 !important; }
-	/*.lang-option .caret:before, #nickName .caret:before{ color: #fff}*/
 	.topprice{ display: none}
 	#logoWhite{ fill:#eee}
 	div.header {color: #aaa;background: #09162e;}

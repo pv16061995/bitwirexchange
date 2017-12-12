@@ -2,34 +2,26 @@
 class allapi
 {
 
-  public funtion getallcategory()
+  public function getallcategory()
   {
-          $data = {
-
-
-
-        "0":{
-        "pic_id":"15011",
-        "description":"Picture of a cpu",
-        "localion":"img.cloudimages.us/2012/06/02/mycpu.png",
-        "type":"png"
-          }
-        "1":{
-        "pic_id":"15012",
-        "description":"Picture of a cpu two",
-        "localion":"img.cloudimages.us/2012/06/02/thiscpu.png",
-        "type":"png"
-          }
-
-          "2":{
-              "pic_id":"1501",
-              "description":"Picture of a cpu",
-              "localion":"img.cloudimages.us/2012/06/02/cpu.png",
-              "type":"png"
-          }
-};
-
-
+    $data = array(
+      array(
+        "id" => "1",
+        "name" => "BTC",
+        "sort" => 1
+      ),
+      array(
+        "id" => 2,
+        "name" => "BCH",
+        "sort" => 2
+      ),
+      array(
+        "id" => 3,
+        "name" => "LTC",
+        "sort" => 3
+      )
+    );
+    $data=json_encode($data);
       return $data;
   }
 }
