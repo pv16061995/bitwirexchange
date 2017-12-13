@@ -1,3 +1,30 @@
+<?php
+include 'config/config.php';
+include 'apis/common.php';
+$obj=NEW allapi();
+$data=$obj->getallcategory();
+$result=json_decode($data);
+
+$datasub=$obj->getallSubcategory();
+$subcat=json_decode($datasub, true);
+
+
+?>
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title><?php echo PROJECT_TITLE;?></title>
+   <link href="favicon.ico" rel="shortcut icon">
+   <link href="css/style.css" rel="stylesheet" type="text/css">
+   <link href="css/io.style.css" rel="stylesheet" type="text/css">
+   <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
+   <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/>
+   <script src="js/jquery-1.8.2.min.js"></script>
+   <script src="js/jquery.common.tools.js"></script>
+
+</head>
+<body class="en-body ">
 <div id="siteNoty" class="notification-box"></div>
 <div class="header clearfix">
     <div class="top-up">
@@ -60,122 +87,36 @@
 
             </li>
             <li class="nav-trade-item">
-                <a href="trade/BTC_USDT.php">Markets<i class="caret"></i></a>
+                <a href="javascript:;">Markets<i class="caret"></i></a>
                 <ul class="second-nav clearfix">
-                    <li>
-                        <a href="javascript:;">INRW Markets<i class="caret"></i></a>
-                        <ul class="third-nav clearfix">
-                          <li><a href='trade.php'><strong>INRW</strong></a></li>
-                          <li><a href='trade.php'><strong>USDW</strong></a></li>
-                          <li><a href='trade.php'><strong>EURW</strong></a></li>
-                          <li><a href='trade.php'><strong>GBPW</strong></a></li>
-                          <li><a href='trade.php'><strong>BRLW</strong></a></li>
-                          <li><a href='trade.php'><strong>PLNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CADW</strong></a></li>
-                          <li><a href='trade.php'><strong>TRYW</strong></a></li>
-                          <li><a href='trade.php'><strong>RUBW</strong></a></li>
-                          <li><a href='trade.php'><strong>MXNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CZKW</strong></a></li>
-                          <li><a href='trade.php'><strong>ILSW</strong></a></li>
-                          <li><a href='trade.php'><strong>NZDW</strong></a></li>
-                          <li><a href='trade.php'><strong>JPYW</strong></a></li>
-                          <li><a href='trade.php'><strong>SEKW</strong></a></li>
-                          <li><a href='trade.php'><strong>AUDW</strong></a></li>
-                        </ul>
-                    </li>
-					<li>
-                        <a href="javascript:;">USDW Markets<i class="caret"></i></a>
-                        <ul class="third-nav clearfix">
-                          <li><a href='trade.php'><strong>INRW</strong></a></li>
-                          <li><a href='trade.php'><strong>USDW</strong></a></li>
-                          <li><a href='trade.php'><strong>EURW</strong></a></li>
-                          <li><a href='trade.php'><strong>GBPW</strong></a></li>
-                          <li><a href='trade.php'><strong>BRLW</strong></a></li>
-                          <li><a href='trade.php'><strong>PLNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CADW</strong></a></li>
-                          <li><a href='trade.php'><strong>TRYW</strong></a></li>
-                          <li><a href='trade.php'><strong>RUBW</strong></a></li>
-                          <li><a href='trade.php'><strong>MXNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CZKW</strong></a></li>
-                          <li><a href='trade.php'><strong>ILSW</strong></a></li>
-                          <li><a href='trade.php'><strong>NZDW</strong></a></li>
-                          <li><a href='trade.php'><strong>JPYW</strong></a></li>
-                          <li><a href='trade.php'><strong>SEKW</strong></a></li>
-                          <li><a href='trade.php'><strong>AUDW</strong></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">EURW Markets<i class="caret"></i></a>
-                        <ul class="third-nav clearfix">
-                          <li><a href='trade.php'><strong>INRW</strong></a></li>
-                          <li><a href='trade.php'><strong>USDW</strong></a></li>
-                          <li><a href='trade.php'><strong>EURW</strong></a></li>
-                          <li><a href='trade.php'><strong>GBPW</strong></a></li>
-                          <li><a href='trade.php'><strong>BRLW</strong></a></li>
-                          <li><a href='trade.php'><strong>PLNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CADW</strong></a></li>
-                          <li><a href='trade.php'><strong>TRYW</strong></a></li>
-                          <li><a href='trade.php'><strong>RUBW</strong></a></li>
-                          <li><a href='trade.php'><strong>MXNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CZKW</strong></a></li>
-                          <li><a href='trade.php'><strong>ILSW</strong></a></li>
-                          <li><a href='trade.php'><strong>NZDW</strong></a></li>
-                          <li><a href='trade.php'><strong>JPYW</strong></a></li>
-                          <li><a href='trade.php'><strong>SEKW</strong></a></li>
-                          <li><a href='trade.php'><strong>AUDW</strong></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">New Markets<i class="caret"></i></a>
-                        <ul class="third-nav clearfix">
-                          <li><a href='trade.php'><strong>INRW</strong></a></li>
-                          <li><a href='trade.php'><strong>USDW</strong></a></li>
-                          <li><a href='trade.php'><strong>EURW</strong></a></li>
-                          <li><a href='trade.php'><strong>GBPW</strong></a></li>
-                          <li><a href='trade.php'><strong>BRLW</strong></a></li>
-                          <li><a href='trade.php'><strong>PLNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CADW</strong></a></li>
-                          <li><a href='trade.php'><strong>TRYW</strong></a></li>
-                          <li><a href='trade.php'><strong>RUBW</strong></a></li>
-                          <li><a href='trade.php'><strong>MXNW</strong></a></li>
-                          <li><a href='trade.php'><strong>CZKW</strong></a></li>
-                          <li><a href='trade.php'><strong>ILSW</strong></a></li>
-                          <li><a href='trade.php'><strong>NZDW</strong></a></li>
-                          <li><a href='trade.php'><strong>JPYW</strong></a></li>
-                          <li><a href='trade.php'><strong>SEKW</strong></a></li>
-                          <li><a href='trade.php'><strong>AUDW</strong></a></li>
-                        </ul>
-                    </li>
+                    <?php
+                  $i=1;
+                foreach($result as $cat) {
+
+                   ?>
+                  <li>
+                      <a href="javascript:;"><?php echo $cat->name;?> Markets<i class="caret"></i></a>
+                      <ul class="third-nav clearfix">
+                        <?php
+                        foreach($subcat[$cat->id]['subcat'] as $subcatgory)
+                  				{
+                            $menuname=explode("W/",$subcatgory);
+                        ?>
+                        <li><a href='trade.php?curr=<?php echo base64_encode($subcatgory);?>'><strong><?php echo $menuname[0]?></strong></a></li>
+                        <?php
+                        }
+                        ?>
+                      </ul>
+                  </li>
+                    <?php $i++; }?>
+
                 </ul>
             </li>
             <li>
                 <a href="myaccount.php">Wallets</a>
 
             </li>
-            <!-- <li>
-                <a href="myaccount/totp.php">Settings</a>
 
-            </li> -->
-            <!-- <li>
-                <a href="#">Help<i class="caret"></i></a>
-                <ul class="second-nav clearfix">
-					<li>
-                        <a target=_blank href="#">Support</a>
-                    </li>
-
-                    <li>
-                        <a href="article/1041.php">Account Security Guide</a>
-                    </li>
-					<li>
-                        <a href="coins.php">Download<i class="caret"></i></a>
-                        <ul class="third-nav nav-help clearfix">
-                            <li><a href="mobileapp.php">Mobile App</a></li>
-                            <li><a href="coins.php">Coin List</a></li>
-                            <li><a href="coins.php">Wallets</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </li> -->
         </ul>
 
         <div id="top_last_rate" style="display: none"></div>

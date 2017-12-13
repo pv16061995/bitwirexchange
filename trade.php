@@ -19,20 +19,7 @@ if(isset($_GET['curr']))
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en" xml:lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?php echo PROJECT_TITLE;?></title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/io.style.css" rel="stylesheet" type="text/css">
-    <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/>
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.common.tools.js"></script>
 
-</head>
-<body class="en-body ">
 
 <?php include 'include/allheader.php';?>
 

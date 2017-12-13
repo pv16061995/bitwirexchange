@@ -1,21 +1,5 @@
 <?php include 'config/config.php';?>
-<!DOCTYPE html>
-<html lang="en" xml:lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?= PROJECT_TITLE?></title>
-    <meta name="description" content="Gate.io is a bitcoin exchange platform which supports BTC, LTC, Ethereum, Qtum and more blockchain assets trading. ">
-    <meta name="keywords" content="Bitcoin, BTC, litecoin, LTC, Ethereum, Qtum, NEO, tokens, bitcoin exchange, bitcoin trading ">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/io.style.css?v=1513131038" rel="stylesheet" type="text/css">
-    <link href="favicon.ico" rel="shortcut icon">
-    <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/>
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.common.tools.js?v=123"></script>
 
-</head>
-<body class="en-body ">
 <?php include 'include/allheader.php';?>
 <div class="content">
 

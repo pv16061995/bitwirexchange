@@ -1,23 +1,7 @@
-<?php include_once 'config/config.php';?>
-<!DOCTYPE html>
-<html lang="en" xml:lang="en">
-<head>
-
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?php echo PROJECT_TITLE;?></title>
-    <link href="css/styleec92.css?v=" rel="stylesheet" type="text/css">
-    <link href="css/io.styleec92.css?v=" rel="stylesheet" type="text/css">
-    <link href="favicon.ico" rel="shortcut icon">
-    <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png"/>
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.common.tools6040.js?v=123"></script>
-
-</head>
-<body class="en-body ">
-<div id="siteNoty" class="notification-box"></div>
-<?php include 'include/allheader.php';?>
+<?php
+include_once 'config/config.php';
+include 'include/allheader.php';
+?>
 <style>
 	*:before, *:after,.form-control{-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;}
 	.glyphicon-ok:before {  content: "\221A";  }

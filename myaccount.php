@@ -1,25 +1,11 @@
-<?php 
+<?php
 include 'config/config.php';
 include 'apis/common.php';
 $obj=NEW allapi();
 $data=$obj->getallcurrency();
 $result=json_decode($data,true);
 ?>
-<!DOCTYPE html>
-<html lang="en" xml:lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><?= PROJECT_TITLE?></title>
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="css/io.style.css" rel="stylesheet" type="text/css">
-    <link href="favicon.ico" rel="shortcut icon">
-    <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
-    <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/>
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/jquery.common.tools.js?v=123"></script>
 
-</head>
-<body class="en-body ">
 <?php include 'include/allheader.php'; ?>
 
 
@@ -58,7 +44,7 @@ $result=json_decode($data,true);
 
 						<li id="adn3" class="mail"> <a href="#">Deposit/Withdrawal<span class="umicon"></span></a>
 						  <ul class="sub-menu">
-							
+
 							<!-- <li><a data-id='deposit_gatecode' href="/myaccount/deposit_gatecode"><em>18</em>Redeem GateCode</a></li> -->
 							<li><a data-id='mydeposits' href="/myaccount/mydeposits"><em>15</em>Recent Deposits</a></li>
 							<li><a data-id='mywithdrawals' href="/myaccount/mywithdrawals"><em>15</em>Recent Withdrawals</a></li>
@@ -227,7 +213,7 @@ $result=json_decode($data,true);
             </tr>
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
-        <?php 
+        <?php
         foreach($result as $currencyname){ ?>
                             <tr class='odd hanga'  data-id=zero >
                     <td align='right'><span class='icon-16 icon-16-usdt'></span><span style='color:#08a287'>
@@ -240,12 +226,12 @@ $result=json_decode($data,true);
 					<a href="deposit.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-deposit'
 					 title='Working'>Deposit</a>
 					<a href="withdraw.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-withdraw' title='Working'>Withdraw</a>
-					<a href="transaction.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-to-trade' title='Working'>History</a></td>	  
-                </tr>   
-                <?php }?>  
+					<a href="transaction.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-to-trade' title='Working'>History</a></td>
+                </tr>
+                <?php }?>
                     </tbody>
     </table>
-    
+
 
    <div class="m_title"> Recent Deposits (<a href='/myaccount/mydeposits'>More...</a>)</div>
     <table class='sf-grid table-inacc table-inacc-head'>
@@ -291,7 +277,7 @@ $result=json_decode($data,true);
 			</tbody>
 		</table>
 	</div>
-   
+
 </div>
 <br>
 <script src="js/jquery.dataTables.min.js"></script>

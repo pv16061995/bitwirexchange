@@ -19,10 +19,7 @@
 									foreach($result as $cat) { ?>
 											<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if($i==1){echo "tn_selected";} ?>"><?php echo $cat->name;?></button>
 											<?php $i++; }?>
-                    <!-- <button value="USDT" class="tline_btn left_btn ">USDT</button>
-                    <button value="BTC" class="tline_btn left_btn tn_selected">BTC</button>
-                    <button value="ETH" class="tline_btn left_btn ">ETH</button>
-                    <button value="NEW" class="tline_btn left_btn ">New</button> -->
+                  
                 </ul>
                 <!-- <input type="text" class="search" id="marketSearch" value="Search..." /> -->
             </td>
