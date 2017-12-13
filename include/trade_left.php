@@ -82,8 +82,6 @@
             item.closest('tr').addClass('coin-selected');
         }
 
-
-
         $("#market_controller").find("button").click(function () {
             $("#market_controller").find("button").removeClass("tn_selected");
             $(this).addClass("tn_selected").siblings().removeClass("tn_selected");

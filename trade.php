@@ -12,6 +12,10 @@ $subcat=json_decode($datasub, true);
 if(isset($_GET['curr']))
 {
   $currencyname=base64_decode($_GET['curr']);
+
+  $curre=explode("/",$currencyname);
+  $currency1=$curre['0'];
+  $currency2=$curre['1'];
 }
 
 ?>
@@ -56,7 +60,7 @@ if(isset($_GET['curr']))
 	.trade-main .m_title{ margin: 0;}
 	.trade-main > .mairu .m_con,.trade-main > .maichu .m_con_buy{ margin-top: 10px}
 	.trade-main > .mairu,.trade-main > .maichu{height: 370px}
-	.trade-main .dealbox td:first-child {width: 22%;}
+	.trade-main .dealbox td:first-child {width: 30%;}
 	.buy-sell-order {width:30%;float:right;}
 	.buy-sell-order .bottom_maidan{ margin-bottom: 10px}
 	.b-s-title{ margin-top: 14px;border-bottom: 1px solid #C8DAE2;padding-bottom: 5px}
@@ -261,7 +265,9 @@ if(isset($_GET['curr']))
 		<div class="main_title">
 			<h1>
 				<ul id="mianTlist" class="clearfix">
-					<li><a href="/coininfo/EOS" target="_blank"><span class="icon-32 icon-32-eos"></span></a><a href="/coininfo/EOS" target="_blank">EOS EOS</a> / <strong style="margin-right: 20px"> BTC </strong></li>
+					<li><a href="javascript:;">
+            <span class="icon-32 icon-32-eos"></span></a>
+            <a href="javascript:;"><?= $currency1.' '.$currency1; ?></a> / <strong style="margin-right: 20px"> <?= $currency2; ?> </strong></li>
 					<li class="top_last_li">
 						<span style="float: left; padding: 0; margin-right: 3px" id='market_unit_symbol'>฿</span>
                     	<span id="top_last_rate_change">
@@ -278,7 +284,7 @@ if(isset($_GET['curr']))
 
 
 			<div class="right_mcontent clearfix">
-<div class="kline-title">EOS / BTC KLINE</div>
+<div class="kline-title"><?= $currency1;?> / <?= $currency2;?> KLINE</div>
 														<div class="k-line-container box-padding clearfix ">
 							<ul class="top_botton">
 								<li>
@@ -301,7 +307,7 @@ if(isset($_GET['curr']))
 
 				<div class="mairu mairu-form">
                 	<div class="m_title">
-                    	<span>Buy EOS</span>
+                    	<span>Buy <?= $currency1;?></span>
                     </div>
                     <div class="m_con_buy">
 
@@ -312,19 +318,21 @@ if(isset($_GET['curr']))
 								<td width="23%"></td>
 							</tr>
 							<tr class="tableOrderTr" t="static" >
-								<td width="15%"><font color="#2ba892"><b>Your balance</b></font></td>
-								<td id="buyYuE" colspan="2" width="40%" style="color:#2ba892;"><span  id="balance_ask_able" style="font-weight:600">0.0000</span><span class="coin-unit" style="color:#2ba892">BTC</span><a class="dp-link" title="Deposit" href="/myaccount/deposit/EOS">D</a><a class="dp-link" title="Withdraw" href="/myaccount/withdraw/EOS">W</a></td>
+								<td width="20%"><font color="#2ba892"><b>Your balance</b></font></td>
+								<td id="buyYuE" colspan="2" width="40%" style="color:#2ba892;">
+                  <span  id="balance_ask_able" style="font-weight:600">0.0000</span>
+                  <span class="coin-unit" style="color:#2ba892"><?= $currency2;?></span></td>
 							</tr>
 							<tr class="tableOrderTr" t="static" >
 								<td>Obtainable</td>
-								<td><span  id="amount_ask_able" style="font-weight:600">0.0000</span><span class="coin-unit">EOS</span></td>
+								<td><span  id="amount_ask_able" style="font-weight:600">0.0000</span><span class="coin-unit"><?= $currency1;?></span></td>
 								<td></td>
 							</tr>
 
 							<tr>
 
 								<td colspan="3" class="input-td">
-								<span class="b-unit ask-bid-price input-title">Price <span>BTC/EOS</span></span>
+								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2.' / '.$currency1;?></span></span>
 									<input id="ask_rate" class="inputRate" maxlength="10"
 										   onkeydown="return check_number(event);"
 										   onkeyup="_page.obj.on_input_ask_rate();_page.obj.recalc_fee('ask');"
@@ -335,7 +343,7 @@ if(isset($_GET['curr']))
 							<tr>
 
 								<td colspan="3" class="input-td">
-								<span class="b-unit input-title">Amount EOS</span>
+								<span class="b-unit input-title">Amount <?= $currency1;?></span>
 									<input id="ask_vol" class="inputRate" maxlength="10"
 										onkeydown="return check_number(event);"
 										onkeyup="_page.obj.on_input_ask_vol();_page.obj.recalc_fee('ask');"
@@ -346,7 +354,7 @@ if(isset($_GET['curr']))
 							<tr>
 
 								<td colspan="3" class="input-td">
-								<span class="b-unit input-title" id='bid_total_label'>Total BTC</span>
+								<span class="b-unit input-title" id='bid_total_label'>Total <?= $currency2;?></span>
 									<input id="ask_amount" class="inputRate" maxlength="10"
 										onkeydown="return check_number(event);"
 										onkeyup="_page.obj.on_input_ask_amount();_page.obj.recalc_fee('ask');"
@@ -354,18 +362,16 @@ if(isset($_GET['curr']))
 								</td>
 
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td>Fee</td>
 								<td>
 									<div id="ask_fee" style="display: inline;">0</div>BTC <span style="color: #2ba892;font-size: 12px;">(0.2%)</span>
 								</td>
 								<td></td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td colspan="3" class="input-td" style="border:0">
-									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="ask"
-										onclick="_page.obj.on_request_ask_bid( 'ask',  get_element('ask_rate').value, get_element('ask_vol').value );"
-										value="Buy (BTC→EOS)" />
+									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="ask" value="Buy (<?= $currency2.' -> '.$currency1;?>)" />
 								</td>
 							</tr>
 						</table>
@@ -374,14 +380,14 @@ if(isset($_GET['curr']))
                 </div>
 					<div class="maichu maichu-form">
 						<div class="m_title">
-							<span>Sell EOS</span>
-							<div class="b-s-t-right" id="showFiatRate">
+							<span>Sell <?= $currency1;?></span>
+							<!-- <div class="b-s-t-right" id="showFiatRate">
 								<label for="hideprice" class="fiat-hide-show">
 									<input type="checkbox" id="hideprice"  name='hideprice' style="width: 20px;" />
 									<label for="hideprice" class="vr-btn"></label>
 									<span class="hidefiat-span">USD Price</span>
 								</label>
-							</div>
+							</div> -->
 						</div>
 						<div class="m_con">
 
@@ -394,17 +400,19 @@ if(isset($_GET['curr']))
 								</tr>
 								<tr class="tableOrderTr" t="static" >
 									<td width="15%"><font color="#de5959"><b>Your balance</b></font></td>
-									<td id="sellYuE" colspan="2" width="40%" style="color:#de5959;"><span id="balance_bid_able" style="font-weight:600">0.0000</span><span class="coin-unit" style="color:#de5959">EOS</span><a class="dp-link" title="Deposit" href="/myaccount/deposit/EOS">D</a><a class="dp-link" title="Withdraw" href="/myaccount/withdraw/EOS">W</a></td>
+									<td id="sellYuE" colspan="2" width="40%" style="color:#de5959;">
+                    <span id="balance_bid_able" style="font-weight:600">0.0000</span>
+                    <span class="coin-unit" style="color:#de5959"><?= $currency1;?></span></td>
 								</tr>
 								<tr class="tableOrderTr" t="static" >
 									<td>Obtainable</td>
-									<td><span  id="amount_bid_able" style="font-weight:600">0.0000</span><span class="coin-unit">BTC</span></td>
+									<td><span  id="amount_bid_able" style="font-weight:600">0.0000</span><span class="coin-unit"><?= $currency2;?></span></td>
 									<td></td>
 								</tr>
 
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span>BTC/EOS</span></span>
+									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span><?= $currency2.' / '.$currency1;?></span></span>
 										<input id="bid_rate" class="inputRate" maxlength="10"
 											   onkeydown="return check_number(event);"
 											   onkeyup="_page.obj.on_input_bid_rate();_page.obj.recalc_fee('bid');"
@@ -414,7 +422,7 @@ if(isset($_GET['curr']))
 								</tr>
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount EOS</span>
+									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency1;?></span>
 										<input id="bid_vol" class="inputRate" maxlength="10"
 											   onkeydown="return check_number(event);"
 											   onkeyup="_page.obj.on_input_bid_vol();_page.obj.recalc_fee('bid');"
@@ -424,7 +432,7 @@ if(isset($_GET['curr']))
 								</tr>
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit input-title" id='ask_total_label'>Total BTC</span>
+									<td colspan="3" class="input-td"><span class="b-unit input-title" id='ask_total_label'>Total <?= $currency2;?></span>
 										<input id="bid_amount" class="inputRate" maxlength="10"
 											   onkeydown="return check_number(event);"
 											   onkeyup="_page.obj.on_input_bid_amount();_page.obj.recalc_fee('bid');"
@@ -432,18 +440,16 @@ if(isset($_GET['curr']))
 									</td>
 
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>Fee</td>
 									<td>
 										<div id="bid_fee" style="display: inline;">0</div>EOS <span style="color: #de5959;font-size: 12px;">(0.2%)</span>
 									</td>
 									<td></td>
-								</tr>
+								</tr> -->
 								<tr>
 									<td colspan="3" class="input-td" style="border:0">
-										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="bid"
-											   onclick="_page.obj.on_request_ask_bid( 'bid',  get_element('bid_rate').value, get_element('bid_vol').value );"
-											   value="Sell (EOS→BTC)" />
+										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="bid" value="Sell (<?= $currency1.' -> '.$currency2;?>)" />
 									</td>
 								</tr>
 							</table>
