@@ -42,27 +42,16 @@
 			</thead><tbody>
 			<?php
 			$i=1;
-			foreach($subcat[$cat->id][subcat] as $subcatgory)
+			foreach($subcat[$cat->id]['subcat'] as $subcatgory)
 				{?>
-				<tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
-				  <td><?php echo $subcatgory?></td>
-				  <td class=" alignRight">12</td>
-				  <td class=" alignRight">1231</td>
+				 <tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
+				  <td><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
+				  <td class="alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">12</a></td>
+				  <td class=" alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td>
 				</tr>
+
 			<?php $i++;}?>
-				<!-- <tr role="row" class="even">
-				  <td>BTC123</td>
-				  <td class=" alignRight">12</td>
-				  <td class=" alignRight">1231</td>
-				</tr><tr role="row" class="odd">
-				  <td>BTC123</td>
-				  <td class=" alignRight">12</td>
-				  <td class=" alignRight">1231</td>
-				</tr><tr role="row" class="even">
-				  <td>BTC123</td>
-				  <td class=" alignRight">12</td>
-				  <td class=" alignRight">1231</td>
-				</tr> -->
+
 					</tbody>
 							</table>
 
@@ -148,4 +137,3 @@
  });
 
 </script>
-

@@ -1,4 +1,3 @@
-
 <?php
 include 'config/config.php';
 include 'apis/common.php';
@@ -10,6 +9,10 @@ $datasub=$obj->getallSubcategory();
 $subcat=json_decode($datasub, true);
 
 
+if(isset($_GET['curr']))
+{
+  $currencyname=base64_decode($_GET['curr']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -253,7 +256,6 @@ $subcat=json_decode($datasub, true);
 
 <?php include 'include/trade_left.php';?>
 <script src="js/jquery.dataTables.min.js"></script>
-<script src="js/marketlist_trade.js"></script>
 
 	<div class="main_content">
 		<div class="main_title">
@@ -885,112 +887,112 @@ checkEmpty(0);
 <?php include 'include/footer.php';?>
 
 <script>
-    $(function(){
-        var currUrl=window.location.toString();
-        if(currUrl.indexOf('/trade/') > 0){
-            $.cookie('nav_index', 1,{ path: '/' });
-        } else if(currUrl.indexOf('/login') > 0 || currUrl.indexOf('/article/') > 0 || currUrl.indexOf('/page/') > 0 || currUrl.indexOf('/fee') > 0){
-            $.cookie('nav_index', 9,{ path: '/' });
-        } else if(currUrl.indexOf('/coins') > 0){
-            $.cookie('nav_index', 4,{ path: '/' });
-        }
-        $(".gateio-nav").children("li").click(function () {
-            $.cookie('nav_index', $(this).index(),{ path: '/' });
-        }).eq($.cookie('nav_index')).addClass("nav-active");
-        $(".user-log-out a,.more-lan a").click(function () {
-            $.cookie('nav_index', 0,{ path: '/' });
-        });
-		var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='';
-		loginbar.hover(function(){
-            tmenu.stop().slideDown(200);
-            $(this).stop().css("color","#f80");
-			barmark.css("opacity","0");
-			pbar.animate({width:pro_val+'%'},800);
-        },function(){
-            tmenu.stop().slideUp(100);
-             $(this).stop().css("color","#fff");
-			 barmark.css("opacity","1");
-			 pbar.css('width','0');
-        });
-		tmenu.css("width",pbWidth);
-		fbar.animate({width:pro_val+'%'},800);
-        if(pro_val > 0){
-            fbar.addClass("has-pro-val");
-        }
-
-		 $.fn.animateProgress = function(progress, callback) {
-			return this.each(function() {
-			  $(this).animate({
-				width: progress+'%'
-			  }, {
-				duration: 800,
-				easing: 'swing',
-				step: function( progress ){
-				    $('.value').text(Math.ceil(progress) + '%');
-				},
-				complete: function(scope, i, elem) {
-				  if (callback) {
-					callback.call(this, i, elem );
-				  };
-				}
-			  });
-			});
-		  };
-		  if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
-
-        var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
-        if (lh < mh){lb.css("height",mh)}
-
-        $(".side-sev ul li").hover(function(){
-            var _this=$(this);
-            _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
-        },function(){
-            $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
-        });
-
-        $("#bottomWXli").hover(function(){
-            $(".wx-bottom").show()
-        },function(){
-            $(".wx-bottom").hide()
-        });
-		$("#runTime").hover(function(){
-			$(this).css("height","auto")
-        },function(){
-			$(this).css("height","26px")
-        });
-
-        var notyContent='BCX is listed on gate.io';
-
-        function notyCookie() {
-            var noticeMsg = $("#siteNotyCon").text();
-            $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
-        }
-
-        var annCookie = $.cookie('notice');
-        if(annCookie != notyContent &&  notyContent != ''){
-            var sNoty=$("#siteNoty").noty({
-                text: "【Notice】: <a id='siteNotyCon' href='/article/16305' target='_blank'>"+notyContent+"</a>",
-                type: 'error',
-                layout: 'top',
-                theme: 'gateioNotyTheme',
-                closeWith: ['button'],
-                animation: { speed: 0 },
-                callback: {
-                    afterShow: function() {
-                        $("#siteNotyCon").click(function () {
-                            notyCookie();
-                            sNoty.close();
-                        })
-                    },
-                    onClose: function() {
-                        $("#siteNoty").animate({ height:0 },100).css("border","none");
-                        notyCookie()
-                    }
-                }
-            });
-        }
-
-    });
+    // $(function(){
+    //     var currUrl=window.location.toString();
+    //     if(currUrl.indexOf('/trade/') > 0){
+    //         $.cookie('nav_index', 1,{ path: '/' });
+    //     } else if(currUrl.indexOf('/login') > 0 || currUrl.indexOf('/article/') > 0 || currUrl.indexOf('/page/') > 0 || currUrl.indexOf('/fee') > 0){
+    //         $.cookie('nav_index', 9,{ path: '/' });
+    //     } else if(currUrl.indexOf('/coins') > 0){
+    //         $.cookie('nav_index', 4,{ path: '/' });
+    //     }
+    //     $(".gateio-nav").children("li").click(function () {
+    //         $.cookie('nav_index', $(this).index(),{ path: '/' });
+    //     }).eq($.cookie('nav_index')).addClass("nav-active");
+    //     $(".user-log-out a,.more-lan a").click(function () {
+    //         $.cookie('nav_index', 0,{ path: '/' });
+    //     });
+		// var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='';
+		// loginbar.hover(function(){
+    //         tmenu.stop().slideDown(200);
+    //         $(this).stop().css("color","#f80");
+		// 	barmark.css("opacity","0");
+		// 	pbar.animate({width:pro_val+'%'},800);
+    //     },function(){
+    //         tmenu.stop().slideUp(100);
+    //          $(this).stop().css("color","#fff");
+		// 	 barmark.css("opacity","1");
+		// 	 pbar.css('width','0');
+    //     });
+		// tmenu.css("width",pbWidth);
+		// fbar.animate({width:pro_val+'%'},800);
+    //     if(pro_val > 0){
+    //         fbar.addClass("has-pro-val");
+    //     }
+    //
+		//  $.fn.animateProgress = function(progress, callback) {
+		// 	return this.each(function() {
+		// 	  $(this).animate({
+		// 		width: progress+'%'
+		// 	  }, {
+		// 		duration: 800,
+		// 		easing: 'swing',
+		// 		step: function( progress ){
+		// 		    $('.value').text(Math.ceil(progress) + '%');
+		// 		},
+		// 		complete: function(scope, i, elem) {
+		// 		  if (callback) {
+		// 			callback.call(this, i, elem );
+		// 		  };
+		// 		}
+		// 	  });
+		// 	});
+		//   };
+		//   if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
+    //
+    //     var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
+    //     if (lh < mh){lb.css("height",mh)}
+    //
+    //     $(".side-sev ul li").hover(function(){
+    //         var _this=$(this);
+    //         _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
+    //     },function(){
+    //         $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
+    //     });
+    //
+    //     $("#bottomWXli").hover(function(){
+    //         $(".wx-bottom").show()
+    //     },function(){
+    //         $(".wx-bottom").hide()
+    //     });
+		// $("#runTime").hover(function(){
+		// 	$(this).css("height","auto")
+    //     },function(){
+		// 	$(this).css("height","26px")
+    //     });
+    //
+    //     var notyContent='BCX is listed on gate.io';
+    //
+    //     function notyCookie() {
+    //         var noticeMsg = $("#siteNotyCon").text();
+    //         $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
+    //     }
+    //
+    //     var annCookie = $.cookie('notice');
+    //     if(annCookie != notyContent &&  notyContent != ''){
+    //         var sNoty=$("#siteNoty").noty({
+    //             text: "【Notice】: <a id='siteNotyCon' href='/article/16305' target='_blank'>"+notyContent+"</a>",
+    //             type: 'error',
+    //             layout: 'top',
+    //             theme: 'gateioNotyTheme',
+    //             closeWith: ['button'],
+    //             animation: { speed: 0 },
+    //             callback: {
+    //                 afterShow: function() {
+    //                     $("#siteNotyCon").click(function () {
+    //                         notyCookie();
+    //                         sNoty.close();
+    //                     })
+    //                 },
+    //                 onClose: function() {
+    //                     $("#siteNoty").animate({ height:0 },100).css("border","none");
+    //                     notyCookie()
+    //                 }
+    //             }
+    //         });
+    //     }
+    //
+    // });
     (function() {
         var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
                 .text($backToTopTxt).click(function() {
@@ -1049,4 +1051,3 @@ checkEmpty(0);
 </script>
 </body>
 </html>
-

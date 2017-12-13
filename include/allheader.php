@@ -58,7 +58,7 @@
 
             </li>
             <li class="nav-trade-item">
-                <a href="/trade/BTC_USDT">Markets<i class="caret"></i></a>
+                <a href="#">Markets<i class="caret"></i></a>
                 <ul class="second-nav clearfix">
                   
                     <li>
