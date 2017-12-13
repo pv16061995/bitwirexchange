@@ -7,7 +7,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><?php echo PROJECT_TITLE;?></title>
-    <link href="css/styled8e9.css?v=1512875640" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <link href="css/io.styled8e9.css?v=1512875640" rel="stylesheet" type="text/css">
     <link href="favicon.ico" rel="shortcut icon">
     <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">

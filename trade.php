@@ -6,6 +6,11 @@ $obj=NEW allapi();
 $data=$obj->getallcategory();
 $result=json_decode($data);
 
+$datasub=$obj->getallSubcategory();
+$subcat=json_decode($datasub, true);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
@@ -1044,3 +1049,4 @@ checkEmpty(0);
 </script>
 </body>
 </html>
+

@@ -597,7 +597,7 @@ i.icon-code{top:150px;left:140px}
 .leftbar .odd,.leftbar  .even { height: 36px }
 .trtitle b { padding-right: 10px }
 .left_ti li { width: 33.3%; height: 100%; text-align: center; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif; font-weight: bold; color: #666; float: left }
-.left_btn { width: 25%; height: 40px;line-height: 38px;border: none; border-bottom:1px solid #a3acb5; font-size:15px; font-weight:bold;background: #f1f1f1; float: left; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif;color: #2b343c}
+.left_btn { width: 33%; height: 40px;line-height: 38px;border: none; border-bottom:1px solid #a3acb5; font-size:15px; font-weight:bold;background: #f1f1f1; float: left; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif;color: #2b343c}
 .en-body .left_btn {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 .left_btn:hover{ color: #d45858}
 .tn_selected{ border:1px solid #a3acb5; border-bottom: 0}
@@ -969,7 +969,7 @@ button[disabled],button[disabled]:hover,.sub-btn[disabled],.sub-btn[disabled]:ho
 .second-nav > li:hover > a .caret:before {color:#9a5629}
 .third-nav {position:absolute;top:0;left:120px;width:750px;border-left:1px solid #0f1319;display:none}
 .third-nav a img,.third-nav a .icon-16{margin: -2px 5px;  background-color: #fff;border: 2px solid #fff;  border-radius: 3px;}
-.third-nav a strong{float: left;  width: 75%;  display: block; font-weight: normal;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;  text-align: left}
+.third-nav a strong{float: left;margin-left: 31px; width: 75%;  display: block; font-weight: normal;  white-space: nowrap;  overflow: hidden;  text-overflow: ellipsis;  text-align: left}
 .second-nav > li:hover .third-nav{ display: block}
 .nav-trade-item .second-nav > li:first-child .third-nav{  background-color: #003e56 }
 .nav-trade-item .second-nav > li:nth-child(2) .third-nav{  background-color: #004841 }
