@@ -128,7 +128,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/myaccount">Wallets</a>
+                <a href="myaccount.php">Wallets</a>
 
             </li>
             <!-- <li>

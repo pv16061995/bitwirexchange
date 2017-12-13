@@ -56,6 +56,15 @@ class allapi
     $data=json_encode($data);
     return $data;
   }
+
+  public function getallcurrency()
+  {
+    $data = array(
+          "INRW","USDW","EURW","GBPW","BRLW","PLNW","CADW","TRYW","RUBW","MXNW","CZKW","ILSW","NZDW","JPYW","SEKW","AUDW"
+    );
+    $data=json_encode($data);
+    return $data;
+  }
 }
 ?>
 
