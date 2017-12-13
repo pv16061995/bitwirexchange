@@ -7,7 +7,6 @@ $data=$obj->getallcategory();
 $result=json_decode($data);
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">

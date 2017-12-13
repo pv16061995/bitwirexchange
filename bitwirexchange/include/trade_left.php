@@ -14,15 +14,17 @@
             <td class="no-wrap alignRight" width="100%" style="border-bottom:0">
                 <ul id='market_controller' class="clearfix">
 
-									<?php foreach($result as $cat) { ?>
-											<button value="<?php echo $cat->name;?>" class="tline_btn left_btn "><?php echo $cat->name;?></button>
-											<?php }?>
+									<?php
+										$i=1;
+									foreach($result as $cat) { ?>
+											<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if($i==1){echo "tn_selected";} ?>"><?php echo $cat->name;?></button>
+											<?php $i++; }?>
                     <!-- <button value="USDT" class="tline_btn left_btn ">USDT</button>
                     <button value="BTC" class="tline_btn left_btn tn_selected">BTC</button>
                     <button value="ETH" class="tline_btn left_btn ">ETH</button>
                     <button value="NEW" class="tline_btn left_btn ">New</button> -->
                 </ul>
-                <input type="text" class="search" id="marketSearch" value="Search..." />
+                <!-- <input type="text" class="search" id="marketSearch" value="Search..." /> -->
             </td>
           </tr>
 
@@ -52,7 +54,7 @@
 
 							</td>
 						<?php }?>
-			
+
           </tr>
 
 		</tbody>
@@ -77,22 +79,27 @@
             item.closest('tr').addClass('coin-selected');
         }
 
+
+
         $("#market_controller").find("button").click(function () {
             $("#market_controller").find("button").removeClass("tn_selected");
             $(this).addClass("tn_selected").siblings().removeClass("tn_selected");
 
-            $("#marketlist_container_usdt,#marketlist_container_btc,#marketlist_container_eth,#marketlist_container_new").css('display', 'none');
+
 
             var td = $(this).attr('value');
 
 
             if (td == 'BTC') {
+							$("#marketlist_container_bch,#marketlist_container_ltc").css('display', 'none');
                 $("#marketlist_container_btc").css('display', 'block');
                 base = 'USDT';
             } else if (td == 'BCH') {
+							$("#marketlist_container_btc,#marketlist_container_ltc").css('display', 'none');
                 $("#marketlist_container_bch").css('display', 'block');
                 base = 'BTC';
             } else if (td == 'LTC') {
+							$("#marketlist_container_btc,#marketlist_container_bch").css('display', 'none');
                 $("#marketlist_container_ltc").css('display', 'block');
                 base = 'ETH';
             }
@@ -101,29 +108,29 @@
         return false;
     });
 
-	$('#marketSearch').keyup(function(e) {
-		var needle = $(this).val();
-		$.each($('.bizhong_en'),
-		function() {
-			var symbol = $(this).html();
-			if (symbol.toLowerCase().indexOf(needle.toLowerCase()) == -1) {
-				$('#' + $(this).attr('line_id')).hide();
-			} else {
-				$('#' + $(this).attr('line_id')).show();
-				 if (e.keyCode == 13) {
-					window.location = "/trade/"+symbol+"_"+base;
-				}
-			}
-		});
-	}).focus(function() {
-        if ($(this).val() === 'Search...') {
-            $(this).val('');
-        }
-    }).blur(function() {
-        if ($(this).val() === '') {
-            $(this).val('Search...');
-        }
-    });
-});
+// 	$('#marketSearch').keyup(function(e) {
+// 		var needle = $(this).val();
+// 		$.each($('.bizhong_en'),
+// 		function() {
+// 			var symbol = $(this).html();
+// 			if (symbol.toLowerCase().indexOf(needle.toLowerCase()) == -1) {
+// 				$('#' + $(this).attr('line_id')).hide();
+// 			} else {
+// 				$('#' + $(this).attr('line_id')).show();
+// 				 if (e.keyCode == 13) {
+// 					window.location = "/trade/"+symbol+"_"+base;
+// 				}
+// 			}
+// 		});
+// 	}).focus(function() {
+//         if ($(this).val() === 'Search...') {
+//             $(this).val('');
+//         }
+//     }).blur(function() {
+//         if ($(this).val() === '') {
+//             $(this).val('Search...');
+//         }
+//     });
+ });
 
 </script>
