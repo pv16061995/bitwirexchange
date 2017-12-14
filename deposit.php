@@ -1,5 +1,3 @@
-<?php include 'config/config.php';?>
-
 <?php include 'include/allheader.php';?>
 
 
@@ -32,7 +30,7 @@
 		accordion_head.on('click', function(event) {
 
 			event.preventDefault();
-			
+
 			if ($(this).attr('class') != 'active'){
 				accordion_body.slideUp('normal');
 				$(this).next().stop(true,true).slideToggle('normal');

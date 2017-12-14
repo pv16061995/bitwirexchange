@@ -1,10 +1,4 @@
 <?php
-include 'config/config.php';
-include 'apis/common.php';
-$obj=NEW allapi();
-$data=$obj->getallcurrency();
-$result=json_decode($data,true);
-
 include 'include/allheader.php'; ?>
 
 

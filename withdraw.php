@@ -10,12 +10,8 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		// Store variables
 		var accordion_head = $('.accordion > li > a'),
 			accordion_body = $('.accordion li > .sub-menu');
-		// Open the first tab on load
-		//accordion_head.first().addClass('active').next().slideDown('normal');
-		//accordion_body.eq(2).find('a').eq(2).css('background', ' #efefef');
 		var found = false;
 		for (i = 0; i < accordion_body.length; i++) {
 			item = accordion_body.eq(i).find("[data-id='withdraw_coin']");

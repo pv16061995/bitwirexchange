@@ -1,4 +1,3 @@
-<?php include_once 'config/config.php';?>
 <?php include 'include/index_header.php';?>
 
 <style>
