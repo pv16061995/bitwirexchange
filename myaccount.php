@@ -148,6 +148,9 @@ include 'include/allheader.php'; ?>
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
         <?php
+				$obj=NEW allapi();
+				$data=$obj->getallcurrency();
+				$result=json_decode($data);
         foreach($result as $currencyname){ ?>
                             <tr class='odd hanga'  data-id=zero >
                     <td align='right'><span class='icon-16 icon-16-usdt'></span><span style='color:#08a287'>
