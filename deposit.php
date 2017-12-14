@@ -7,65 +7,7 @@
 
 	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
 
-<table class="leftbar" style="padding-top: 15px">
-    <tbody><tr>
-    <td style="border-bottom:0;" valign="top">
-		<div id="marketlist_wrapper" class="dataTables_wrapper" role="grid">
-		<table class="marketlist dataTable" id="tradelist" cellspacing="0" cellpadding="0">
-			<tbody role="alert" aria-live="polite" aria-relevant="all">
-			<tr>
-				<td class="no-wrap alignRight" style=" width:100%;border:none">
-				<div id="wrapper-250">
-					<ul class="accordion">
-						<li id="adn1" class="files"> <a href="#adn1">My funds<span class="umicon"></span></a>
-						 <ul class="sub-menu">
-							<li><a data-id='myfunds' href="/myaccount/myfunds"><em>01</em>My balances</a></li>
-							<!--
-							<li><a data-id='interest' href="/myaccount/interest"><em>02</em>Daily interest</a></li>
-							<li><a data-id='dividend' href="/myaccount/dividend"><em>03</em>My dividend</a></li>
-							-->
-							<li><a data-id='myreferrals' href="/myaccount/myreferrals"><em>04</em>My Referrals</a></li>
-							<li><a data-id='mypurselog' href="/myaccount/mypurselog"><em>05</em>My Billing Details</a></li>
-						  </ul>
-						</li>
-
-						<li id="adn2" class="cloud"> <a href="#adn2">Orders<span class="umicon"></span></a>
-						 <ul class="sub-menu">
-							<li><a data-id='myorders' href="/myaccount/myorders"><em>06</em>Open orders</a></li>
-							<li><a data-id='myhistory' href="/myaccount/myhistory"><em>07</em>Trade history</a></li>
-						  </ul>
-						</li>
-
-						<li id="adn3" class="mail"> <a href="#adn3">Deposit/Withdrawal<span class="umicon"></span></a>
-						  <ul class="sub-menu">
-							<li><a data-id='deposit_coin' href="/myaccount/myfunds?coin_deposit#wallet"><em>16</em>Coin deposit</a></li>
-							<li><a data-id='withdraw_coin' href="/myaccount/myfunds?coin_withdraw#wallet"><em>17</em>Coin withdrawal</a></li>
-							<li><a data-id='deposit_gatecode' href="/myaccount/deposit_gatecode"><em>18</em>Redeem GateCode</a></li>
-							<li><a data-id='mydeposits' href="/myaccount/mydeposits"><em>15</em>Recent Deposits</a></li>
-							<li><a data-id='mywithdrawals' href="/myaccount/mywithdrawals"><em>15</em>Recent Withdrawals</a></li>
-						  </ul>
-						</li>
-						<li id="adn4" class="sign"> <a href="#adn4">Security Settings<span class="umicon"></span></a>
-						  <ul class="sub-menu">
-							<li><a data-id='totp' href="/myaccount/totp"><em>20</em>Two-factor Authentication</a></li>
-							<li><a data-id='sms_setup' href="/myaccount/sms_setup"><em>19</em>SMS Setup</a></li>
-							<li><a data-id='apikeys' href="/myaccount/apikeys"><em>21</em>API Keys</a></li>
-							<li><a data-id='resetpw' href="/resetpw"><em>22</em>Change login password</a></li>
-							<li><a data-id='resetfpw' href="/resetfpw"><em>23</em>Change fund password</a></li>
-							<li><a data-id='mylogs' href="/myaccount/mylogs"><em>24</em>Security logs</a></li>
-						  </ul>
-						</li>
-					</ul>
-				</div>
-				</td>
-			</tr>
-			</tbody>
-		</table>
-		</div>
-	</td>
-	</tr>
-	</tbody>
-</table>
+<?php echo 'include/left_side_menu.php';?>
 
 
 <script type="text/javascript">
