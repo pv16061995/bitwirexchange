@@ -6,6 +6,7 @@
 <div class="content">
 
 	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <table class="leftbar" style="padding-top: 15px">
     <tbody><tr>
@@ -125,7 +126,8 @@
 				Please send USDT to this address(<a target=_blank href='https://omniexplorer.info/lookupadd.aspx?address=19DJS8phwq1areGqJ5Zu8uXT5YQii3389G'>Click here to check in blockchain explorer</a>): <br><br>
 				<input class='coin_add' style='font-size:26px;' readonly value='19DJS8phwq1areGqJ5Zu8uXT5YQii3389G'>
 				<br>Or Scan QR code:<br>
-				<img src="/libs/qr.php?d=19DJS8phwq1areGqJ5Zu8uXT5YQii3389G" alt="QR code" style="width: 200px; height: 200px"/>
+				<img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl="
+                                                alt="QR Code" style="width:200px;border:0;"/>
 												<br>
 
 				Crypto-currencies are credited within 1 minute after accessing this page or "My funds" page and only after 2 confirmations of the transaction in the network.
