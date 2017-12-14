@@ -1,14 +1,5 @@
 <?php
-include 'config/config.php';
-include 'apis/common.php';
-$obj=NEW allapi();
-$data=$obj->getallcategory();
-$result=json_decode($data);
-
-$datasub=$obj->getallSubcategory();
-$subcat=json_decode($datasub, true);
-
-
+include 'include/allheader.php';
 if(isset($_GET['curr']))
 {
   $currencyname=base64_decode($_GET['curr']);
@@ -20,8 +11,6 @@ if(isset($_GET['curr']))
 
 ?>
 
-
-<?php include 'include/allheader.php';?>
 
 <style>
 	.side-sev{ top:235px; display: none}

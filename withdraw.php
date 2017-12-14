@@ -397,7 +397,33 @@ ob_end_flush();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+		var accordion_head = $('.accordion > li > a'),
+			accordion_body = $('.accordion li > .sub-menu');
+		var found = false;
+		for (i = 0; i < accordion_body.length; i++) {
+			item = accordion_body.eq(i).find("[data-id='withdraw_coin']");
+			if (item.length > 0) {
+				accordion_head.eq(i).addClass('active').next().slideDown('normal');
+				item.css({'background':' #d4f5f6','border-left-color':'#c1e3e4','border-right-color':'#c1e3e4'});
+				found = true;
+				break;
+			}
+		}
+		if (found == false)
+			accordion_head.eq(2).addClass('active').next().slideDown('normal');
+		// Click function
+		accordion_head.on('click', function(event) {
+			// Disable header links
+			event.preventDefault();
+			// Show and hide the tabs on click
+			if ($(this).attr('class') != 'active'){
+				accordion_body.slideUp('normal');
+				$(this).next().stop(true,true).slideToggle('normal');
+				accordion_head.removeClass('active');
+				$(this).addClass('active');
+			}
+		});
+
 		var icoType='';
 		if(icoType==''){
 			$("#buyIco").parent("li").remove()
