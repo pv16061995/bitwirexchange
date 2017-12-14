@@ -19,9 +19,7 @@ if (isset($_POST['code'])) {
     $code=$_POST['code'];
     $secret = $_SESSION['key'];
     $checkResult = $ga->verifyCode($secret, $code, 2);    // 2 = 2*30sec clock tolerance
-    echo $checkResult;
-    die;
-
+    
     if ($checkResult) {
         $_SESSION['key']=$code;
 
