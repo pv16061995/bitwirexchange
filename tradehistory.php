@@ -200,20 +200,9 @@ $postData = array(
 </style>
 
  <div class="sectioncont funds-dtl myfunds-dtl">
-    <div class="m_title" id="wallet"> Your <?= strtoupper($currencyname); ?> Transactions </div>
-    <div class="HideZeroDiv pull-left" id="hideZbtn">
-      <div class="row">
-        <a href="javascript:;" onclick="showtable('alldetail');" class="normal-depo fund-deposit">All</a>
-          <a href="javascript:;" onclick="showtable('senddetail');" class="normal-depo fund-withdraw">Send</a>
+    <div class="m_title" id="wallet"> My Trade History </div>
+    <div class="HideZeroDiv pull-left" id="hideZbtn"  style="margin-top: 3%;">
 
-            <a href="javascript:;" onclick="showtable('receivedetail');" class="normal-depo fund-to-trade">Receive</a>
-      </div>
-        <!-- <label for="hidezero">
-        <input type="checkbox" id="hidezero"  name='hidezero' style="width: 20px;" />
-        <label for="hidezero" class="vr-btn"></label>
-        <span class="hidezero-span">Hide zero balances</span>
-        </label>
-        <input type="hidden" id="min"><input type="hidden" id="max"> -->
     </div>
 
       <div id="alldetail">
@@ -225,150 +214,28 @@ $postData = array(
         <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-                <th style="width:20%">Date</th>
-                <th style="width:25%">Address</th>
-                <th style="width:20%">Type</th>
-                <th style="width:10%">Amount</th>
-                <th style="width:20%">Confirmations</th>
-
-              </tr>
+                        <th>ORDER DATE</th>
+                        <th>BID/ASK</th>
+                        <th>UNITS FILLED BCH</th>
+                        <th>ACTUAL RATE</th>
+                        <th>UNITS TOTAL BCH</th>
+                        <th>UNITS TOTAL BTC</th>
+                      </tr>
             </thead>
-            <tbody role="alert" aria-live="polite" aria-relevant="all">
-              <?php
-              $i=1;
-              $bold_txxs = "";
-              if (count($transactionList_BTC)>0) {
-                  foreach (array_reverse($transactionList_BTC) as $transaction) {
-                      if ($transaction['category']=="send") {
-                          $tx_type = '<b style="color: #FF0000;">Sent</b>';
-                      } elseif ($transaction['category']=="receive") {
-                          $tx_type = '<b style="color: #01DF01;">Received</b>';
-                      } else {
-                          $tx_type = '<b style="color: #01DF01;">Admin</b>';
-                          $transaction['address'] = 'BitwireX ';
-                          $transaction['confirmations'] = 'Confirmed ';
-                          $blockchain_url='';
-                          $transaction['txid']= '';
-                      }
-                      echo '<tr>
-
-                <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
-                <td>'.$transaction['address'].'</td>
-                <td>'.$tx_type.'</td>
-                <td>'.abs($transaction['amount']).'</td>
-                <td>'.$transaction['confirmations'].'</td>
-
-              </tr>';
-                  $i++;}
-              } elseif ((count($transactionList_BTC)== 0)) {
-                  echo "<tr><td colspan=\"3\">There is no Transaction exists</td><td></td><td></td><td></td></tr>";
-              }
-                ?>
-                        </tbody>
+            <tbody id="market_bid_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
+            <tbody id="market_ask_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
         </table>
       </div>
 
-      <div id="senddetail">
-        <style>
-          td{
-            text-align: center;
-          }
-        </style>
-        <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
-            <thead>
-              <tr>
-                <th style="width:20%">Date</th>
-                <th style="width:25%">Address</th>
-                <th style="width:20%">Type</th>
-                <th style="width:10%">Amount</th>
-                <th style="width:20%">Confirmations</th>
 
-              </tr>
-            </thead>
-            <tbody role="alert" aria-live="polite" aria-relevant="all">
-              <?php
-              $i=1;
-              $bold_txxs = "";
-              if (count($transactionList_BTC)>0) {
-                  foreach (array_reverse($transactionList_BTC) as $transaction) {
-                    if ($transaction['category']=="send") {
-                      $tx_type = '<b style="color: #FF0000;">Sent</b>';
-                      echo '<tr>
 
-                <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
-                <td>'.$transaction['address'].'</td>
-                <td>'.$tx_type.'</td>
-                <td>'.abs($transaction['amount']).'</td>
-                <td>'.$transaction['confirmations'].'</td>
 
-              </tr>';
-                  $i++; }}
-              } elseif ((count($transactionList_BTC)== 0)) {
-                  echo "<tr><td colspan=\"6\">There is no Transaction exists</td></tr>";
-              }
-                ?>
-                        </tbody>
-        </table>
-      </div>
-
-      <div id="receivedetail">
-        <style>
-          td{
-            text-align: center;
-          }
-        </style>
-        <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
-            <thead>
-              <tr>
-                <th style="width:20%">Date</th>
-                <th style="width:25%">Address</th>
-                <th style="width:20%">Type</th>
-                <th style="width:10%">Amount</th>
-                <th style="width:20%">Confirmations</th>
-
-              </tr>
-            </thead>
-            <tbody role="alert" aria-live="polite" aria-relevant="all">
-              <?php
-              $i=1;
-              $bold_txxs = "";
-              if (count($transactionList_BTC)>0) {
-                  foreach (array_reverse($transactionList_BTC) as $transaction) {
-                    if ($transaction['category']=="receive") {
-                      $tx_type = '<b style="color: #01DF01;">Received</b>';
-                      echo '<tr>
-
-                <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
-                <td>'.$transaction['address'].'</td>
-                <td>'.$tx_type.'</td>
-                <td>'.abs($transaction['amount']).'</td>
-                <td>'.$transaction['confirmations'].'</td>
-
-              </tr>';
-                  $i++; }}
-              } elseif ((count($transactionList_BTC)== 0)) {
-                  echo "<tr><td colspan=\"6\">There is no Transaction exists</td></tr>";
-              }
-                ?>
-                        </tbody>
-        </table>
-      </div>
 
 </div>
 <br>
 <script src="js/jquery.dataTables.min.js"></script>
 <script>
-$( function () {
-showtable('alldetail');
-});
 
-function showtable(id)
-{
-  $('#alldetail').hide();
-  $('#senddetail').hide();
-  $('#receivedetail').hide();
-  $('#'+id).show();
-}
 
     $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
@@ -433,10 +300,7 @@ function showtable(id)
 			var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
 			lb.css("height",mh)
 		});
-		/*tableIndex.on('page.dt',function() {
-			$("html, body").animate({ scrollTop: $('#wallet').offset().top }, 10);
-		});*/
-        //检测cookie,只显示有资金币种
+
         if ($.cookie('show_zero_funds') === undefined || $.cookie('show_zero_funds') === '0') {//显示全部
             $('#hidezero').prop('checked', false).removeClass('zero-active');
             $('#min,#max').val('');

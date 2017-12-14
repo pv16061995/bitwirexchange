@@ -17,15 +17,15 @@
 
 						<li id="adn2" class="cloud"> <a href="#">Orders<span class="umicon"></span></a>
 						 <ul class="sub-menu">
-							<li><a data-id='myorders' href="/myaccount/myorders"><em>06</em>Open orders</a></li>
-							<li><a data-id='myhistory' href="/myaccount/myhistory"><em>07</em>Trade history</a></li>
+							<li><a data-id='myorders' href="openhistory.php"><em>06</em>Open orders</a></li>
+							<li><a data-id='myhistory' href="tradehistory.php"><em>07</em>Trade history</a></li>
 						  </ul>
 						</li>
 
 						<li id="adn3" class="mail"> <a href="#">Deposit/Withdrawal<span class="umicon"></span></a>
 						  <ul class="sub-menu">
-							<li><a data-id='mydeposits' href="/myaccount/mydeposits"><em>15</em>Recent Deposits</a></li>
-							<li><a data-id='mywithdrawals' href="/myaccount/mywithdrawals"><em>15</em>Recent Withdrawals</a></li>
+							<li><a data-id='mydeposits' href="recent_deposit.php"><em>15</em>Recent Deposits</a></li>
+							<li><a data-id='mywithdrawals' href="recent_withdraw.php"><em>15</em>Recent Withdrawals</a></li>
 						  </ul>
 						</li>
 						<li id="adn4" class="sign"> <a href="#">Security Settings<span class="umicon"></span></a>

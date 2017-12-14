@@ -151,6 +151,7 @@ include 'include/allheader.php'; ?>
 				$obj=NEW allapi();
 				$data=$obj->getallcurrency();
 				$result=json_decode($data);
+
         foreach($result as $currencyname){ ?>
                             <tr class='odd hanga'  data-id=zero >
                     <td align='right'><span class='icon-16 icon-16-usdt'></span><span style='color:#08a287'>
@@ -169,51 +170,6 @@ include 'include/allheader.php'; ?>
                     </tbody>
     </table>
 
-
-   <div class="m_title"> Recent Deposits (<a href='/myaccount/mydeposits'>More...</a>)</div>
-    <table class='sf-grid table-inacc table-inacc-head'>
-			<thead>
-			<tr>
-				<th><b>No.</b></th>
-				<th align='left'><b>Time</b></th>
-				<th align='right'><b>Amount</b></th>
-				<th align='right'><b>TxID</b></th>
-				<th align='right'><b>Confirmations</b></th>
-				<th align='right'><b>Status</b></th>
-			</tr>
-		</thead>
-	</table>
-	<div class="table-scroll">
-		<table class='sf-grid table-inacc table-inacc-body' id="latestDepo">
-			<tbody>
-							<tr class="table-empty">
-					<td style="text-align: center"><p><i>i</i>No record.</p></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="m_title"> Recent Withdrawals (<a href='/myaccount/mywithdrawals'>More...</a>): </div>
-    <table class='sf-grid table-inacc table-inacc-head'>
-			<thead>
-			<tr>
-				<th><b>No.</b></th>
-				<th align='left'><b>Time</b></th>
-				<th align='right'><b>Amount</b></th>
-				<th align='right'><b>Address/TXID</b></th>
-				<th align='right'><b>Status</b></th>
-				<th align='right'><b>Operations</b></th>
-			</tr>
-		</thead>
-	</table>
-	<div class="table-scroll">
-		<table class='sf-grid table-inacc table-inacc-body' id="latestWith">
-			<tbody>
-							<tr class="table-empty">
-					<td style="text-align: center"><p><i>i</i>No record.</p></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 
 </div>
 <br>
