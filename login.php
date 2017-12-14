@@ -5,6 +5,9 @@ include 'include/allheader.php';
 <?php
 error_reporting(1);
  $url_api=URL_API;
+require_once 'googleLib/GoogleAuthenticator.php';
+$ga = new GoogleAuthenticator();
+$secret = $ga->createSecret();
 if (isset($_POST['btnsignup'])) {
     //  var_dump($_POST);
 	$email_id = $_POST['txtEmailID'];
@@ -49,7 +52,7 @@ if (isset($_POST['btnsignup'])) {
 
 
 		if (isset($responseData['userMailId'])) {
-			$message = $responseData['message'];
+			$messagesignup = $responseData['message'];
 
 		} else {
 			$error = $responseData['message'];
@@ -123,13 +126,15 @@ if (isset($_POST['btnlogin'])) {
         $_SESSION['JPYDAddress'] = $responseData['user']['isJPYDAddress'];
         $_SESSION['SEKWAddress'] = $responseData['user']['isSEKWAddress'];
         $_SESSION['AUDWAddress'] = $responseData['user']['isAUDWAddress'];
+        $_SESSION['tfa'] = $responseData['user']['tfastatus'];
+        $_SESSION['key'] = $responseData['user']['googlesecreatekey'];
 
 
 
         $_SESSION['token'] = $responseData['token'];
     } else {
         unset($success);
-        $message = $responseData['message'];
+        $messagelogin = $responseData['message'];
     }
 
 
@@ -220,10 +225,11 @@ if (isset($_POST['btnlogin'])) {
 
 			<div class="maichu">
 				<div class="m_title"><h4>Login</h4></div>
-				<div class="m_con rightlogin">
-				<p style="color:red;"> <?php if (isset($message)) {
-							    echo $message;
+				<p style="color:red;font-size:20px;text-align:center""> <?php if (isset($messagelogin)) {
+							    echo $messagelogin;
 							}?> </p>
+				<div class="m_con rightlogin">
+				
 					<form role="form" id="loginForm"  name="login" method="post" action="">
 
 						<div class="form-group parentCls has-feedback" id="emailGroup">
@@ -256,8 +262,8 @@ if (isset($_POST['btnlogin'])) {
 
 			<div class="mairu">
 				<div class="m_title"><h4>Sign up</h4></div>
-				<p style="color:green;font-size:20px;text-align:center"> <?php if (isset($message)) {
-					echo $message;
+				<p style="color:green;font-size:20px;text-align:center"> <?php if (isset($messagesignup)) {
+					echo $messagesignup;
 				}?> </p>
 
 				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($error)) {

@@ -8,7 +8,6 @@ $result=json_decode($data);
 $datasub=$obj->getallSubcategory();
 $subcat=json_decode($datasub, true);
 
-
 ?>
  <!DOCTYPE html>
 <html lang="en" xml:lang="en">
@@ -40,7 +39,7 @@ $subcat=json_decode($datasub, true);
                          <?php if(isset($_SESSION['user_id']))
                         {?>
 
-                        <li class="toplogin"><a href="myaccount.php">My Account&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin"><?php echo  $_SESSION['user_session'];?>&nbsp;|&nbsp; </li>
                         <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
                         <?php }else 
                         {?>

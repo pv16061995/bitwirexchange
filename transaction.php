@@ -221,10 +221,10 @@ $postData = array(
         </label>
         <input type="hidden" id="min"><input type="hidden" id="max"> -->
     </div>
-=======
+
     <div class="m_title" id="wallet"> YOUR <?= strtoupper($currencyname); ?> TRANSACTIONS: </div>
     
->>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
+
 
       <div id="alldetail">
         <style>
@@ -235,10 +235,7 @@ $postData = array(
         <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-<<<<<<< HEAD
-=======
-                
->>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
+
                 <th style="width:20%">Date</th>
                 <th style="width:25%">Address</th>
                 <th style="width:20%">Type</th>
@@ -265,11 +262,7 @@ $postData = array(
                           $transaction['txid']= '';
                       }
                       echo '<tr>
-<<<<<<< HEAD
 
-=======
-                
->>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
                 <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
                 <td>'.$transaction['address'].'</td>
                 <td>'.$tx_type.'</td>

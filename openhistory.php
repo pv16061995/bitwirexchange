@@ -1,9 +1,15 @@
 <?php
 include 'include/allheader.php';
 
-$user_session = $_SESSION['user_session'];
+page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
+  $url_api=URL_API;
+
 $postData = array(
-  "userMailId"=> 'priyankagarg1112@gmail.com'
+  "userMailId"=> $user_session
 
   );
 
@@ -14,90 +20,11 @@ $postData = array(
       'content' => json_encode($postData)
       )
     ));
-  $url_api=URL_API;
+ 
 
-  if(isset($_GET['curr']))
-    {
+  $response = file_get_contents($url_api.'/INRW/getTxsListINRW', false, $context);
 
-  $currencyname=base64_decode($_GET['curr']);
-
-    switch ($currencyname) {
-      case 'INRW':
-
-                 $response = file_get_contents($url_api.'/INRW/getTxsListINRW', false, $context);
-          break;
-          case 'EURW':
-
-               $response = file_get_contents($url_api.'/EURW/getTxsListEURW', false, $context);
-          break;
-          case 'USDW':
-           $response = file_get_contents($url_api.'/USDW/getTxsListUSDW', false, $context);
-          break;
-
-          case 'GBPW':
-           $response = file_get_contents($url_api.'/GBPW/getTxsListGBPW', false, $context);
-
-          break;
-
-          case 'BRLW':
-           $response = file_get_contents($url_api.'/BRLW/getTxsListBRLW', false, $context);
-
-          break;
-
-          case 'PLNW':
-           $response = file_get_contents($url_api.'/PLNW/getTxsListPLNW', false, $context);
-
-          break;
-
-          case 'CADW':
-          $response = file_get_contents($url_api.'/CADW/getTxsListCADW', false, $context);
-          break;
-
-          case 'TRYW':
-          $response = file_get_contents($url_api.'/TRYW/getTxsListTRYW', false, $context);
-          break;
-
-          case 'RUBW':
-          $response = file_get_contents($url_api.'/RUBW/getTxsListRUBW', false, $context);
-          break;
-
-          case 'MXNW':
-          $response = file_get_contents($url_api.'/MXNW/getTxsListMXNW', false, $context);
-           break;
-          case 'CZKW':
-           $response = file_get_contents($url_api.'/CZKW/getTxsListCZKW', false, $context);
-          break;
-
-          case 'ILSW':
-           $response = file_get_contents($url_api.'/ILSW/getTxsListILSW', false, $context);
-          break;
-
-          case 'NZDW':
-          $response = file_get_contents($url_api.'/NZDW/getTxsListNZDW', false, $context);
-          break;
-
-          case 'JPYW':
-           $response = file_get_contents($url_api.'/JPYW/getTxsListJPYW', false, $context);
-          break;
-
-          case 'SEKW':
-          $response = file_get_contents($url_api.'/SEKW/getTxsListSEKW', false, $context);
-          break;
-
-          case 'AUDW':
-          $response = file_get_contents($url_api.'/AUDW/getTxsListAUDW', false, $context);
-          break;
-
-          default:
-                $currencyname='INRW';
-                 $response = file_get_contents($url_api.'/INRW/getTxsListINRW', false, $context);
-
-
-
-    }
-
-  }
-
+  
   $responseData = json_decode($response, true);
 
   if (isset($responseData['tx'])) {
@@ -214,7 +141,7 @@ $postData = array(
         <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-                        <th>ORDER DATE</th>
+                        <th>DATE</th>
                         <th>BID/ASK</th>
                         <th>UNITS FILLED BCH</th>
                         <th>ACTUAL RATE</th>
@@ -223,8 +150,8 @@ $postData = array(
                         <th>ACTION</th>
                       </tr>
             </thead>
-            <tbody id="open_bid_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
-            <tbody id="open_ask_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
+             <tbody id="market_bid_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
+            <tbody id="market_ask_bch"  role="alert" aria-live="polite" aria-relevant="all"> </tbody>
         </table>
       </div>
 

@@ -30,7 +30,7 @@
 						</li>
 						<li id="adn4" class="sign"> <a href="#">Security Settings<span class="umicon"></span></a>
 						  <ul class="sub-menu">
-							<li><a data-id='totp' href="/myaccount/totp"><em>20</em>Two-factor Authentication</a></li>
+							<li><a data-id='totp' href="f2auth.php"><em>20</em>Two-factor Authentication</a></li>
 						  </ul>
 						</li>
 					</ul>
