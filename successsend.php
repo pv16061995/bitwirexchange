@@ -455,65 +455,26 @@ ob_end_flush();
 	#withdrawtable td{ padding-right: 8px}
 </style>
 
-			<div class="m_title"><h4><?php echo $currencyname;?> Withdrawal</h4></div>
 			<div class="sectioncont">
-			<p style="color:red;text-align:center;font-size:20px;"> <?php if (isset($error)) {echo $error;}?> </p>
+			<form action="successsend.php" method="post">
+			    	<div class="card text-black bg-success">
+		                <div class="card-header text-center text-black">
+		                    <h1 class="text-black">Withdrawal Response</h1>
+		                </div>
+		                <div class="card-body bg-white text-center text-success">
+		                    <?php if(!empty($message)){ ?>
+								<label>The transaction has been  <?php echo $message;?> initiated.</label>
+							<?php
+							} else {
+							?>
+								<label class="text-warning">There is some issue in processng your transaction. Please try after some time</label>
+							<?php
+							}
+							?>
+		                </div>
 
-				<form name="withdraw_form" id="withdraw_form" enctype="application/x-www-form-urlencoded" method="post" action="">
-				
-				<table id='withdrawtable'>
-
-			
-									<tr id="addr_tr">
-									<td align="right"><?php echo $currencyname;?> Address:</td>
-									<td style="position:relative;">
-										<input type="text" name="addr" id="addr" value="" autocomplete="off" size="50" maxlength="50">
-										
-									</td>
-								</tr>
-
-								<tr>
-					<td align="right">Amount (<?php echo $currencyname;?>):</td><td><input onkeypress="return isNumberKey(event)" type="number" value="" size="10" name="amount" id="amount"> <!-- Minimum 15.1 USDT, Maximum 100000 USDT --></td>
-				</tr>
-				<!-- <tr>
-					<td align="right">Fee: </td><td style="padding-top: 15px"> 0% + 15 USDT.
-										</td>
-				</tr> -->
-
-				<tr>
-					<td align="right">Spending password:</td><td><input type="password" name="fundpass" id="fundpass" size="20"></td>
-				</tr>
-				
-				<tr>
-				<td>&nbsp;</td>
-				<td> <input type="Submit" name="submit_btn" id="submit_btn" value="  Submit request " class="sub-btn" ></td>
-				</tr>
-				</table>
-
-				</form>
-
-				<br>
-			</div>
-
-			<br>
-			
-
-			<div class="m_title"><h4>Last 10 withdrawal records</h4></div>
-			<div class="sectioncont">
-				<table class='sf-grid'>
-				  <tr> <td align='right'width="50px"><b>ID</b></td>
-					   <td align='right'><b>Address/TxID</b></td>
-					   <td align='right' width="100px"><b>Amount</b></td>
-					   <td align='right' width="160px"><b>Date</b></td>
-					   <td align='right' width="100px"><b>Operation</b></td>
-                  </tr>
-
-                </table>
-			</div>
-
-			<br>
-
-		<br>
+		            </div>
+		        </form>
 
 </div> <!-- right_mcontent -->
   </div> <!-- main content -->

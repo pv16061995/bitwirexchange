@@ -11,7 +11,7 @@ include 'include/allheader.php'; ?>
 <div class="content">
 
 	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
-<?php echo 'include/left_side_menu.php';?>
+<?php include  'include/left_side_menu.php';?>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -73,34 +73,7 @@ include 'include/allheader.php'; ?>
     .sectioncont .all-funds-table.dataTable thead tr td:last-child, .sectioncont .all-funds-table.dataTable tr td:last-child {width: 25%;}
     .f-d-info {min-height: 187px;}
 </style>
-<!-- <ul class="my-top-info clearfix">
-	<li>
-		<h3>My ID</h3>
-		<b>653933</b>
-	</li>
-	<li>
-		<h3>Current Tier</h3>
-		<strong class="tier-level tier-icon0"></strong>
-			</li>
-	<li>
-		<h3>Trading Fee Discount</h3>
-		<strong>0% Off</strong>
-	</li>
-	<li>
-		<h3>30-day Trading Volume</h3>
-		<strong>0</strong><i class="vol30-unit"> BTC</i> <!--<div class="fund-top-small">or <strong>0</strong> CNY</div>-->
-	<!-- </li>
-</ul>
-<div class="lv-prog">
-	<span class="pro-dtl">You need <strong class="red">3.0</strong> BTC or <strong class="red">336271</strong> CNY to reach next tier.</span>
-	<div id="fprogrLi">
-		<div id="fproBar"><span>Progress Toward Next Tier: <b>0.0%</b></span></div>
-	</div>
-</div>
-<div id="crFund">Total funds estimation:
-	<i class="red">0.00 USD</i> or <i class="red">0.00000 BTC</i>
-	<!--<p class="fund-tips">注：资金总估是由历史行情估算值，仅为用户提供一个参考，请以单项资金为准</p>-->
-<!-- </div>-->
+
  <div class="sectioncont funds-dtl myfunds-dtl">
     <div class="m_title" id="wallet"> Currencies: </div>
     <div class="HideZeroDiv pull-left" id="hideZbtn">
