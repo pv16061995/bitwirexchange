@@ -29,12 +29,12 @@ $subcat=json_decode($datasub, true);
 <div class="header clearfix">
     <div class="top-up">
         <div class="top-con">
-            <ul class="topprice">
+           <!--  <ul class="topprice">
                 <li> BTC/USDT : $ <span class="topnum">13752.5</span><i class="icon-arrow-up">&uarr;</i> </li>
                 <li> ETH/USDT : $ <span class="topnum">432.15</span><i class="icon-arrow-down">&darr;</i> </li>
                 <li> LTC/USDT : $ <span class="topnum">132.96</span><i class="icon-arrow-up">&uarr;</i> </li>
                 <li> QTUM/USDT : $ <span class="topnum">11.12</span><i class="icon-arrow-down">&darr;</i> </li>
-            </ul>
+            </ul> -->
             <!-- <div class="qqtel">
                 <a class="ask_ans" href="https://twitter.com/gate_io" target="_blank">
                     <p><i class="tico" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="244 244 24 24"><path fill="#FFF" d="M267.998 248.95c-.882.39-1.83.653-2.825.77 1.016-.606 1.795-1.564 2.164-2.703-.952.56-2.007.966-3.127 1.186-.9-.95-2.177-1.545-3.594-1.545-2.722 0-4.926 2.19-4.926 4.888 0 .38.042.757.126 1.116-4.09-.205-7.72-2.152-10.148-5.106-.425.724-.67 1.563-.67 2.456 0 1.697.872 3.19 2.193 4.07-.806-.027-1.566-.246-2.23-.614v.064c0 2.368 1.7 4.34 3.95 4.792-.414.11-.848.17-1.297.17-.317 0-.625-.026-.925-.087.625 1.94 2.445 3.355 4.6 3.396-1.686 1.31-3.807 2.092-6.113 2.092-.398 0-.79-.025-1.175-.07 2.177 1.387 4.767 2.195 7.547 2.195 9.06 0 14.012-7.448 14.012-13.903 0-.213-.008-.423-.017-.63.96-.694 1.795-1.552 2.457-2.537h-.002z"/></svg></i></p>
@@ -57,9 +57,19 @@ $subcat=json_decode($datasub, true);
                         </div>
                     </a>
                 </li> -->
+                        <?php if(isset($_SESSION['user_id']))
+                        {?>
 
+                        <li class="toplogin"><a href="myaccount.php">My Account&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
+                        <?php }else 
+                        {?>
                         <li class="toplogin"><a href="login.php">Signup&nbsp;</a>|&nbsp; </li>
                         <li class="toplogin" id="toplogin"><a href="login.php">Login</a></li>
+                        <?php 
+
+                        }
+                        ?>
 
                     <!-- <li class="lang-option">
                     <span>English</span><i class="caret"></i>

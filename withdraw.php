@@ -1,15 +1,14 @@
-<?php include 'config/config.php';?>
 
 <?php include 'include/allheader.php';?>
 <?php
 ob_start();
 
 /*-----------Add Session-----------*/
-// page_protect();
-// if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-//     header("location:logout.php");
-// }
-// $user_session = $_SESSION['user_session'];
+page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
  if(isset($_GET['curr']))
         {
@@ -32,7 +31,7 @@ ob_start();
              case 'INRW':
       
               $postData = array(
-                                  "userMailId"=> "priyankagarg1112@gmail.com",
+                                  "userMailId"=> $user_session,
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
                                   "recieverINRWCoinAddress"=> $reciever_address
@@ -50,7 +49,7 @@ ob_start();
                       $response = file_get_contents($url_api.'/INRW/sendINRW', false, $context);
 
                           break;
-                          case 'eurw':
+                          case 'EURW':
                         
                                $postData = array(
                                                     "userMailId"=> $user_session,

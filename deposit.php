@@ -1,10 +1,14 @@
 <?php include 'include/allheader.php';?>
 <?php
-   
+   page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
 
 $postData = array(
-  "userMailId"=>"priyankagarg1112@gmail.com"
+  "userMailId"=>$user_session
   );
 
 // Create the context for the request
@@ -26,25 +30,25 @@ if(isset($_GET['curr']))
 
   switch ($currencyname) {
         case 'INRW':
-                // if($_SESSION['INRWAddress']=== false)
-                // {
+                if($_SESSION['INRWAddress']=== false)
+                {
                   $response = file_get_contents($url_api.'/INRW/getNewINRWAddress', false, $context);
 
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
-                // }
+                }
                 
-                // else
-                // {
+                else
+                {
                     $response = file_get_contents($url_api.'/INRW/getINRWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
                     
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
-                // }
+                }
 
                 
             

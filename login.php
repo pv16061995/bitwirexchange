@@ -1,6 +1,147 @@
 <?php
 include 'include/allheader.php';
 ?>
+<!-- ............ SIGN UP ........-->
+<?php
+error_reporting(1);
+ $url_api=URL_API;
+if (isset($_POST['btnsignup'])) {
+    //  var_dump($_POST);
+	$email_id = $_POST['txtEmailID'];
+	$password = $_POST['signuppassword'];
+	$confirmpassword = $_POST['confirmpassword'];
+	$spendingpassword = $_POST['spendingpassword'];
+	$confirmspendingpassword = $_POST['confirmspendingpassword'];
+	$password_check = preg_match('~^[A-Za-z0-9!@#$%^&*()_]{6,20}$~i', $password);
+	$confirmpassword_check = preg_match('~^[A-Za-z0-9!@#$%^&*()_]{6,20}$~i', $confirmpassword);
+	$spendingpassword_check = preg_match('~^[A-Za-z0-9!@#$%^&*()_]{6,20}$~i', $spendingpassword);
+	$confirmspendingpassword_check = preg_match('~^[A-Za-z0-9!@#$%^&*()_]{6,20}$~i', $confirmspendingpassword);
+
+	if ($password_check && $confirmpassword_check && $spendingpassword_check && $confirmspendingpassword_check >0) {
+		$postData = array(
+			"email"=> $email_id ,
+			"password" =>$password,
+			"confirmPassword"=> $confirmpassword,
+			"spendingpassword"=> $spendingpassword,
+			"confirmspendingpassword"=> $confirmspendingpassword,
+			"googlesecreatekey"=>$secret
+			);
+
+        // Create the context for the request
+		$context = stream_context_create(array(
+			'http' => array(
+				'method' => 'POST',
+				'header' => "Content-Type: application/json\r\n",
+				'content' => json_encode($postData)
+				)
+			));
+
+
+		$response = file_get_contents($url_api.'/user/createNewUser', false, $context);
+
+		// if ($response === false) {
+		// 	die('Error');
+		// }
+
+
+		$responseData = json_decode($response, true);
+
+
+
+		if (isset($responseData['userMailId'])) {
+			$message = $responseData['message'];
+
+		} else {
+			$error = $responseData['message'];
+		}
+	} else {
+		$errorpassword = "Enter valid password";
+	}
+}
+?>
+
+
+<!-- ....... LOGIN CODE...... -->
+<?php
+error_reporting(1);
+session_start();
+
+
+
+if (isset($_POST['btnlogin'])) {
+    //  var_dump($_POST);
+    $email_id = $_POST['email'];
+    $password = $_POST['emailpassword'];
+
+
+    $postData = array(
+   "email" => $email_id,
+        "password" => $password
+  );
+
+    // Create the context for the request
+    $context = stream_context_create(array(
+  'http' => array(
+    'method' => 'POST',
+    'header' => "Content-Type: application/json\r\n",
+    'content' => json_encode($postData)
+    )
+  ));
+   
+    $response = file_get_contents($url_api.'/auth/authentcate', true, $context);
+
+    if ($response === false) {
+        die('Error');
+    }
+
+
+    $responseData = json_decode($response, true);
+    if ($responseData['statusCode'] != 401) {
+        $message = $responseData['message'];
+        $_SESSION["user_id"] = $responseData['user']['id'];
+        $_SESSION["user_session"] = $responseData['user']['email'];
+        $_SESSION['is_email_verify'] = $responseData['user']['verifyEmail'];
+        $_SESSION['user_admin'] = $responseData['user']['isAdmin'];
+        
+        $_SESSION['INRWAddress'] = $responseData['user']['isINRWAddress'];
+        $_SESSION['USDWAddress'] = $responseData['user']['isUSDWAddress'];
+        $_SESSION['EURWAddress'] = $responseData['user']['isEURWAddress'];
+
+        $_SESSION['GBPWAddress'] = $responseData['user']['isGBPWAddress'];
+        $_SESSION['BRLWAddress'] = $responseData['user']['isBRLWAddress'];
+        $_SESSION['PLNWAddress'] = $responseData['user']['isPLNWAddress'];
+
+        $_SESSION['CADWAddress'] = $responseData['user']['isCADWAddress'];
+        $_SESSION['TRYWAddress'] = $responseData['user']['isTRYWAddress'];
+        $_SESSION['RUBWAddress'] = $responseData['user']['isRUBWAddress'];
+        $_SESSION['MXNWAddress'] = $responseData['user']['isMXNWAddress'];
+
+        $_SESSION['CZKWAddress'] = $responseData['user']['isCZKWAddress'];
+        $_SESSION['ILSWAddress'] = $responseData['user']['isILSWAddress'];
+        $_SESSION['NZDWAddress'] = $responseData['user']['isNZDWAddress'];
+
+        $_SESSION['JPYDAddress'] = $responseData['user']['isJPYDAddress'];
+        $_SESSION['SEKWAddress'] = $responseData['user']['isSEKWAddress'];
+        $_SESSION['AUDWAddress'] = $responseData['user']['isAUDWAddress'];
+
+
+
+        $_SESSION['token'] = $responseData['token'];
+    } else {
+        unset($success);
+        $message = $responseData['message'];
+    }
+
+
+    if ($responseData['statusCode'] != 401 && $responseData['user']['tfastatus']==true) {
+        header("location:device_confirmations.php");
+    } elseif (isset($responseData['user'])) {
+        header("location:myaccount.php");
+    }
+
+}
+
+?> 
 <style>
 	*:before, *:after,.form-control{-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;}
 	.glyphicon-ok:before {  content: "\221A";  }
@@ -75,136 +216,128 @@ include 'include/allheader.php';
 <div class="left_con_login">
 	<div class="login_incontent login-con">
 
-	<div class="right_mcontent clearfix">
+		<div class="right_mcontent clearfix">
 
-	 <div class="maichu">
-		<div class="m_title"><h4>Login</h4></div>
-		<div class="m_con rightlogin">
-			<form role="form" id="loginForm"  name="login" method="post" action="">
+			<div class="maichu">
+				<div class="m_title"><h4>Login</h4></div>
+				<div class="m_con rightlogin">
+				<p style="color:red;"> <?php if (isset($message)) {
+							    echo $message;
+							}?> </p>
+					<form role="form" id="loginForm"  name="login" method="post" action="">
 
-				<div class="form-group parentCls has-feedback" id="emailGroup">
-					<label for="email">Username or Email</label>
-					<div class="automail-list"></div>
-					<input type="text" class="form-control inputElem" name="email" id="email" value="" onkeyup="this.value=this.value.replace(/[\u4e00-\u9fa5]/g,'')" onafterpaste="this.value=this.value.replace(/[\u4e00-\u9fa5]/g,'')">
-					<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-					<span class="help-block"></span>
-				</div>
+						<div class="form-group parentCls has-feedback" id="emailGroup">
+							<label for="email">Username or Email</label>
+							<div class="automail-list"></div>
+							<input type="email" class="form-control inputElem" name="email" id="email" value="" onkeyup="this.value=this.value.replace(/[\u4e00-\u9fa5]/g,'')" onafterpaste="this.value=this.value.replace(/[\u4e00-\u9fa5]/g,'')">
 
-				<div class="form-group has-feedback" id="pswGroup">
-					<label for="password">Password</label>
-					<input type="password" class="form-control" name="password" id="password">
-					<div class="input-item-info"><a href="resetpw.html" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
-					<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-					<span class="help-block"></span>
-				</div>
-
-				<div class="form-group has-feedback clearfix" id="codeGroup">
-					<label for="captcha_code">Captcha code</label>
-					<div class="clearfix code-box">
-						<input type="text" class="form-control code-input" name="captcha" id="captcha_code" maxlength="8" autocomplete="off">
-						<div id="code"><img class="cap-img" id="loginCaptcha" src="captcha.png" alt="Captcha" title="Change" onclick="document.getElementById('loginCaptcha').src = '/captcha?' + Math.random(); return false"/></div>
-						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
-						<span class="help-block"></span>
-					</div>
-				</div>
-
-				<!-- <div class="form-group" id="ipGroup">
-					<label for="iprestriction" style="user-select: none;">Security option</label>
-					<div class="pull-left" style="margin-top: 10px">
-					<label class="haschecked pull-left" style="width: auto;user-select: none;">
-						<input  class="form-control" type="checkbox" name="iprestriction" id="iprestriction" value='1' checked>Bind IP (<span class=red>For your account safty, do NOT uncheck</span>)</span>
-					</label>
-					</div>
-					<span class="help-block"></span>
-				</div> -->
-
-				<button type="button" class="btn btn-error btn-block sub-btn" id="loginSub"><span>Log in</span>
-					<div class="spinner">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
-					</div>
-				</button>
-				<p class="red"><i id="dpIcon">!</i>Tip: Don't leak password to anyone. Officials never ask your password.</p>
-				<span class="errmsg" id='errmsg'></span>
-			</form>
-		</div>
-	</div>
-
-	 <div class="mairu">
-		<div class="m_title"><h4>Sign up</h4></div>
-		<div class="m_con_buy leftregi">
-			<form role="form" id="signupForm" name="signup" method="post" action="">
-				<input type="hidden" name="ref_uid" id="ref_uid" value=""/>
-				<input type="hidden" name="language" id="language" value="cn"/>
-				<div>
-					<div class="form-group parentCls has-feedback" id="signup_userNameGroup">
-						<label for="sig_email">Username</label>
-						<input type="text" class="form-control" name="nickname" id="sig_userName" value="" autocomplete="off">
-						<div class="input-item-info"><span class="r-tip">(Letters or letters combined with numbers)</span></div></span><span class="glyphicon glyphicon-ok form-control-feedback"></span> <span class="help-block"></span>
-					</div>
-				</div>
-				<div>
-					<div class="form-group has-feedback" id="signup_pswGroup">
-						<label for="sig_password">Password</label>
-						<input type="password"  name="password" class="form-control" id="sig_password" autocomplete="new-password">
-						<div class="input-item-info"><span class="r-tip">(Passwords must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
-						<div class="password-level hide clearfix" id="signPswLevel">
-							<div class="col-md-4"><span id="loWeak">Too weak</span></div>
-							<div class="col-md-4"><span id="loNormal">Good</span></div>
-							<div class="col-md-4"><span id="loStrong">Excellent</span></div>
 						</div>
-						<span class="help-block"></span>
-					</div>
+
+						<div class="form-group has-feedback" id="pswGroup">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" name="emailpassword" id="password">
+							<div class="input-item-info"><a href="resetpw.html" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
+
+						</div>
+
+
+						<button type="submit" name="btnlogin" class="btn btn-error btn-block sub-btn" id="loginSub"><span>Log in</span>
+							<div class="spinner">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
+							</div>
+						</button>
+						<p class="red"><i id="dpIcon">!</i>Tip: Don't leak password to anyone. Officials never ask your password.</p>
+						<span class="errmsg" id='errmsg'></span>
+					</form>
 				</div>
-				<div>
-					<div class="form-group parentCls has-feedback" id="signup_emailGroup">
-						<label for="sig_email">E-mail</label>
-						<input type="eamil" class="form-control" name="email" id="sig_email" value="" autocomplete="off">
-						<div class="input-item-info"><span class="r-tip">(For verfication)</span></div></span><span class="glyphicon glyphicon-ok form-control-feedback"></span> <span class="help-block"></span>
-					</div>
+			</div>
+
+			<div class="mairu">
+				<div class="m_title"><h4>Sign up</h4></div>
+				<p style="color:green;font-size:20px;text-align:center"> <?php if (isset($message)) {
+					echo $message;
+				}?> </p>
+
+				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($error)) {
+					echo $error;
+				}?> </p>
+				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($errorpassword)) {
+					echo $errorpassword;
+				}?> </p>
+				<div class="m_con_buy leftregi">
+					<form role="form" id="signupForm" name="signup" method="post" action="login.php">
+						<input type="hidden" name="ref_uid" id="ref_uid" value=""/>
+						<input type="hidden" name="language" id="language" value="cn"/>
+
+
+						<div>
+							<div class="form-group parentCls has-feedback" id="signup_emailGroup">
+								<label for="sig_email">E-mail</label>
+								<input type="email" class="form-control" name="txtEmailID" id="sig_email" value="" autocomplete="off">
+
+							</div>
+						</div>
+						<div>
+							<div class="form-group has-feedback" id="signup_pswGroup">
+								<label for="sig_password">Password</label>
+								<input type="password"  name="signuppassword" class="form-control" id="sig_password" autocomplete="new-password">
+								<div class="input-item-info"><span class="r-tip">(Passwords must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<div class="password-level hide clearfix" id="signPswLevel">
+									<div class="col-md-4"><span id="loWeak">Too weak</span></div>
+									<div class="col-md-4"><span id="loNormal">Good</span></div>
+									<div class="col-md-4"><span id="loStrong">Excellent</span></div>
+								</div>
+
+							</div>
+						</div>
+						<div>
+							<div class="form-group has-feedback" id="signup_pswGroup">
+								<label for="sig_password">Confirm Password</label>
+								<input type="password"  name="confirmpassword" class="form-control" id="sig_password" autocomplete="new-password">
+								<div class="input-item-info"><span class="r-tip">(Passwords must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<div class="password-level hide clearfix" id="signPswLevel">
+									<div class="col-md-4"><span id="loWeak">Too weak</span></div>
+									<div class="col-md-4"><span id="loNormal">Good</span></div>
+									<div class="col-md-4"><span id="loStrong">Excellent</span></div>
+								</div>
+								<span class="help-block"></span>
+							</div>
+						</div>
+						<div>
+							<div class="form-group has-feedback" id="fund_pswGroup">
+								<label for="fund_password">Spending password</label>
+								<input type="password"  name="spendingpassword" class="form-control" id="fund_password" autocomplete="new-password">
+								<div class="input-item-info"><span class="r-tip">(Very important, Need to be different from the login password)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<span class="help-block"></span>
+							</div>
+						</div>
+						<div>
+							<div class="form-group has-feedback" id="fund_pswGroup">
+								<label for="fund_password">Confirm Spending password</label>
+								<input type="password"  name="confirmspendingpassword" class="form-control" id="fund_password" autocomplete="new-password">
+								<div class="input-item-info"><span class="r-tip">(Very important, Need to be different from the login password)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<span class="help-block"></span>
+							</div>
+						</div>
+						<button type="submit" name="btnsignup" class="btn btn-error btn-block sub-btn" id="signupSub"><span>Create account</span>
+							<div class="spinner">
+								<div class="bounce1"></div>
+								<div class="bounce2"></div>
+								<div class="bounce3"></div>
+							</div>
+						</button>
+						<div class="login-tip">
+							<p></p>
+						</div>
+					</form>
+					<div style="clear:both"	></div>
 				</div>
-				<div>
-					<div class="form-group has-feedback" id="fund_pswGroup">
-						<label for="fund_password">Fund password</label>
-						<input type="password"  name="fundpass" class="form-control" id="fund_password" autocomplete="new-password">
-						<div class="input-item-info"><span class="r-tip">(Very important, Need to be different from the login password)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
-						<span class="help-block"></span>
-					</div>
-				</div>
-				<div class="form-group has-feedback" id="signup_codeGroup">
-					<label for="captcha_code">Captcha code</label>
-					<div class="clearfix code-box">
-						<input type="text" class="form-control code-input" name="captcha" id="captcha_reg" maxlength="8" autocomplete="off">
-						<div id="codeReg"><img class="cap-img" id="regCaptcha" src="captcha_reg.png" alt="Captcha" title="Change" onclick="resetCode();document.getElementById('regCaptcha').src = '/captcha_reg?' + Math.random(); return false"/></div>
-						<div class="input-item-info"></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
-						<span class="help-block"></span>
-					</div>
-				</div>
-				<div class="checkbox clearfix">
-					<label id="agrCheckLabel" class="haschecked pull-left">
-						<input  class="form-control pull-left" type="checkbox" name="agreeCheck" id="agreeCheck" value='1' checked>
-						<span id="agrTxt" class="pull-left">I agree to the</span>
-					</label>
-					<a class="pull-left" target=_blank href='docs/agreement.pdf'> <?php echo PROJECT_TITLE?> User Agreement </a>
-				</div>
-								<button type="button" class="btn btn-error btn-block sub-btn" id="signupSub"><span>Create account</span>
-					<div class="spinner">
-						<div class="bounce1"></div>
-						<div class="bounce2"></div>
-						<div class="bounce3"></div>
-					</div>
-				</button>
-				<div class="login-tip">
-					<p></p>
-				</div>
-			</form>
-            <div style="clear:both"	></div>
+			</div>
+
+
 		</div>
-	</div>
-
-
-	</div>
 	</div>
 </div>
 
@@ -235,7 +368,7 @@ include 'include/allheader.php';
 	}
 
 	var mailAddr=["","@qq.com", "@163.com", "@126.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"],
-	    mailAddr1=["@qq.com", "@163.com", "@126.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"];
+	mailAddr1=["@qq.com", "@163.com", "@126.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"];
 	var mailTarget;
 
 	function mailinput(mailTarget,mAddr){
@@ -277,7 +410,7 @@ include 'include/allheader.php';
 	$(function(){
 
 		var mailVal=$("#sig_email").val(),
-		    mail_test = /^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+		mail_test = /^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
 		if( !mail_test.test(mailVal) ){
 			$("#sig_email").val("")
 		}
@@ -304,7 +437,7 @@ include 'include/allheader.php';
 		}
 		function pswcheck(){
 			var eVal=$("#password").val(),
-					eVlength=eVal.length;
+			eVlength=eVal.length;
 
 			if (eVlength==0) {
 				addErr("#pswGroup");
@@ -349,7 +482,7 @@ include 'include/allheader.php';
 		}
 
 		$("#email").blur(emailcheck).focus(function(){
-				if(!(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0")){	}
+			if(!(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion .split(";")[1].replace(/[ ]/g,"")=="MSIE8.0")){	}
 		});
 
 		$("#password").blur(pswcheck).focus(function(){
@@ -510,8 +643,8 @@ include 'include/allheader.php';
 	function signPswCheck(){ //登录密码验证
 		//return true;
 		var sVal=$("#sig_password").val(),
-				sVlength=sVal.length,
-				signLvl=passwordLevel(sVal);
+		sVlength=sVal.length,
+		signLvl=passwordLevel(sVal);
 
 		if (sVlength==0) { //登录密码为空
 			addErr("#signup_pswGroup");
@@ -520,7 +653,7 @@ include 'include/allheader.php';
 			$("#signPswLevel").addClass("hide");
 		} else {
 			var tipWords=$("#signup_pswGroup").find(".help-block").text().length,
-					checkOk=$("#signup_pswGroup").hasClass("has-success");
+			checkOk=$("#signup_pswGroup").hasClass("has-success");
 			if (sVlength > 0 && sVlength < 6) { //大于0小于6位
 				printTip("#signup_pswGroup","Password is too weak!");
 				addErr("#signup_pswGroup");
@@ -565,7 +698,7 @@ include 'include/allheader.php';
 	function fundPswCheck(){
 		//return true;
 		var sVal=$("#fund_password").val(),
-				sVlength=sVal.length;
+		sVlength=sVal.length;
 		if (sVlength==0) { //密码为空
 			addErr("#fund_pswGroup");
 			printTip("#fund_pswGroup","Please enter a fund password!");
@@ -608,7 +741,7 @@ include 'include/allheader.php';
 
 	function clearPsw(elm){
 		var psws=$(elm),
-				sigPswLen=psws.val().length;
+		sigPswLen=psws.val().length;
 		if(sigPswLen==32){
 			psws.val('');
 			psws.parents("div").removeClass("has-success")
@@ -624,33 +757,33 @@ include 'include/allheader.php';
 
 	$("#sig_password").blur(function(){
 		signPswCheck() ; }).on('input propertychange', function () { signPswCheck()
-	}).focus(function(){
-		clearPsw("#sig_password")
-	});
-	$("#fund_password").blur(function(){
-		fundPswCheck() ;}).on('input propertychange', function () { fundPswCheck()
-	}).focus(function(){
-		clearPsw("#fund_password")
-	});
-		$("#captcha_reg").blur(signCodeCheck);
+		}).focus(function(){
+			clearPsw("#sig_password")
+		});
+		$("#fund_password").blur(function(){
+			fundPswCheck() ;}).on('input propertychange', function () { fundPswCheck()
+			}).focus(function(){
+				clearPsw("#fund_password")
+			});
+			$("#captcha_reg").blur(signCodeCheck);
 
-	var agr=$("#agrCheckLabel"),
-		signSub=$("#signupSub");
-	agr.click(function(){
-		if($("#agreeCheck").prop("checked")){
-			signSub.attr("disabled",false);
-		} else {
-			signSub.attr("disabled",true);
-		}
-	});
+			var agr=$("#agrCheckLabel"),
+			signSub=$("#signupSub");
+			agr.click(function(){
+				if($("#agreeCheck").prop("checked")){
+					signSub.attr("disabled",false);
+				} else {
+					signSub.attr("disabled",true);
+				}
+			});
 
-	$("#signupSub").click(function(){
-		loadshow($(this));
-		if(signUserNameCheck()){signPswCheck() ; signEmailCheck() ; fundPswCheck() ; signCodeCheck()}
-		if(signPswCheck()){signUserNameCheck() ; signEmailCheck() ; fundPswCheck() ; signCodeCheck()}
-		if(signEmailCheck()){signUserNameCheck() ; signPswCheck() ; fundPswCheck() ; signCodeCheck()}
-		if(fundPswCheck()){signUserNameCheck() ; signPswCheck() ; signEmailCheck() ; signCodeCheck()}
-		if(signCodeCheck()){signUserNameCheck() ; signPswCheck() ; signEmailCheck() ; fundPswCheck()}
+			$("#signupSub").click(function(){
+				loadshow($(this));
+				if(signUserNameCheck()){signPswCheck() ; signEmailCheck() ; fundPswCheck() ; signCodeCheck()}
+				if(signPswCheck()){signUserNameCheck() ; signEmailCheck() ; fundPswCheck() ; signCodeCheck()}
+				if(signEmailCheck()){signUserNameCheck() ; signPswCheck() ; fundPswCheck() ; signCodeCheck()}
+				if(fundPswCheck()){signUserNameCheck() ; signPswCheck() ; signEmailCheck() ; signCodeCheck()}
+				if(signCodeCheck()){signUserNameCheck() ; signPswCheck() ; signEmailCheck() ; fundPswCheck()}
 
 		if(signUserNameCheck() && signPswCheck() && signEmailCheck() && fundPswCheck() && signCodeCheck()){ //验证成功提交
 			$('#signupForm').submit();
@@ -663,129 +796,129 @@ include 'include/allheader.php';
 
 
 <script>
-    $(function(){
+	$(function(){
         //nav标记
         var currUrl=window.location.toString();
         if(currUrl.indexOf('trade/index.html') > 0){
-            $.cookie('nav_index', 1,{ path: '/' });
+        	$.cookie('nav_index', 1,{ path: '/' });
         } else if(currUrl.indexOf('/login') > 0 || currUrl.indexOf('article/index.html') > 0 || currUrl.indexOf('page/index.html') > 0 || currUrl.indexOf('/fee') > 0){
-            $.cookie('nav_index', 9,{ path: '/' });
+        	$.cookie('nav_index', 9,{ path: '/' });
         } else if(currUrl.indexOf('/coins') > 0){
-            $.cookie('nav_index', 4,{ path: '/' });
+        	$.cookie('nav_index', 4,{ path: '/' });
         }
         $(".gateio-nav").children("li").click(function () {
-            $.cookie('nav_index', $(this).index(),{ path: '/' });
+        	$.cookie('nav_index', $(this).index(),{ path: '/' });
         }).eq($.cookie('nav_index')).addClass("nav-active");
         $(".user-log-out a,.more-lan a").click(function () {
-            $.cookie('nav_index', 0,{ path: '/' });
+        	$.cookie('nav_index', 0,{ path: '/' });
         });
 		//用户等级
 		var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='';
 		loginbar.hover(function(){
-            tmenu.stop().slideDown(200);
-            $(this).stop().css("color","#f80");
+			tmenu.stop().slideDown(200);
+			$(this).stop().css("color","#f80");
 			barmark.css("opacity","0");
 			pbar.animate({width:pro_val+'%'},800);
-        },function(){
-            tmenu.stop().slideUp(100);
-             $(this).stop().css("color","#fff");
-			 barmark.css("opacity","1");
-			 pbar.css('width','0');
-        });
+		},function(){
+			tmenu.stop().slideUp(100);
+			$(this).stop().css("color","#fff");
+			barmark.css("opacity","1");
+			pbar.css('width','0');
+		});
 		tmenu.css("width",pbWidth);
 		fbar.animate({width:pro_val+'%'},800);
-        if(pro_val > 0){
-            fbar.addClass("has-pro-val");
-        }
+		if(pro_val > 0){
+			fbar.addClass("has-pro-val");
+		}
 
-		 $.fn.animateProgress = function(progress, callback) {
+		$.fn.animateProgress = function(progress, callback) {
 			return this.each(function() {
-			  $(this).animate({
-				width: progress+'%'
-			  }, {
-				duration: 800,
-				easing: 'swing',
-				step: function( progress ){
-				    $('.value').text(Math.ceil(progress) + '%');
-				},
-				complete: function(scope, i, elem) {
-				  if (callback) {
-					callback.call(this, i, elem );
-				  };
-				}
-			  });
+				$(this).animate({
+					width: progress+'%'
+				}, {
+					duration: 800,
+					easing: 'swing',
+					step: function( progress ){
+						$('.value').text(Math.ceil(progress) + '%');
+					},
+					complete: function(scope, i, elem) {
+						if (callback) {
+							callback.call(this, i, elem );
+						};
+					}
+				});
 			});
-		  };
-		  if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
+		};
+		if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
 
         //页面高度
         var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
         if (lh < mh){lb.css("height",mh)}
 
         //右侧客户服务
-        $(".side-sev ul li").hover(function(){
-            var _this=$(this);
-            _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
-        },function(){
-            $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
-        });
+    $(".side-sev ul li").hover(function(){
+    	var _this=$(this);
+    	_this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
+    },function(){
+    	$(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
+    });
 
-        $("#bottomWXli").hover(function(){
-            $(".wx-bottom").show()
-        },function(){
-            $(".wx-bottom").hide()
-        });
-		$("#runTime").hover(function(){
-			$(this).css("height","auto")
-        },function(){
-			$(this).css("height","26px")
-        });
+    $("#bottomWXli").hover(function(){
+    	$(".wx-bottom").show()
+    },function(){
+    	$(".wx-bottom").hide()
+    });
+    $("#runTime").hover(function(){
+    	$(this).css("height","auto")
+    },function(){
+    	$(this).css("height","26px")
+    });
 
         //全站重要通知
         var notyContent='';
 
         function notyCookie() { //设置通知cookie
-            var noticeMsg = $("#siteNotyCon").text();
-            $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
+        	var noticeMsg = $("#siteNotyCon").text();
+        	$.cookie('notice', noticeMsg, { expires: 365, path: '/' });
         }
 
         var annCookie = $.cookie('notice');
         if(annCookie != notyContent &&  notyContent != ''){ //通知有更新时
-            var sNoty=$("#siteNoty").noty({
-                text: "【Notice】: <a id='siteNotyCon' href='/article/' target='_blank'>"+notyContent+"</a>",
-                type: 'error',
-                layout: 'top',
-                theme: 'gateioNotyTheme',
-                closeWith: ['button'],
-                animation: { speed: 0 },
-                callback: {
-                    afterShow: function() {
-                        $("#siteNotyCon").click(function () {
-                            notyCookie();
-                            sNoty.close();
-                        })
-                    },
-                    onClose: function() {
-                        $("#siteNoty").animate({ height:0 },100).css("border","none");
-                        notyCookie()
-                    }
-                }
-            });
+        	var sNoty=$("#siteNoty").noty({
+        		text: "【Notice】: <a id='siteNotyCon' href='/article/' target='_blank'>"+notyContent+"</a>",
+        		type: 'error',
+        		layout: 'top',
+        		theme: 'gateioNotyTheme',
+        		closeWith: ['button'],
+        		animation: { speed: 0 },
+        		callback: {
+        			afterShow: function() {
+        				$("#siteNotyCon").click(function () {
+        					notyCookie();
+        					sNoty.close();
+        				})
+        			},
+        			onClose: function() {
+        				$("#siteNoty").animate({ height:0 },100).css("border","none");
+        				notyCookie()
+        			}
+        		}
+        	});
         }
 
     });
 
     //backtotop
     (function() {
-        var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-                .text($backToTopTxt).click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 500);
-                }), $backToTopFun = function() {
-            var st = $(document).scrollTop(), winh = $(window).height();
-            (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
+    	var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
+    	.text($backToTopTxt).click(function() {
+    		$("html, body").animate({ scrollTop: 0 }, 500);
+    	}), $backToTopFun = function() {
+    		var st = $(document).scrollTop(), winh = $(window).height();
+    		(st > 0)? $backToTopEle.show(): $backToTopEle.hide();
             //IE6下的定位
             if (!window.XMLHttpRequest) {
-                $backToTopEle.css("top", st + winh - 166);
+            	$backToTopEle.css("top", st + winh - 166);
             }
         };
         $(window).bind("scroll", $backToTopFun);
@@ -794,38 +927,38 @@ include 'include/allheader.php';
 
     //主题
     $("#theme").find("li").click(function(){
-        var theme = $(this).attr("id");
-        if(theme == 'light') {
-            $("#darkStyle").attr("disabled","disabled");
-            $('#lightChart').click();
-            $("#tradelist").removeClass("dark-tradelist");
-            $("body").removeClass("dark-body");
-        } else {
-            $("#darkStyle").removeAttr("disabled");
-            $('#darkChart').click();
-            $("#tradelist").addClass("dark-tradelist");
-            $("body").addClass("dark-body");
-        }
+    	var theme = $(this).attr("id");
+    	if(theme == 'light') {
+    		$("#darkStyle").attr("disabled","disabled");
+    		$('#lightChart').click();
+    		$("#tradelist").removeClass("dark-tradelist");
+    		$("body").removeClass("dark-body");
+    	} else {
+    		$("#darkStyle").removeAttr("disabled");
+    		$('#darkChart').click();
+    		$("#tradelist").addClass("dark-tradelist");
+    		$("body").addClass("dark-body");
+    	}
         //$("link[title!='"+theme+"']").attr("disabled","disabled");
         $.cookie("mystyle",theme,{expires:30, path: '/' });
         $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
     });
     var cookie_style = $.cookie("mystyle");
     if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
-        $("#light").addClass("cur-theme");
+    	$("#light").addClass("cur-theme");
     } else {
-        $("#dark").addClass("cur-theme");
-        $("#tradelist").addClass("dark-tradelist");
+    	$("#dark").addClass("cur-theme");
+    	$("#tradelist").addClass("dark-tradelist");
     }
 
     function toThousands(num) {
-        var num = (num || 0).toString(), result = '';
-        while (num.length > 3) {
-            result = ',' + num.slice(-3) + result;
-            num = num.slice(0, num.length - 3);
-        }
-        if (num) { result = num + result; }
-        return result;
+    	var num = (num || 0).toString(), result = '';
+    	while (num.length > 3) {
+    		result = ',' + num.slice(-3) + result;
+    		num = num.slice(0, num.length - 3);
+    	}
+    	if (num) { result = num + result; }
+    	return result;
     }
     $("#usdtAll").text(toThousands(14862186));
     $("#btcAll").text(toThousands(476));

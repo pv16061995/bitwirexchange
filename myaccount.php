@@ -1,15 +1,20 @@
 <?php
-include 'include/allheader.php'; ?>
+include 'include/allheader.php';
+  page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
+
+ ?>
 
 
 <div class="content">
 
 	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
-<<<<<<< HEAD
-<?php include  'include/left_side_menu.php';?>
-=======
+
 <?php include 'include/left_side_menu.php';?>
->>>>>>> 91f8d0840f533789d62eb7d0f052ad55152f7467
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -147,51 +152,7 @@ include 'include/allheader.php'; ?>
     </table>
 
 
-   <div class="m_title"> Recent Deposits (<a href='/myaccount/mydeposits'>More...</a>)</div>
-    <table class='sf-grid table-inacc table-inacc-head'>
-			<thead>
-			<tr>
-				<th><b>No.</b></th>
-				<th align='left'><b>Time</b></th>
-				<th align='right'><b>Amount</b></th>
-				<th align='right'><b>TxID</b></th>
-				<th align='right'><b>Confirmations</b></th>
-				<th align='right'><b>Status</b></th>
-			</tr>
-		</thead>
-	</table>
-	<div class="table-scroll">
-		<table class='sf-grid table-inacc table-inacc-body' id="latestDepo">
-			<tbody>
-							<tr class="table-empty">
-					<td style="text-align: center"><p><i>i</i>No record.</p></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="m_title"> Recent Withdrawals (<a href='/myaccount/mywithdrawals'>More...</a>): </div>
-    <table class='sf-grid table-inacc table-inacc-head'>
-			<thead>
-			<tr>
-				<th><b>No.</b></th>
-				<th align='left'><b>Time</b></th>
-				<th align='right'><b>Amount</b></th>
-				<th align='right'><b>Address/TXID</b></th>
-				<th align='right'><b>Status</b></th>
-				<th align='right'><b>Operations</b></th>
-			</tr>
-		</thead>
-	</table>
-	<div class="table-scroll">
-		<table class='sf-grid table-inacc table-inacc-body' id="latestWith">
-			<tbody>
-							<tr class="table-empty">
-					<td style="text-align: center"><p><i>i</i>No record.</p></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-
+	
 </div>
 <br>
 <script src="js/jquery.dataTables.min.js"></script>
@@ -316,54 +277,6 @@ include 'include/allheader.php'; ?>
 
 
 		<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	</div> <!-- right_mcontent -->
   </div> <!-- main content -->
 
