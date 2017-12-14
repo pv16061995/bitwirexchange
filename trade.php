@@ -231,6 +231,11 @@ if(isset($_GET['curr']))
 			width: 44%;
 		}
 	}
+  .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
 </style>
 
 
@@ -288,11 +293,7 @@ if(isset($_GET['curr']))
                     <div class="m_con_buy">
 
 						<table class="dealbox" cellspacing="0">
-							<tr class="tableOrderTr" t="static" style="display: none" >
-								<td width="15%">Lowest ask price</td>
-								<td width="40%"><span  id="rate_best_ask" style="font-weight:600"></span><span class="coin-unit">BTC/EOS</span></td>
-								<td width="23%"></td>
-							</tr>
+
 							<tr class="tableOrderTr" t="static" >
 								<td width="20%"><font color="#2ba892"><b>Your balance</b></font></td>
 								<td id="buyYuE" colspan="2" width="40%" style="color:#2ba892;">
@@ -347,13 +348,60 @@ if(isset($_GET['curr']))
 							</tr> -->
 							<tr>
 								<td colspan="3" class="input-td" style="border:0">
-									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="ask" value="Buy (<?= $currency2.' -> '.$currency1;?>)" />
+									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action"
+                  value="Buy (<?= $currency2.' -> '.$currency1;?>)" onclick="buy_data_bch();"/>
+								</td>
+							</tr>
+              <tr>
+								<td colspan="3" class="input-td" style="border:0" id="alertmsg">
+
 								</td>
 							</tr>
 						</table>
 
                     </div>
                 </div>
+                <script>
+                function buy_data_bch() {
+                  <?php if(isset($_SESSION['user_id'])){
+                    ?>
+                    var ask_rate = document.getElementById('ask_rate').value;
+                    var ask_vol = document.getElementById('ask_vol').value;
+                    var ask_amount = document.getElementById('ask_amount').value;
+                    var bidownerId=user_details.id;
+
+
+                    var json_bid_bch = {
+                      "bidAmountBTC":ask_rate,
+                      "bidAmountBCH":ask_vol,
+                      "bidRate":ask_amount,
+                      "bidownerId":bidownerId
+                    }
+
+                    $.ajax({
+                      type: "POST",
+                      contentType: "application/json",
+                      url: url_api+"/tradebchmarket/addBidBCHMarket",
+                      data: JSON.stringify(json_bid_bch),
+                      success: function(result){
+                        $('#error_message1').empty();
+                        if (result.statusCode!=200)
+                        {
+                          $('#error_message1').append(" &nbsp;"+result.message+"");
+                        }
+                      }
+                    });
+                  <?php }else{?>
+                    document.getElementById('alertmsg').innerHTML='<div class="alert alert-danger"><strong>Please Login First</strong>  </div>';
+                    <?php }?>
+
+
+                }
+</script>
+
+
+
+
 					<div class="maichu maichu-form">
 						<div class="m_title">
 							<span>Sell <?= $currency1;?></span>
@@ -369,11 +417,6 @@ if(isset($_GET['curr']))
 
 							<table class="dealbox" cellspacing="0">
 
-								<tr class="tableOrderTr" t="static" style="display: none" >
-									<td width="15%">Highest bid price</td>
-									<td width="40%"><span  id="rate_best_bid" style="font-weight:600"></span><span class="coin-unit">BTC/EOS</span></td>
-									<td width="23%"></td>
-								</tr>
 								<tr class="tableOrderTr" t="static" >
 									<td width="15%"><font color="#de5959"><b>Your balance</b></font></td>
 									<td id="sellYuE" colspan="2" width="40%" style="color:#de5959;">
@@ -425,14 +468,60 @@ if(isset($_GET['curr']))
 								</tr> -->
 								<tr>
 									<td colspan="3" class="input-td" style="border:0">
-										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="bid" value="Sell (<?= $currency1.' -> '.$currency2;?>)" />
+										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action"
+                     t="bid" value="Sell (<?= $currency1.' -> '.$currency2;?>)" onclick="sell_data();"/>
 									</td>
 								</tr>
+                <tr>
+  								<td colspan="3" class="input-td" style="border:0" id="alertmsg1">
+
+  								</td>
+  							</tr>
 							</table>
 
 
 						</div>
 					</div>
+          <script>
+
+          function sell_data(){
+            <?php if(isset($_SESSION['user_id'])){
+              ?>
+            var bid_rate = document.getElementById('bid_rate').value;
+            var bid_vol = document.getElementById('bid_vol').value;
+            var bid_amount = document.getElementById('bid_amount').value;
+            var bidownerId=user_details.id;
+
+            var json_ask_bch = {
+              "askAmountBTC":askBTCAmount,
+              "askAmountBCH":askBCHAmount,
+              "askRate":askRateBCH,
+              "askownerId":bidownerId
+            }
+
+
+            $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: url_api+"/tradebchmarket/addAskBCHMarket",
+              data: JSON.stringify(json_ask_bch),
+              success: function(result){
+                $('#error_message').empty();
+
+                if (result.statusCode!=200)
+                {
+                  $('#error_message').append(" &nbsp;"+result.message+"");
+                }
+
+              }
+            });
+            <?php }else{?>
+              document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please Login First</strong>  </div>';
+              <?php }?>
+
+          }
+          </script>
+
 					<div id='divMyOrderSection'><!--style='display:none'-->
 						<div class="mairu my-order-box">
 
@@ -1029,6 +1118,7 @@ checkEmpty(0);
     $("#btcAll").text(toThousands(477));
     $("#ltcAll").text(toThousands(9325));
     $("#ethAll").text(toThousands(14054));
+    setInterval(function(){ $('.alert').hide(); }, 3000);
 
 </script>
 </body>

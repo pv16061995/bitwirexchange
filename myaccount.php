@@ -153,19 +153,15 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
     </table>
 
 
-<<<<<<< HEAD
-=======
-	
->>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
 </div>
 <br>
 <script src="js/jquery.dataTables.min.js"></script>
 <script>
-    $.fn.dataTable.ext.search.push( //推送有资金的区间给datatable
+    $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
                 var min = parseFloat( $('#min').val());
                 var max = parseFloat( $('#max').val());
-                var acc = parseFloat( data[1] ) || 0; // 总金额列数据
+                var acc = parseFloat( data[1] ) || 0; 
                 if ( ( isNaN( min ) && isNaN( max ) ) ||
                         ( isNaN( min ) && acc <= max ) ||
                         ( min <= acc   && isNaN( max ) ) ||
