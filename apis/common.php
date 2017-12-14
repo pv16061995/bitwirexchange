@@ -66,4 +66,33 @@ class allapi
     return $data;
   }
 }
+
+function page_protect()
+{
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if (isset($_SESSION['HTTP_USER_AGENT'])) {
+        if ($_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])) {
+            logout();
+            exit;
+        }
+    }
+}
+
+function logout()
+{
+    global $db;
+    global $pathString;
+    session_start();
+    unset($_SESSION['user_id']);
+    unset($_SESSION['user_email_id']);
+    unset($_SESSION['user_session']);
+    unset($_SESSION['user_admin']);
+    unset($_SESSION['user_supportpin']);
+    unset($_SESSION['HTTP_USER_AGENT']);
+    session_unset();
+    session_destroy();
+    header("Location:index.php");
+}
 ?>

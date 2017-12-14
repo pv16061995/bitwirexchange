@@ -29,17 +29,27 @@ $subcat=json_decode($datasub, true);
 <div class="header clearfix">
     <div class="top-up">
         <div class="top-con">
-            <ul class="topprice">
+            <!-- <ul class="topprice">
                 <li> BTC/USDT : $ <span class="topnum">15003.53</span><i class="icon-arrow-down">&darr;</i> </li>
                 <li> ETH/USDT : $ <span class="topnum">437.46</span><i class="icon-arrow-down">&darr;</i> </li>
                 <li> LTC/USDT : $ <span class="topnum">138.48</span><i class="icon-arrow-down">&darr;</i> </li>
                 <li> QTUM/USDT : $ <span class="topnum">11</span><i class="icon-arrow-flat"></i> </li>
-            </ul>
+            </ul> -->
 
             <ul class="login_lan">
+                         <?php if(isset($_SESSION['user_id']))
+                        {?>
 
-                <li class="toplogin"><a href="login.php">Signup&nbsp;</a>|&nbsp; </li>
-                <li class="toplogin" id="toplogin"><a href="login.php">Login</a></li>
+                        <li class="toplogin"><a href="myaccount.php">My Account&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
+                        <?php }else 
+                        {?>
+                        <li class="toplogin"><a href="login.php">Signup&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin" id="toplogin"><a href="login.php">Login</a></li>
+                        <?php 
+
+                        }
+                        ?>
 
             </ul>
             <ul id="theme">

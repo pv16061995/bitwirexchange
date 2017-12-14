@@ -1,9 +1,14 @@
 <?php
 include 'include/allheader.php';
+page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
 
-$user_session = $_SESSION['user_session'];
+
 $postData = array(
-  "userMailId"=> 'priyankagarg1112@gmail.com'
+  "userMailId"=>  $user_session
 
   );
 
@@ -200,6 +205,7 @@ $postData = array(
 </style>
 
  <div class="sectioncont funds-dtl myfunds-dtl">
+<<<<<<< HEAD
     <div class="m_title" id="wallet"> Your <?= strtoupper($currencyname); ?> Transactions </div>
     <div class="HideZeroDiv pull-left" id="hideZbtn">
       <div class="row">
@@ -215,6 +221,10 @@ $postData = array(
         </label>
         <input type="hidden" id="min"><input type="hidden" id="max"> -->
     </div>
+=======
+    <div class="m_title" id="wallet"> YOUR <?= strtoupper($currencyname); ?> TRANSACTIONS: </div>
+    
+>>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
 
       <div id="alldetail">
         <style>
@@ -225,6 +235,10 @@ $postData = array(
         <table id="funds" class='dataTable sf-grid all-funds-table table table-bordered' cellspacing="0" cellpadding="0">
             <thead>
               <tr>
+<<<<<<< HEAD
+=======
+                
+>>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
                 <th style="width:20%">Date</th>
                 <th style="width:25%">Address</th>
                 <th style="width:20%">Type</th>
@@ -251,7 +265,11 @@ $postData = array(
                           $transaction['txid']= '';
                       }
                       echo '<tr>
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> 7fe0d4a0dd83f60d7d7abfbbcb8ccb66e38563ad
                 <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
                 <td>'.$transaction['address'].'</td>
                 <td>'.$tx_type.'</td>

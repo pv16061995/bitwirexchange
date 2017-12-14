@@ -4,11 +4,11 @@
 ob_start();
 
 /*-----------Add Session-----------*/
-page_protect();
-if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
- }
- $user_session = $_SESSION['user_session'];
+// page_protect();
+// if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+//     header("location:logout.php");
+// }
+// $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
  if(isset($_GET['curr']))
         {
@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
              case 'INRW':
       
               $postData = array(
-                                  "userMailId"=> $user_session,
+                                  "userMailId"=> "priyankagarg1112@gmail.com",
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
                                   "recieverINRWCoinAddress"=> $reciever_address
@@ -49,7 +49,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                       $response = file_get_contents($url_api.'/INRW/sendINRW', false, $context);
 
                           break;
-                          case 'EURW':
+                          case 'eurw':
                         
                                $postData = array(
                                                     "userMailId"=> $user_session,
@@ -396,33 +396,7 @@ ob_end_flush();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var accordion_head = $('.accordion > li > a'),
-			accordion_body = $('.accordion li > .sub-menu');
-		var found = false;
-		for (i = 0; i < accordion_body.length; i++) {
-			item = accordion_body.eq(i).find("[data-id='withdraw_coin']");
-			if (item.length > 0) {
-				accordion_head.eq(i).addClass('active').next().slideDown('normal');
-				item.css({'background':' #d4f5f6','border-left-color':'#c1e3e4','border-right-color':'#c1e3e4'});
-				found = true;
-				break;
-			}
-		}
-		if (found == false)
-			accordion_head.eq(2).addClass('active').next().slideDown('normal');
-		// Click function
-		accordion_head.on('click', function(event) {
-			// Disable header links
-			event.preventDefault();
-			// Show and hide the tabs on click
-			if ($(this).attr('class') != 'active'){
-				accordion_body.slideUp('normal');
-				$(this).next().stop(true,true).slideToggle('normal');
-				accordion_head.removeClass('active');
-				$(this).addClass('active');
-			}
-		});
-
+		
 		var icoType='';
 		if(icoType==''){
 			$("#buyIco").parent("li").remove()
@@ -480,65 +454,26 @@ ob_end_flush();
 	#withdrawtable td{ padding-right: 8px}
 </style>
 
-			<div class="m_title"><h4><?php echo $currencyname;?> Withdrawal</h4></div>
 			<div class="sectioncont">
-			<p style="color:red;text-align:center;font-size:20px;"> <?php if (isset($error)) {echo $error;}?> </p>
+			<form action="successsend.php" method="post">
+			    	<div class="card text-black bg-success">
+		                <div class="card-header text-center text-black">
+		                    <h1 class="text-black">Withdrawal Response</h1>
+		                </div>
+		                <div class="card-body bg-white text-center text-success">
+		                    <?php if(!empty($message)){ ?>
+								<label>The transaction has been  <?php echo $message;?> initiated.</label>
+							<?php
+							} else {
+							?>
+								<label class="text-warning">There is some issue in processng your transaction. Please try after some time</label>
+							<?php
+							}
+							?>
+		                </div>
 
-				<form name="withdraw_form" id="withdraw_form" enctype="application/x-www-form-urlencoded" method="post" action="">
-				
-				<table id='withdrawtable'>
-
-			
-									<tr id="addr_tr">
-									<td align="right"><?php echo $currencyname;?> Address:</td>
-									<td style="position:relative;">
-										<input type="text" name="addr" id="addr" value="" autocomplete="off" size="50" maxlength="50">
-										
-									</td>
-								</tr>
-
-								<tr>
-					<td align="right">Amount (<?php echo $currencyname;?>):</td><td><input onkeypress="return isNumberKey(event)" type="number" value="" size="10" name="amount" id="amount"> <!-- Minimum 15.1 USDT, Maximum 100000 USDT --></td>
-				</tr>
-				<!-- <tr>
-					<td align="right">Fee: </td><td style="padding-top: 15px"> 0% + 15 USDT.
-										</td>
-				</tr> -->
-
-				<tr>
-					<td align="right">Spending password:</td><td><input type="password" name="fundpass" id="fundpass" size="20"></td>
-				</tr>
-				
-				<tr>
-				<td>&nbsp;</td>
-				<td> <input type="Submit" name="submit_btn" id="submit_btn" value="  Submit request " class="sub-btn" ></td>
-				</tr>
-				</table>
-
-				</form>
-
-				<br>
-			</div>
-
-			<br>
-			
-
-			<div class="m_title"><h4>Last 10 withdrawal records</h4></div>
-			<div class="sectioncont">
-				<table class='sf-grid'>
-				  <tr> <td align='right'width="50px"><b>ID</b></td>
-					   <td align='right'><b>Address/TxID</b></td>
-					   <td align='right' width="100px"><b>Amount</b></td>
-					   <td align='right' width="160px"><b>Date</b></td>
-					   <td align='right' width="100px"><b>Operation</b></td>
-                  </tr>
-
-                </table>
-			</div>
-
-			<br>
-
-		<br>
+		            </div>
+		        </form>
 
 </div> <!-- right_mcontent -->
   </div> <!-- main content -->

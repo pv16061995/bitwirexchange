@@ -1,9 +1,417 @@
 <?php include 'include/allheader.php';?>
+<?php
+   page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:logout.php");
+ }
+ $user_session = $_SESSION['user_session'];
+   $url_api = URL_API;
+
+$postData = array(
+  "userMailId"=>$user_session
+  );
+
+// Create the context for the request
+$context = stream_context_create(array(
+  'http' => array(
+    'method' => 'POST',
+    'header' => "Content-Type: application/json\r\n",
+    'content' => json_encode($postData)
+    )
+  ));
+
+
+
+
+if(isset($_GET['curr']))
+{
+  $currencyname=base64_decode($_GET['curr']);
+
+
+  switch ($currencyname) {
+        case 'INRW':
+                if($_SESSION['INRWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/INRW/getNewINRWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/INRW/getINRWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+                
+            
+        break;
+        case 'usdw':
+          if($_SESSION['USDWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/USDW/getNewUSDWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/USDW/getUSDWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'gbpw':
+          if($_SESSION['GBPWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/GBPW/getNewGBPWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/GBPW/getGBPWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'brlw':
+        if($_SESSION['BRLWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/BRLW/getNewBRLWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/BRLW/getBRLWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'plnw':
+          if($_SESSION['PLNWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/PLNW/getNewPLNWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/PLNW/getPLNWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'cadw':
+           if($_SESSION['CADWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/CADW/getNewCADWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/CADW/getCADWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'tryw':
+          if($_SESSION['TRYWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/TRYW/getNewTRYWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/TRYW/getTRYWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'rubw':
+         if($_SESSION['RUBWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/RUBW/getNewRUBWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/RUBW/getRUBWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'mxnw':
+          if($_SESSION['MXNWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/MXNW/getNewMXNWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/MXNW/getMXNWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'czkw':
+          if($_SESSION['CZKWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/CZKW/getNewCZKWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/CZKW/getCZKWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'ilsw':
+          if($_SESSION['ILSWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/ILSW/getNewILSWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/ILSW/getILSWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'nzdw':
+          if($_SESSION['NZDWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/NZDW/getNewNZDWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/NZDW/getNZDWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'jpyw':
+           if($_SESSION['JPYWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/JPYW/getNewJPYWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/JPYW/getJPYWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'sekw':
+           if($_SESSION['SEKWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/SEKW/getNewSEKWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/SEKW/getSEKWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+        case 'audw':
+           if($_SESSION['AUDWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/AUDW/getNewAUDWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/AUDW/getAUDWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+         case 'eurw':
+          if($_SESSION['EURWAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/EURW/getNewEURWAddress', false, $context);
+
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                        }
+                }
+                
+                else
+                {
+                    $response = file_get_contents($url_api.'/EURW/getEURWAddressByAccount', false, $context);
+                        $responseData = json_decode($response, true);
+                    
+                    if (isset($responseData)) {
+                        $bcc_address = $responseData['listaddress'][0];
+                    }
+                }
+
+        break;
+        
+
+        
+    }
+
+
+
+}
+?>
+
 
 
 <div class="content">
 
 	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <?php include 'include/left_side_menu.php';?>
 
@@ -87,16 +495,15 @@
 
 
 			<div class='right_mcontent  myacc-con'>
-          <div class="m_title"><a href='/trade/'><h4>Tether (USDT) Deposit </h4></a></div>
+          <div class="m_title"><a href='#'><h4>Tether <?php echo $currencyname;?> Deposit </h4></a></div>
 			<div class="sectioncont">
 
-				Please send USDT to this address(<a target=_blank href='https://omniexplorer.info/lookupadd.aspx?address=19DJS8phwq1areGqJ5Zu8uXT5YQii3389G'>Click here to check in blockchain explorer</a>): <br><br>
-				<input class='coin_add' style='font-size:26px;' readonly value='19DJS8phwq1areGqJ5Zu8uXT5YQii3389G'>
+				Please send <?php echo $currencyname;?> to this address: <br><br>
+				<input class='coin_add' style='font-size:26px;' readonly value="<?php echo $bcc_address; ?>">
 				<br>Or Scan QR code:<br>
-				<img src="/libs/qr.php?d=19DJS8phwq1areGqJ5Zu8uXT5YQii3389G" alt="QR code" style="width: 200px; height: 200px"/>
+				<img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $bcc_address;?>"
+                                                alt="QR Code" style="width:200px;border:0;"/>
 												<br>
-
-				Crypto-currencies are credited within 1 minute after accessing this page or "My funds" page and only after 2 confirmations of the transaction in the network.
 				<br><br>
 
 			</div>
