@@ -53,7 +53,7 @@ if(isset($_GET['curr']))
                 
             
         break;
-        case 'usdw':
+        case 'USDW':
           if($_SESSION['USDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/USDW/getNewUSDWAddress', false, $context);
@@ -76,7 +76,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'gbpw':
+        case 'GBPW':
           if($_SESSION['GBPWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/GBPW/getNewGBPWAddress', false, $context);
@@ -99,7 +99,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'brlw':
+        case 'BRLW':
         if($_SESSION['BRLWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/BRLW/getNewBRLWAddress', false, $context);
@@ -122,7 +122,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'plnw':
+        case 'PLNW':
           if($_SESSION['PLNWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/PLNW/getNewPLNWAddress', false, $context);
@@ -145,7 +145,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'cadw':
+        case 'CADW':
            if($_SESSION['CADWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/CADW/getNewCADWAddress', false, $context);
@@ -168,7 +168,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'tryw':
+        case 'TRYW':
           if($_SESSION['TRYWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/TRYW/getNewTRYWAddress', false, $context);
@@ -191,7 +191,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'rubw':
+        case 'RUBW':
          if($_SESSION['RUBWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/RUBW/getNewRUBWAddress', false, $context);
@@ -214,7 +214,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'mxnw':
+        case 'MXNW':
           if($_SESSION['MXNWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/MXNW/getNewMXNWAddress', false, $context);
@@ -237,7 +237,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'czkw':
+        case 'CZKW':
           if($_SESSION['CZKWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/CZKW/getNewCZKWAddress', false, $context);
@@ -260,7 +260,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'ilsw':
+        case 'ILSW':
           if($_SESSION['ILSWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/ILSW/getNewILSWAddress', false, $context);
@@ -283,7 +283,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'nzdw':
+        case 'NZDW':
           if($_SESSION['NZDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/NZDW/getNewNZDWAddress', false, $context);
@@ -306,7 +306,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'jpyw':
+        case 'JPYW':
            if($_SESSION['JPYWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/JPYW/getNewJPYWAddress', false, $context);
@@ -329,7 +329,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'sekw':
+        case 'SEKW':
            if($_SESSION['SEKWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/SEKW/getNewSEKWAddress', false, $context);
@@ -352,7 +352,7 @@ if(isset($_GET['curr']))
 
         break;
         
-        case 'audw':
+        case 'AUDW':
            if($_SESSION['AUDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/AUDW/getNewAUDWAddress', false, $context);
@@ -374,7 +374,7 @@ if(isset($_GET['curr']))
                 }
 
         break;
-         case 'eurw':
+         case 'EURW':
           if($_SESSION['EURWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/EURW/getNewEURWAddress', false, $context);
