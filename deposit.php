@@ -1,6 +1,6 @@
-<?php include 'include/allheader.php';?>
 <?php
-   page_protect();
+include 'include/allheader.php';
+page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
     header("location:logout.php");
  }
@@ -33,217 +33,217 @@ if(isset($_GET['curr']))
                 else
                 {
                     $bcc_address = $_SESSION['userinraddress'];
-                   
+
                 }
         break;
         case 'USDW':
           if($_SESSION['USDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/USDW/getNewUSDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewUSDWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['USDWAddress'];
+                    $bcc_address = $_SESSION['userusdaddress'];
                 }
         break;
         case 'GBPW':
           if($_SESSION['GBPWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/GBPW/getNewGBPWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewGBPWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['GBPWAddress'];
+                    $bcc_address = $_SESSION['usergbpaddress'];
                 }
         break;
         case 'BRLW':
         if($_SESSION['BRLWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/BRLW/getNewBRLWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewBRLWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['BRLWAddress'];
+                    $bcc_address = $_SESSION['userbrladdress'];
                 }
         break;
         case 'PLNW':
           if($_SESSION['PLNWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/PLNW/getNewPLNWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewPLNWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['PLNWAddress'];
+                    $bcc_address = $_SESSION['userplnaddress'];
                 }
         break;
         case 'CADW':
            if($_SESSION['CADWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/CADW/getNewCADWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewCADWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['CADWAddress'];
+                    $bcc_address = $_SESSION['usercadaddress'];
                 }
         break;
         case 'TRYW':
           if($_SESSION['TRYWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/TRYW/getNewTRYWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewTRYWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                   $bcc_address = $_SESSION['TRYWAddress'];
+                   $bcc_address = $_SESSION['usertryaddress'];
                 }
         break;
         case 'RUBW':
          if($_SESSION['RUBWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/RUBW/getNewRUBWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewRUBWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['RUBWAddress'];
+                    $bcc_address = $_SESSION['userrubaddress'];
                 }
         break;
         case 'MXNW':
           if($_SESSION['MXNWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/MXNW/getNewMXNWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewMXNWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['MXNWAddress'];
+                    $bcc_address = $_SESSION['usermxnaddress'];
                 }
         break;
         case 'CZKW':
           if($_SESSION['CZKWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/CZKW/getNewCZKWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewCZKWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['CZKWAddress'];
+                    $bcc_address = $_SESSION['userczkaddress'];
                 }
         break;
         case 'ILSW':
           if($_SESSION['ILSWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/ILSW/getNewILSWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewILSWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                   $bcc_address = $_SESSION['ILSWAddress'];
+                   $bcc_address = $_SESSION['userilsaddress'];
                 }
         break;
         case 'NZDW':
           if($_SESSION['NZDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/NZDW/getNewNZDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewNZDWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['NZDWAddress'];
+                    $bcc_address = $_SESSION['usernzdaddress'];
                 }
         break;
         case 'JPYW':
            if($_SESSION['JPYWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/JPYW/getNewJPYWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewJPYWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                   $bcc_address = $_SESSION['JPYWAddress'];
+                   $bcc_address = $_SESSION['userjpyaddress'];
                 }
         break;
         case 'SEKW':
            if($_SESSION['SEKWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/SEKW/getNewSEKWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewSEKWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['SEKWAddress'];
+                    $bcc_address = $_SESSION['usersekaddress'];
                 }
         break;
         case 'AUDW':
            if($_SESSION['AUDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/AUDW/getNewAUDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewAUDWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                   $bcc_address = $_SESSION['AUDWAddress'];
+                   $bcc_address = $_SESSION['useraudaddress'];
                 }
         break;
          case 'EURW':
           if($_SESSION['EURWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/EURW/getNewEURWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewEURWAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
                 else
                 {
-                    $bcc_address = $_SESSION['EURWAddress'];
+                    $bcc_address = $_SESSION['usereuraddress'];
                 }
         break;
     }
@@ -465,7 +465,7 @@ if(isset($_GET['curr']))
             });
         }
     });
-  
+
 </script>
 </body>
 </html>

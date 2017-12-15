@@ -110,25 +110,50 @@ if (isset($_POST['btnlogin'])) {
         $_SESSION['userinraddress'] = $responseData['user']['userINRAddress'];
 
         $_SESSION['USDWAddress'] = $responseData['user']['isUSDWAddress'];
-         $_SESSION['userinraddress'] = $responseData['user']['userINRAddress'];
+        $_SESSION['userusdaddress'] = $responseData['user']['userUSDAddress'];
+
         $_SESSION['EURWAddress'] = $responseData['user']['isEURWAddress'];
+        $_SESSION['usereuraddress'] = $responseData['user']['userEURAddress'];
 
         $_SESSION['GBPWAddress'] = $responseData['user']['isGBPWAddress'];
+        $_SESSION['usergbpaddress'] = $responseData['user']['userGBPAddress'];
+
         $_SESSION['BRLWAddress'] = $responseData['user']['isBRLWAddress'];
+        $_SESSION['userbrladdress'] = $responseData['user']['userBRLAddress'];
+
         $_SESSION['PLNWAddress'] = $responseData['user']['isPLNWAddress'];
+        $_SESSION['userplnaddress'] = $responseData['user']['userPLNAddress'];
 
         $_SESSION['CADWAddress'] = $responseData['user']['isCADWAddress'];
+        $_SESSION['usercadaddress'] = $responseData['user']['userCADAddress'];
+
         $_SESSION['TRYWAddress'] = $responseData['user']['isTRYWAddress'];
+        $_SESSION['usertryaddress'] = $responseData['user']['userTRYAddress'];
+
         $_SESSION['RUBWAddress'] = $responseData['user']['isRUBWAddress'];
+        $_SESSION['userrubaddress'] = $responseData['user']['userRUBAddress'];
+
         $_SESSION['MXNWAddress'] = $responseData['user']['isMXNWAddress'];
+        $_SESSION['usermxnaddress'] = $responseData['user']['usermxnAddress'];
 
         $_SESSION['CZKWAddress'] = $responseData['user']['isCZKWAddress'];
+        $_SESSION['userczkaddress'] = $responseData['user']['userCZKAddress'];
+
         $_SESSION['ILSWAddress'] = $responseData['user']['isILSWAddress'];
+        $_SESSION['userilsaddress'] = $responseData['user']['userILSAddress'];
+
         $_SESSION['NZDWAddress'] = $responseData['user']['isNZDWAddress'];
+        $_SESSION['usernzdaddress'] = $responseData['user']['userNZDAddress'];
 
         $_SESSION['JPYDAddress'] = $responseData['user']['isJPYDAddress'];
+        $_SESSION['userjpyaddress'] = $responseData['user']['userJPYAddress'];
+
         $_SESSION['SEKWAddress'] = $responseData['user']['isSEKWAddress'];
+        $_SESSION['usersekaddress'] = $responseData['user']['userSEKAddress'];
+
         $_SESSION['AUDWAddress'] = $responseData['user']['isAUDWAddress'];
+        $_SESSION['useraudaddress'] = $responseData['user']['userAUDAddress'];
+
         $_SESSION['tfa'] = $responseData['user']['tfastatus'];
         $_SESSION['key'] = $responseData['user']['googlesecreatekey'];
 
