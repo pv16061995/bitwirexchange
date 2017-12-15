@@ -231,6 +231,11 @@ if(isset($_GET['curr']))
 			width: 44%;
 		}
 	}
+  .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+  }
 </style>
 
 
@@ -288,11 +293,7 @@ if(isset($_GET['curr']))
                     <div class="m_con_buy">
 
 						<table class="dealbox" cellspacing="0">
-							<tr class="tableOrderTr" t="static" style="display: none" >
-								<td width="15%">Lowest ask price</td>
-								<td width="40%"><span  id="rate_best_ask" style="font-weight:600"></span><span class="coin-unit">BTC/EOS</span></td>
-								<td width="23%"></td>
-							</tr>
+
 							<tr class="tableOrderTr" t="static" >
 								<td width="20%"><font color="#2ba892"><b>Your balance</b></font></td>
 								<td id="buyYuE" colspan="2" width="40%" style="color:#2ba892;">
@@ -347,13 +348,60 @@ if(isset($_GET['curr']))
 							</tr> -->
 							<tr>
 								<td colspan="3" class="input-td" style="border:0">
-									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="ask" value="Buy (<?= $currency2.' -> '.$currency1;?>)" />
+									<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action"
+                  value="Buy (<?= $currency2.' -> '.$currency1;?>)" onclick="buy_data_bch();"/>
+								</td>
+							</tr>
+              <tr>
+								<td colspan="3" class="input-td" style="border:0" id="alertmsg">
+
 								</td>
 							</tr>
 						</table>
 
                     </div>
                 </div>
+                <script>
+                function buy_data_bch() {
+                  <?php if(isset($_SESSION['user_id'])){
+                    ?>
+                    var ask_rate = document.getElementById('ask_rate').value;
+                    var ask_vol = document.getElementById('ask_vol').value;
+                    var ask_amount = document.getElementById('ask_amount').value;
+                    var bidownerId=user_details.id;
+
+
+                    var json_bid_bch = {
+                      "bidAmountBTC":ask_rate,
+                      "bidAmountBCH":ask_vol,
+                      "bidRate":ask_amount,
+                      "bidownerId":bidownerId
+                    }
+
+                    $.ajax({
+                      type: "POST",
+                      contentType: "application/json",
+                      url: url_api+"/tradebchmarket/addBidBCHMarket",
+                      data: JSON.stringify(json_bid_bch),
+                      success: function(result){
+                        $('#error_message1').empty();
+                        if (result.statusCode!=200)
+                        {
+                          $('#error_message1').append(" &nbsp;"+result.message+"");
+                        }
+                      }
+                    });
+                  <?php }else{?>
+                    document.getElementById('alertmsg').innerHTML='<div class="alert alert-danger"><strong>Please Login First</strong>  </div>';
+                    <?php }?>
+
+
+                }
+</script>
+
+
+
+
 					<div class="maichu maichu-form">
 						<div class="m_title">
 							<span>Sell <?= $currency1;?></span>
@@ -369,11 +417,6 @@ if(isset($_GET['curr']))
 
 							<table class="dealbox" cellspacing="0">
 
-								<tr class="tableOrderTr" t="static" style="display: none" >
-									<td width="15%">Highest bid price</td>
-									<td width="40%"><span  id="rate_best_bid" style="font-weight:600"></span><span class="coin-unit">BTC/EOS</span></td>
-									<td width="23%"></td>
-								</tr>
 								<tr class="tableOrderTr" t="static" >
 									<td width="15%"><font color="#de5959"><b>Your balance</b></font></td>
 									<td id="sellYuE" colspan="2" width="40%" style="color:#de5959;">
@@ -425,14 +468,67 @@ if(isset($_GET['curr']))
 								</tr> -->
 								<tr>
 									<td colspan="3" class="input-td" style="border:0">
-										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action" t="bid" value="Sell (<?= $currency1.' -> '.$currency2;?>)" />
+										<input type="button" class="btnAskBid jiaoyi_btn  button button-flat-action"
+                     t="bid" value="Sell (<?= $currency1.' -> '.$currency2;?>)" onclick="sell_data();"/>
 									</td>
 								</tr>
+                <tr>
+  								<td colspan="3" class="input-td" style="border:0" id="alertmsg1">
+
+  								</td>
+  							</tr>
 							</table>
 
 
 						</div>
 					</div>
+          <script>
+
+          function sell_data(){
+            var bid_rate = document.getElementById('bid_rate').value;
+            var bid_vol = document.getElementById('bid_vol').value;
+            var bid_amount = document.getElementById('bid_amount').value;
+
+
+            if(bid_rate !='' && bid_vol !='0' && bid_amount !='0')
+            {
+            <?php if(isset($_SESSION['user_id'])){
+              ?>
+
+            var bidownerId=user_details.id;
+
+            var json_ask_bch = {
+              "askAmountBTC":askBTCAmount,
+              "askAmountBCH":askBCHAmount,
+              "askRate":askRateBCH,
+              "askownerId":bidownerId
+            }
+
+
+            $.ajax({
+              type: "POST",
+              contentType: "application/json",
+              url: url_api+"/tradebchmarket/addAskBCHMarket",
+              data: JSON.stringify(json_ask_bch),
+              success: function(result){
+                $('#error_message').empty();
+
+                if (result.statusCode!=200)
+                {
+                  $('#error_message').append(" &nbsp;"+result.message+"");
+                }
+
+              }
+            });
+            <?php }else{?>
+              document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please Login First !!!</strong>  </div>';
+              <?php }?>
+            }else{
+                document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please filled price and amount first !!!</strong>  </div>';
+            }
+          }
+          </script>
+
 					<div id='divMyOrderSection'><!--style='display:none'-->
 						<div class="mairu my-order-box">
 
@@ -554,17 +650,10 @@ if(isset($_GET['curr']))
 </div>
 <br>
 
-				</div> <!--end of order lists -->
-
-<!--
-				<div id='sectioncont1' class="clearfix">
-
-				</div>  -->
-			</div> <!--end of right content-->
-		</div> <!-- end of main content-->
-
-  </div> <!-- content -->
-
+				</div>
+			</div>
+		</div>
+  </div>
 <script>
 	decimal_for_KLine='7';
 	themeCookie=$.cookie("mystyle");
@@ -581,9 +670,7 @@ if(isset($_GET['curr']))
 	global_qtum_cny_rate = '80.08';
 </script>
 		<script>
-			var globalPriceType = "Price[ BTC ]", globalVolType = "Volume[ EOS ]";//价格类型/成交量类型
-
-			//全屏模式
+			var globalPriceType = "Price[ BTC ]", globalVolType = "Volume[ EOS ]";
 			$(".fullscreen").toggle(
 					function () {
 						$(".kline-on-off").hide();
@@ -604,7 +691,6 @@ if(isset($_GET['curr']))
 						$(this).find("path").attr("d", "M4.712 10.043L2.045 12.71 0 10.667V16h5.334L3.29 13.955l2.667-2.667M5.334 0H0v5.334L2.045 3.29l2.667 2.667 1.245-1.245L3.29 2.045M10.666 0l2.045 2.045-2.666 2.667 1.245 1.245 2.666-2.667L16 5.334V0m-4.712 10.043l-1.245 1.245 2.668 2.667L10.668 16H16v-5.334l-2.045 2.045")
 					}
 			);
-			//单次触发resize
 			var resizeTimer = null;
 			$(window).bind('resize', function () {
 				if (resizeTimer) clearTimeout(resizeTimer);
@@ -616,9 +702,7 @@ if(isset($_GET['curr']))
 					$("#resizeChart").click();//重绘图表
 				} , 100);
 			});
-
-			//显示隐藏K线图
-			function klineOnOff() {
+      function klineOnOff() {
 				$(".kline-on-off").toggle(
 						function () {
 							$(".fullscreen,.k-tools").hide();
@@ -798,7 +882,7 @@ $(function() {
 
 
 	var ordersCo=$.cookie('orders_num');
-	if(ordersCo == 1){ //买卖单cookie=1，显示更多状态下
+	if(ordersCo == 1){
 		largeOrders();
 		$("#moreOrders").toggle(function () {
 			smallOrders();
@@ -808,7 +892,7 @@ $(function() {
 			$.cookie('orders_num', 1,{ path: '/' });
 		});
 	} else {
-		if ($.cookie('show_kline') === '0') { //K线隐藏状态
+		if ($.cookie('show_kline') === '0') {
 			$("#ul-trade-list").css("height","810px");
 		}
 		$("#moreOrders").toggle(function () {
@@ -867,169 +951,8 @@ checkEmpty(0);
 
 </script>
 <?php include 'include/footer.php';?>
-
 <script>
-    // $(function(){
-    //     var currUrl=window.location.toString();
-    //     if(currUrl.indexOf('/trade/') > 0){
-    //         $.cookie('nav_index', 1,{ path: '/' });
-    //     } else if(currUrl.indexOf('/login') > 0 || currUrl.indexOf('/article/') > 0 || currUrl.indexOf('/page/') > 0 || currUrl.indexOf('/fee') > 0){
-    //         $.cookie('nav_index', 9,{ path: '/' });
-    //     } else if(currUrl.indexOf('/coins') > 0){
-    //         $.cookie('nav_index', 4,{ path: '/' });
-    //     }
-    //     $(".gateio-nav").children("li").click(function () {
-    //         $.cookie('nav_index', $(this).index(),{ path: '/' });
-    //     }).eq($.cookie('nav_index')).addClass("nav-active");
-    //     $(".user-log-out a,.more-lan a").click(function () {
-    //         $.cookie('nav_index', 0,{ path: '/' });
-    //     });
-		// var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='';
-		// loginbar.hover(function(){
-    //         tmenu.stop().slideDown(200);
-    //         $(this).stop().css("color","#f80");
-		// 	barmark.css("opacity","0");
-		// 	pbar.animate({width:pro_val+'%'},800);
-    //     },function(){
-    //         tmenu.stop().slideUp(100);
-    //          $(this).stop().css("color","#fff");
-		// 	 barmark.css("opacity","1");
-		// 	 pbar.css('width','0');
-    //     });
-		// tmenu.css("width",pbWidth);
-		// fbar.animate({width:pro_val+'%'},800);
-    //     if(pro_val > 0){
-    //         fbar.addClass("has-pro-val");
-    //     }
-    //
-		//  $.fn.animateProgress = function(progress, callback) {
-		// 	return this.each(function() {
-		// 	  $(this).animate({
-		// 		width: progress+'%'
-		// 	  }, {
-		// 		duration: 800,
-		// 		easing: 'swing',
-		// 		step: function( progress ){
-		// 		    $('.value').text(Math.ceil(progress) + '%');
-		// 		},
-		// 		complete: function(scope, i, elem) {
-		// 		  if (callback) {
-		// 			callback.call(this, i, elem );
-		// 		  };
-		// 		}
-		// 	  });
-		// 	});
-		//   };
-		//   if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
-    //
-    //     var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
-    //     if (lh < mh){lb.css("height",mh)}
-    //
-    //     $(".side-sev ul li").hover(function(){
-    //         var _this=$(this);
-    //         _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
-    //     },function(){
-    //         $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
-    //     });
-    //
-    //     $("#bottomWXli").hover(function(){
-    //         $(".wx-bottom").show()
-    //     },function(){
-    //         $(".wx-bottom").hide()
-    //     });
-		// $("#runTime").hover(function(){
-		// 	$(this).css("height","auto")
-    //     },function(){
-		// 	$(this).css("height","26px")
-    //     });
-    //
-    //     var notyContent='BCX is listed on gate.io';
-    //
-    //     function notyCookie() {
-    //         var noticeMsg = $("#siteNotyCon").text();
-    //         $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
-    //     }
-    //
-    //     var annCookie = $.cookie('notice');
-    //     if(annCookie != notyContent &&  notyContent != ''){
-    //         var sNoty=$("#siteNoty").noty({
-    //             text: "【Notice】: <a id='siteNotyCon' href='/article/16305' target='_blank'>"+notyContent+"</a>",
-    //             type: 'error',
-    //             layout: 'top',
-    //             theme: 'gateioNotyTheme',
-    //             closeWith: ['button'],
-    //             animation: { speed: 0 },
-    //             callback: {
-    //                 afterShow: function() {
-    //                     $("#siteNotyCon").click(function () {
-    //                         notyCookie();
-    //                         sNoty.close();
-    //                     })
-    //                 },
-    //                 onClose: function() {
-    //                     $("#siteNoty").animate({ height:0 },100).css("border","none");
-    //                     notyCookie()
-    //                 }
-    //             }
-    //         });
-    //     }
-    //
-    // });
-    (function() {
-        var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-                .text($backToTopTxt).click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 500);
-                }), $backToTopFun = function() {
-            var st = $(document).scrollTop(), winh = $(window).height();
-            (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
-
-            if (!window.XMLHttpRequest) {
-                $backToTopEle.css("top", st + winh - 166);
-            }
-        };
-        $(window).bind("scroll", $backToTopFun);
-        $(function() { $backToTopFun(); });
-    })();
-
-    $("#theme").find("li").click(function(){
-        var theme = $(this).attr("id");
-        if(theme == 'light') {
-            $("#darkStyle").attr("disabled","disabled");
-            $('#lightChart').click();
-            $("#tradelist").removeClass("dark-tradelist");
-            $("body").removeClass("dark-body");
-        } else {
-            $("#darkStyle").removeAttr("disabled");
-            $('#darkChart').click();
-            $("#tradelist").addClass("dark-tradelist");
-            $("body").addClass("dark-body");
-        }
-
-        $.cookie("mystyle",theme,{expires:30, path: '/' });
-        $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
-    });
-    var cookie_style = $.cookie("mystyle");
-    if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
-        $("#light").addClass("cur-theme");
-    } else {
-        $("#dark").addClass("cur-theme");
-        $("#tradelist").addClass("dark-tradelist");
-    }
-
-    function toThousands(num) {
-        var num = (num || 0).toString(), result = '';
-        while (num.length > 3) {
-            result = ',' + num.slice(-3) + result;
-            num = num.slice(0, num.length - 3);
-        }
-        if (num) { result = num + result; }
-        return result;
-    }
-    $("#usdtAll").text(toThousands(14231739));
-    $("#btcAll").text(toThousands(477));
-    $("#ltcAll").text(toThousands(9325));
-    $("#ethAll").text(toThousands(14054));
-
+setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
 </body>
 </html>

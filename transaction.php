@@ -223,7 +223,7 @@ $postData = array(
     </div>
 
     <div class="m_title" id="wallet"> YOUR <?= strtoupper($currencyname); ?> TRANSACTIONS: </div>
-    
+
 
 
       <div id="alldetail">
@@ -397,30 +397,7 @@ function showtable(id)
             }
     );
 
-	function cancel_withdraw(uid, wid){
-		var json_req = {
-			type : "cancel_withdraw",
-			uid : uid,
-			wid : wid
-		};
-		$.ajax({type:"get",url:"/json_svr/exchange/?u=21", data:json_req, xhrFields: { withCredentials: true},
-			success : function(data, textStatus){
-				var json_res = data;
-				if ( json_res && json_res.result ) {
-					view_code = "<div class='cancel_content'>Cancelled!</div>";
-					noty({text: view_code, type: "success",layout: "bottomLeft", closeWith : ['button', 'click'],theme : 'gateioNotyTheme', timeout: 5000, callback: {onShow: function() {}}});
-				}else{
-					view_code = "<div class='cancel_content'>Failed! "+json_res.msg+"</div>";
-					noty({text: view_code, type: "warning",layout: "bottomLeft", closeWith : ['button', 'click'],theme : 'gateioNotyTheme', timeout: 10000, callback: {onShow: function() {}}});
-				}
-			},
-			error : function(){
-				noty({text: "Network error", type: "error",layout: "bottomLeft", closeWith : ['button', 'click'],theme : 'gateioNotyTheme', timeout: 10000, callback: {onShow: function() {}}});
-			},
-			complete : function(){
-			}
-		});
-	}
+
 
     $( function () {
 
@@ -434,7 +411,7 @@ function showtable(id)
             },
             "order": [
                 [4, null]
-            ],//改第5列排序为默认
+            ],
             "columnDefs": [
                 { "orderable": false, "targets": [ 5 ] }
             ]
@@ -444,10 +421,6 @@ function showtable(id)
 			var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
 			lb.css("height",mh)
 		});
-		/*tableIndex.on('page.dt',function() {
-			$("html, body").animate({ scrollTop: $('#wallet').offset().top }, 10);
-		});*/
-        //检测cookie,只显示有资金币种
         if ($.cookie('show_zero_funds') === undefined || $.cookie('show_zero_funds') === '0') {//显示全部
             $('#hidezero').prop('checked', false).removeClass('zero-active');
             $('#min,#max').val('');
@@ -507,133 +480,5 @@ function showtable(id)
 </div>
 <?php include 'include/footer.php'; ?>
 
-<!-- force user to use https -->
-
-
-<script>
-    $(function(){
-
-		var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='0.0';
-		loginbar.hover(function(){
-            tmenu.stop().slideDown(200);
-            $(this).stop().css("color","#f80");
-			barmark.css("opacity","0");
-			pbar.animate({width:pro_val+'%'},800);
-        },function(){
-            tmenu.stop().slideUp(100);
-             $(this).stop().css("color","#fff");
-			 barmark.css("opacity","1");
-			 pbar.css('width','0');
-        });
-		tmenu.css("width",pbWidth);
-		fbar.animate({width:pro_val+'%'},800);
-        if(pro_val > 0){
-            fbar.addClass("has-pro-val");
-        }
-
-		 $.fn.animateProgress = function(progress, callback) {
-			return this.each(function() {
-			  $(this).animate({
-				width: progress+'%'
-			  }, {
-				duration: 800,
-				easing: 'swing',
-				step: function( progress ){
-				    $('.value').text(Math.ceil(progress) + '%');
-				},
-				complete: function(scope, i, elem) {
-				  if (callback) {
-					callback.call(this, i, elem );
-				  };
-				}
-			  });
-			});
-		  };
-		  if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
-
-      var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
-        if (lh < mh){lb.css("height",mh)}
-
-        $(".side-sev ul li").hover(function(){
-            var _this=$(this);
-            _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
-        },function(){
-            $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
-        });
-
-        $("#bottomWXli").hover(function(){
-            $(".wx-bottom").show()
-        },function(){
-            $(".wx-bottom").hide()
-        });
-		$("#runTime").hover(function(){
-			$(this).css("height","auto")
-        },function(){
-			$(this).css("height","26px")
-        });
-        var notyContent='SMT(SmartMesh) is listed on gate.io(10 million bonus)';
-
-        function notyCookie() {
-            var noticeMsg = $("#siteNotyCon").text();
-            $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
-        }
-
-
-    });
-  (function() {
-        var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-                .text($backToTopTxt).click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 500);
-                }), $backToTopFun = function() {
-            var st = $(document).scrollTop(), winh = $(window).height();
-            (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
-            //IE6下的定位
-            if (!window.XMLHttpRequest) {
-                $backToTopEle.css("top", st + winh - 166);
-            }
-        };
-        $(window).bind("scroll", $backToTopFun);
-        $(function() { $backToTopFun(); });
-    })();
-
-    $("#theme").find("li").click(function(){
-        var theme = $(this).attr("id");
-        if(theme == 'light') {
-            $("#darkStyle").attr("disabled","disabled");
-            $('#lightChart').click();
-            $("#tradelist").removeClass("dark-tradelist");
-            $("body").removeClass("dark-body");
-        } else {
-            $("#darkStyle").removeAttr("disabled");
-            $('#darkChart').click();
-            $("#tradelist").addClass("dark-tradelist");
-            $("body").addClass("dark-body");
-        }
-        $.cookie("mystyle",theme,{expires:30, path: '/' });
-        $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
-    });
-    var cookie_style = $.cookie("mystyle");
-    if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
-        $("#light").addClass("cur-theme");
-    } else {
-        $("#dark").addClass("cur-theme");
-        $("#tradelist").addClass("dark-tradelist");
-    }
-
-    function toThousands(num) {
-        var num = (num || 0).toString(), result = '';
-        while (num.length > 3) {
-            result = ',' + num.slice(-3) + result;
-            num = num.slice(0, num.length - 3);
-        }
-        if (num) { result = num + result; }
-        return result;
-    }
-    $("#usdtAll").text(toThousands(37489002));
-    $("#btcAll").text(toThousands(1006));
-    $("#ltcAll").text(toThousands(16239));
-    $("#ethAll").text(toThousands(25649));
-
-</script>
 </body>
 </html>
