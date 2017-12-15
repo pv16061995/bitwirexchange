@@ -57,3 +57,47 @@
               </div>
     </div>
 </div>
+<script>
+
+(function() {
+    var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
+            .text($backToTopTxt).click(function() {
+                $("html, body").animate({ scrollTop: 0 }, 500);
+            }), $backToTopFun = function() {
+        var st = $(document).scrollTop(), winh = $(window).height();
+        (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
+
+        if (!window.XMLHttpRequest) {
+            $backToTopEle.css("top", st + winh - 166);
+        }
+    };
+    $(window).bind("scroll", $backToTopFun);
+    $(function() { $backToTopFun(); });
+})();
+
+$("#theme").find("li").click(function(){
+    var theme = $(this).attr("id");
+    if(theme == 'light') {
+        $("#darkStyle").attr("disabled","disabled");
+        $('#lightChart').click();
+        $("#tradelist").removeClass("dark-tradelist");
+        $("body").removeClass("dark-body");
+    } else {
+        $("#darkStyle").removeAttr("disabled");
+        $('#darkChart').click();
+        $("#tradelist").addClass("dark-tradelist");
+        $("body").addClass("dark-body");
+    }
+
+    $.cookie("mystyle",theme,{expires:30, path: '/' });
+    $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
+});
+var cookie_style = $.cookie("mystyle");
+if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
+    $("#light").addClass("cur-theme");
+} else {
+    $("#dark").addClass("cur-theme");
+    $("#tradelist").addClass("dark-tradelist");
+}
+
+</script>

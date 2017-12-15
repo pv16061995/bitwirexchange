@@ -29,13 +29,13 @@ ob_start();
           switch ($currencyname) {
 
              case 'INRW':
-      
+
               $postData = array(
                                   "userMailId"=> "priyankagarg1112@gmail.com",
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
                                   "recieverINRWCoinAddress"=> $reciever_address
-                                  
+
                               );
 
                       // Create the context for the request
@@ -50,13 +50,13 @@ ob_start();
 
                           break;
                           case 'eurw':
-                        
+
                                $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverEURWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -76,7 +76,7 @@ ob_start();
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverUSDWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -90,14 +90,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/USDW/sendUSDW', false, $context);
 
                           break;
-                          
+
                           case 'GBPW':
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverGBPWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -110,16 +110,16 @@ ob_start();
                                         ));
                                         $response = file_get_contents($url_api.'/GBPW/sendGBPW', false, $context);
 
-                         
+
                           break;
-                          
+
                           case 'BRLW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverBRLWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -132,16 +132,16 @@ ob_start();
                                         ));
                                         $response = file_get_contents($url_api.'/BRLW/sendBRLW', false, $context);
 
-                       
+
                           break;
-                          
+
                           case 'PLNW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverPLNWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -155,15 +155,15 @@ ob_start();
                                         $response = file_get_contents($url_api.'/PLNW/sendPLNW', false, $context);
 
                           break;
-                          
+
                           case 'CADW':
-                         
+
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverCADWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -177,14 +177,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/CADW/sendCADW', false, $context);
 
                           break;
-                          
+
                           case 'TRYW':
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverTRYWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -198,14 +198,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/TRYW/sendTRYW', false, $context);
 
                           break;
-                          
+
                           case 'RUBW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverRUBWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -219,7 +219,7 @@ ob_start();
                                         $response = file_get_contents($url_api.'/RUBW/sendRUBW', false, $context);
 
                           break;
-                          
+
                           case 'MXNW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
@@ -247,7 +247,7 @@ ob_start();
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverCZKWCoinAddress"=> $reciever_address
-                                                   
+
                                                 );
 
                                         // Create the context for the request
@@ -261,14 +261,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/CZKW/sendCZKW', false, $context);
 
                           break;
-                          
+
                           case 'ILSW':
                             $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverILSWCoinAddress"=> $reciever_address
-                                                   
+
                                                 );
 
                                         // Create the context for the request
@@ -282,14 +282,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/ILSW/sendILSW', false, $context);
 
                           break;
-                          
+
                           case 'NZDW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverNZDWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -303,14 +303,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/NZDW/sendNZDW', false, $context);
 
                           break;
-                          
+
                           case 'JPYW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverJPYWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -324,14 +324,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/JPYW/sendJPYW', false, $context);
 
                           break;
-                          
+
                           case 'SEKW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverSEKWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -345,14 +345,14 @@ ob_start();
                                         $response = file_get_contents($url_api.'/SEKW/sendSEKW', false, $context);
 
                           break;
-                          
+
                           case 'AUDW':
                          $postData = array(
                                           "userMailId"=> $user_session,
                                           "amount"=> $coin_amount,
                                           "spendingPassword"=>$spendingpassword,
                                           "recieverAUDWCoinAddress"=> $reciever_address
-                                          
+
                                       );
 
                               // Create the context for the request
@@ -366,12 +366,12 @@ ob_start();
                               $response = file_get_contents($url_api.'/AUDW/sendAUDW', false, $context);
 
                           break;
-                                
+
                             }
                           }
-        
 
-          
+
+
           if ($response === false) {
             die('Error');
         }
@@ -396,7 +396,7 @@ ob_end_flush();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		var icoType='';
 		if(icoType==''){
 			$("#buyIco").parent("li").remove()

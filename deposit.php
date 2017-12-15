@@ -39,19 +39,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/INRW/getINRWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
-                
-            
+
+
         break;
         case 'USDW':
           if($_SESSION['USDWAddress']=== false)
@@ -63,19 +63,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/USDW/getUSDWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'GBPW':
           if($_SESSION['GBPWAddress']=== false)
                 {
@@ -86,19 +86,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/GBPW/getGBPWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'BRLW':
         if($_SESSION['BRLWAddress']=== false)
                 {
@@ -109,19 +109,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/BRLW/getBRLWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'PLNW':
           if($_SESSION['PLNWAddress']=== false)
                 {
@@ -132,19 +132,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/PLNW/getPLNWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'CADW':
            if($_SESSION['CADWAddress']=== false)
                 {
@@ -155,19 +155,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/CADW/getCADWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'TRYW':
           if($_SESSION['TRYWAddress']=== false)
                 {
@@ -178,19 +178,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/TRYW/getTRYWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'RUBW':
          if($_SESSION['RUBWAddress']=== false)
                 {
@@ -201,19 +201,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/RUBW/getRUBWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'MXNW':
           if($_SESSION['MXNWAddress']=== false)
                 {
@@ -224,19 +224,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/MXNW/getMXNWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'CZKW':
           if($_SESSION['CZKWAddress']=== false)
                 {
@@ -247,19 +247,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/CZKW/getCZKWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'ILSW':
           if($_SESSION['ILSWAddress']=== false)
                 {
@@ -270,19 +270,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/ILSW/getILSWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'NZDW':
           if($_SESSION['NZDWAddress']=== false)
                 {
@@ -293,19 +293,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/NZDW/getNZDWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'JPYW':
            if($_SESSION['JPYWAddress']=== false)
                 {
@@ -316,19 +316,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/JPYW/getJPYWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'SEKW':
            if($_SESSION['SEKWAddress']=== false)
                 {
@@ -339,19 +339,19 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/SEKW/getSEKWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
+
         case 'AUDW':
            if($_SESSION['AUDWAddress']=== false)
                 {
@@ -362,12 +362,12 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/AUDW/getAUDWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
@@ -384,21 +384,21 @@ if(isset($_GET['curr']))
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-                
+
                 else
                 {
                     $response = file_get_contents($url_api.'/EURW/getEURWAddressByAccount', false, $context);
                         $responseData = json_decode($response, true);
-                    
+
                     if (isset($responseData)) {
                         $bcc_address = $responseData['listaddress'][0];
                     }
                 }
 
         break;
-        
 
-        
+
+
     }
 
 
@@ -638,50 +638,7 @@ if(isset($_GET['curr']))
 
     });
 
-    //backtotop
-    (function() {
-        var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-                .text($backToTopTxt).click(function() {
-                    $("html, body").animate({ scrollTop: 0 }, 500);
-                }), $backToTopFun = function() {
-            var st = $(document).scrollTop(), winh = $(window).height();
-            (st > 0)? $backToTopEle.show(): $backToTopEle.hide();
-
-            if (!window.XMLHttpRequest) {
-                $backToTopEle.css("top", st + winh - 166);
-            }
-        };
-        $(window).bind("scroll", $backToTopFun);
-        $(function() { $backToTopFun(); });
-    })();
-
-    //主题
-    $("#theme").find("li").click(function(){
-        var theme = $(this).attr("id");
-        if(theme == 'light') {
-            $("#darkStyle").attr("disabled","disabled");
-            $('#lightChart').click();
-            $("#tradelist").removeClass("dark-tradelist");
-            $("body").removeClass("dark-body");
-        } else {
-            $("#darkStyle").removeAttr("disabled");
-            $('#darkChart').click();
-            $("#tradelist").addClass("dark-tradelist");
-            $("body").addClass("dark-body");
-        }
-
-        $.cookie("mystyle",theme,{expires:30, path: '/' });
-        $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
-    });
-    var cookie_style = $.cookie("mystyle");
-    if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
-        $("#light").addClass("cur-theme");
-    } else {
-        $("#dark").addClass("cur-theme");
-        $("#tradelist").addClass("dark-tradelist");
-    }
-
-
+  
 </script>
 </body>
 </html>

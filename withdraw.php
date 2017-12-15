@@ -29,13 +29,13 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
           switch ($currencyname) {
 
              case 'INRW':
-      
+
               $postData = array(
                                   "userMailId"=> $user_session,
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
                                   "recieverINRWCoinAddress"=> $reciever_address
-                                  
+
                               );
 
                       // Create the context for the request
@@ -50,13 +50,13 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
 
                           break;
                           case 'EURW':
-                        
+
                                $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverEURWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -76,7 +76,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverUSDWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -90,14 +90,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/USDW/sendUSDW', false, $context);
 
                           break;
-                          
+
                           case 'GBPW':
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverGBPWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -110,16 +110,16 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         ));
                                         $response = file_get_contents($url_api.'/GBPW/sendGBPW', false, $context);
 
-                         
+
                           break;
-                          
+
                           case 'BRLW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverBRLWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -132,16 +132,16 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         ));
                                         $response = file_get_contents($url_api.'/BRLW/sendBRLW', false, $context);
 
-                       
+
                           break;
-                          
+
                           case 'PLNW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverPLNWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -155,15 +155,15 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/PLNW/sendPLNW', false, $context);
 
                           break;
-                          
+
                           case 'CADW':
-                         
+
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverCADWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -177,14 +177,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/CADW/sendCADW', false, $context);
 
                           break;
-                          
+
                           case 'TRYW':
                           $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverTRYWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -198,14 +198,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/TRYW/sendTRYW', false, $context);
 
                           break;
-                          
+
                           case 'RUBW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverRUBWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -219,7 +219,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/RUBW/sendRUBW', false, $context);
 
                           break;
-                          
+
                           case 'MXNW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
@@ -247,7 +247,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverCZKWCoinAddress"=> $reciever_address
-                                                   
+
                                                 );
 
                                         // Create the context for the request
@@ -261,14 +261,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/CZKW/sendCZKW', false, $context);
 
                           break;
-                          
+
                           case 'ILSW':
                             $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverILSWCoinAddress"=> $reciever_address
-                                                   
+
                                                 );
 
                                         // Create the context for the request
@@ -282,14 +282,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/ILSW/sendILSW', false, $context);
 
                           break;
-                          
+
                           case 'NZDW':
                          $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverNZDWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -303,14 +303,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/NZDW/sendNZDW', false, $context);
 
                           break;
-                          
+
                           case 'JPYW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverJPYWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -324,14 +324,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/JPYW/sendJPYW', false, $context);
 
                           break;
-                          
+
                           case 'SEKW':
                            $postData = array(
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverSEKWCoinAddress"=> $reciever_address
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -345,14 +345,14 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         $response = file_get_contents($url_api.'/SEKW/sendSEKW', false, $context);
 
                           break;
-                          
+
                           case 'AUDW':
                          $postData = array(
                                           "userMailId"=> $user_session,
                                           "amount"=> $coin_amount,
                                           "spendingPassword"=>$spendingpassword,
                                           "recieverAUDWCoinAddress"=> $reciever_address
-                                          
+
                                       );
 
                               // Create the context for the request
@@ -366,12 +366,12 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                               $response = file_get_contents($url_api.'/AUDW/sendAUDW', false, $context);
 
                           break;
-                                
+
                             }
                           }
-        
 
-          
+
+
           if ($response === false) {
             die('Error');
         }
@@ -485,30 +485,27 @@ ob_end_flush();
 			<p style="color:red;text-align:center;font-size:20px;"> <?php if (isset($error)) {echo $error;}?> </p>
 
 				<form name="withdraw_form" id="withdraw_form" enctype="application/x-www-form-urlencoded" method="post" action="">
-				
+
 				<table id='withdrawtable'>
 
-			
+
 									<tr id="addr_tr">
 									<td align="right"><?php echo $currencyname;?> Address:</td>
 									<td style="position:relative;">
 										<input type="text" name="addr" id="addr" value="" autocomplete="off" size="50" maxlength="50">
-										
+
 									</td>
 								</tr>
 
 								<tr>
 					<td align="right">Amount (<?php echo $currencyname;?>):</td><td><input onkeypress="return isNumberKey(event)" type="number" value="" size="10" name="amount" id="amount"> <!-- Minimum 15.1 USDT, Maximum 100000 USDT --></td>
 				</tr>
-				<!-- <tr>
-					<td align="right">Fee: </td><td style="padding-top: 15px"> 0% + 15 USDT.
-										</td>
-				</tr> -->
+
 
 				<tr>
 					<td align="right">Spending password:</td><td><input type="password" name="fundpass" id="fundpass" size="20"></td>
 				</tr>
-				
+
 				<tr>
 				<td>&nbsp;</td>
 				<td> <input type="Submit" name="submit_btn" id="submit_btn" value="  Submit request " class="sub-btn" ></td>
@@ -521,7 +518,7 @@ ob_end_flush();
 			</div>
 
 			<br>
-			
+
 
 			<div class="m_title"><h4>Last 10 withdrawal records</h4></div>
 			<div class="sectioncont">
@@ -540,7 +537,7 @@ ob_end_flush();
 
 		<br>
 
-</div> <!-- right_mcontent -->
+</div> 
   </div> <!-- main content -->
 
 

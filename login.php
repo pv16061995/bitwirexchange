@@ -90,7 +90,7 @@ if (isset($_POST['btnlogin'])) {
     'content' => json_encode($postData)
     )
   ));
-   
+
     $response = file_get_contents($url_api.'/auth/authentcate', true, $context);
 
     if ($response === false) {
@@ -105,7 +105,7 @@ if (isset($_POST['btnlogin'])) {
         $_SESSION["user_session"] = $responseData['user']['email'];
         $_SESSION['is_email_verify'] = $responseData['user']['verifyEmail'];
         $_SESSION['user_admin'] = $responseData['user']['isAdmin'];
-        
+
         $_SESSION['INRWAddress'] = $responseData['user']['isINRWAddress'];
         $_SESSION['USDWAddress'] = $responseData['user']['isUSDWAddress'];
         $_SESSION['EURWAddress'] = $responseData['user']['isEURWAddress'];
@@ -146,7 +146,7 @@ if (isset($_POST['btnlogin'])) {
 
 }
 
-?> 
+?>
 <style>
 	*:before, *:after,.form-control{-webkit-box-sizing: border-box;  -moz-box-sizing: border-box;  box-sizing: border-box;}
 	.glyphicon-ok:before {  content: "\221A";  }
@@ -225,11 +225,11 @@ if (isset($_POST['btnlogin'])) {
 
 			<div class="maichu">
 				<div class="m_title"><h4>Login</h4></div>
-				<p style="color:red;font-size:20px;text-align:center""> <?php if (isset($messagelogin)) {
+				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($messagelogin)) {
 							    echo $messagelogin;
 							}?> </p>
 				<div class="m_con rightlogin">
-				
+
 					<form role="form" id="loginForm"  name="login" method="post" action="">
 
 						<div class="form-group parentCls has-feedback" id="emailGroup">
@@ -242,7 +242,8 @@ if (isset($_POST['btnlogin'])) {
 						<div class="form-group has-feedback" id="pswGroup">
 							<label for="password">Password</label>
 							<input type="password" class="form-control" name="emailpassword" id="password">
-							<div class="input-item-info"><a href="resetpw.html" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
+							<div class="input-item-info">
+                <a href="resetpw.html" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
 
 						</div>
 
@@ -262,14 +263,14 @@ if (isset($_POST['btnlogin'])) {
 
 			<div class="mairu">
 				<div class="m_title"><h4>Sign up</h4></div>
-				<p style="color:green;font-size:20px;text-align:center"> <?php if (isset($messagesignup)) {
+				<p style="color:green;font-size:20px;text-align:center;"> <?php if (isset($messagesignup)) {
 					echo $messagesignup;
 				}?> </p>
 
-				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($error)) {
+				<p style="color:red;font-size:20px;text-align:center;"> <?php if (isset($error)) {
 					echo $error;
 				}?> </p>
-				<p style="color:red;font-size:20px;text-align:center"> <?php if (isset($errorpassword)) {
+				<p style="color:red;font-size:20px;text-align:center;"> <?php if (isset($errorpassword)) {
 					echo $errorpassword;
 				}?> </p>
 				<div class="m_con_buy leftregi">
@@ -373,8 +374,8 @@ if (isset($_POST['btnlogin'])) {
 		document.getElementById(formID).reset();
 	}
 
-	var mailAddr=["","@qq.com", "@163.com", "@126.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"],
-	mailAddr1=["@qq.com", "@163.com", "@126.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"];
+	var mailAddr=["","@zoho.com", "@yahoo.com",  "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"],
+	mailAddr1=["@zoho.com", "@yahoo.com", "@sina.com", "@gmail.com", "@hotmail.com", "@aliyun.com", "@sohu.com"];
 	var mailTarget;
 
 	function mailinput(mailTarget,mAddr){
@@ -495,8 +496,6 @@ if (isset($_POST['btnlogin'])) {
 			var mailVal=$("#email").val();
 			if(mailVal != ''){ emailcheck() }
 		});
-
-		$("#captcha_code").blur(codecheck);
 
 		$("#loginSub").click(function(){
 			$(this).blur();
@@ -803,39 +802,7 @@ if (isset($_POST['btnlogin'])) {
 
 <script>
 	$(function(){
-        //nav标记
-        var currUrl=window.location.toString();
-        if(currUrl.indexOf('trade/index.html') > 0){
-        	$.cookie('nav_index', 1,{ path: '/' });
-        } else if(currUrl.indexOf('/login') > 0 || currUrl.indexOf('article/index.html') > 0 || currUrl.indexOf('page/index.html') > 0 || currUrl.indexOf('/fee') > 0){
-        	$.cookie('nav_index', 9,{ path: '/' });
-        } else if(currUrl.indexOf('/coins') > 0){
-        	$.cookie('nav_index', 4,{ path: '/' });
-        }
-        $(".gateio-nav").children("li").click(function () {
-        	$.cookie('nav_index', $(this).index(),{ path: '/' });
-        }).eq($.cookie('nav_index')).addClass("nav-active");
-        $(".user-log-out a,.more-lan a").click(function () {
-        	$.cookie('nav_index', 0,{ path: '/' });
-        });
-		//用户等级
-		var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='';
-		loginbar.hover(function(){
-			tmenu.stop().slideDown(200);
-			$(this).stop().css("color","#f80");
-			barmark.css("opacity","0");
-			pbar.animate({width:pro_val+'%'},800);
-		},function(){
-			tmenu.stop().slideUp(100);
-			$(this).stop().css("color","#fff");
-			barmark.css("opacity","1");
-			pbar.css('width','0');
-		});
-		tmenu.css("width",pbWidth);
-		fbar.animate({width:pro_val+'%'},800);
-		if(pro_val > 0){
-			fbar.addClass("has-pro-val");
-		}
+
 
 		$.fn.animateProgress = function(progress, callback) {
 			return this.each(function() {
@@ -880,7 +847,6 @@ if (isset($_POST['btnlogin'])) {
     	$(this).css("height","26px")
     });
 
-        //全站重要通知
         var notyContent='';
 
         function notyCookie() { //设置通知cookie
@@ -914,65 +880,7 @@ if (isset($_POST['btnlogin'])) {
 
     });
 
-    //backtotop
-    (function() {
-    	var $backToTopTxt = "^", $backToTopEle = $('<div class="backToTop"></div>').appendTo($("body"))
-    	.text($backToTopTxt).click(function() {
-    		$("html, body").animate({ scrollTop: 0 }, 500);
-    	}), $backToTopFun = function() {
-    		var st = $(document).scrollTop(), winh = $(window).height();
-    		(st > 0)? $backToTopEle.show(): $backToTopEle.hide();
-            //IE6下的定位
-            if (!window.XMLHttpRequest) {
-            	$backToTopEle.css("top", st + winh - 166);
-            }
-        };
-        $(window).bind("scroll", $backToTopFun);
-        $(function() { $backToTopFun(); });
-    })();
-
-    //主题
-    $("#theme").find("li").click(function(){
-    	var theme = $(this).attr("id");
-    	if(theme == 'light') {
-    		$("#darkStyle").attr("disabled","disabled");
-    		$('#lightChart').click();
-    		$("#tradelist").removeClass("dark-tradelist");
-    		$("body").removeClass("dark-body");
-    	} else {
-    		$("#darkStyle").removeAttr("disabled");
-    		$('#darkChart').click();
-    		$("#tradelist").addClass("dark-tradelist");
-    		$("body").addClass("dark-body");
-    	}
-        //$("link[title!='"+theme+"']").attr("disabled","disabled");
-        $.cookie("mystyle",theme,{expires:30, path: '/' });
-        $(this).addClass("cur-theme").siblings().removeClass("cur-theme");
-    });
-    var cookie_style = $.cookie("mystyle");
-    if(cookie_style == 'light' || typeof(cookie_style) == 'undefined'){
-    	$("#light").addClass("cur-theme");
-    } else {
-    	$("#dark").addClass("cur-theme");
-    	$("#tradelist").addClass("dark-tradelist");
-    }
-
-    function toThousands(num) {
-    	var num = (num || 0).toString(), result = '';
-    	while (num.length > 3) {
-    		result = ',' + num.slice(-3) + result;
-    		num = num.slice(0, num.length - 3);
-    	}
-    	if (num) { result = num + result; }
-    	return result;
-    }
-    $("#usdtAll").text(toThousands(14862186));
-    $("#btcAll").text(toThousands(476));
-    $("#ltcAll").text(toThousands(9711));
-    $("#ethAll").text(toThousands(13906));
-
 </script>
 </body>
 
-<!-- Mirrored from gate.io/login by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Dec 2017 05:37:20 GMT -->
 </html>
