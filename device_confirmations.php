@@ -26,7 +26,7 @@ if (isset($_POST['code'])) {
 
     if ($checkResult) {
         
-        header("Location:index.php");
+        header("Location:myaccount.php");
     } else {
         $failcode = "Failed Code Incorrect";
     }
@@ -57,7 +57,7 @@ ob_end_flush();
 <label><h4>Enter Google Authenticator Code</label><h4><br>
 <input type="text" name="code" /><br><br><br>
 <input type="submit" class="sub-btn"/><br>
-<div id="alertmsg1"></div>
+<div style="width:50%;" id="alertmsg1"></div>
 </form>
 <p class="text-center" style="color:red;"> <?php if (isset($failcode)) {
     echo $failcode;

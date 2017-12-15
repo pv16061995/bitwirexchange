@@ -6,11 +6,9 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
  }
  $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
-
 $postData = array(
   "userMailId"=>$user_session
   );
-
 // Create the context for the request
 $context = stream_context_create(array(
   'http' => array(
@@ -19,390 +17,236 @@ $context = stream_context_create(array(
     'content' => json_encode($postData)
     )
   ));
-
-
-
-
 if(isset($_GET['curr']))
 {
   $currencyname=base64_decode($_GET['curr']);
-
-
   switch ($currencyname) {
         case 'INRW':
                 if($_SESSION['INRWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/INRW/getNewINRWAddress', false, $context);
-
+                  $response = file_get_contents($url_api.'/addrgen/getNewINRAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['newaddress'];
+                            $bcc_address = $responseData['message'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/INRW/getINRWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['userinraddress'];
+                   
                 }
-
-
-
         break;
         case 'USDW':
           if($_SESSION['USDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/USDW/getNewUSDWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/USDW/getUSDWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['USDWAddress'];
                 }
-
         break;
-
         case 'GBPW':
           if($_SESSION['GBPWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/GBPW/getNewGBPWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/GBPW/getGBPWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['GBPWAddress'];
                 }
-
         break;
-
         case 'BRLW':
         if($_SESSION['BRLWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/BRLW/getNewBRLWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/BRLW/getBRLWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['BRLWAddress'];
                 }
-
         break;
-
         case 'PLNW':
           if($_SESSION['PLNWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/PLNW/getNewPLNWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/PLNW/getPLNWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['PLNWAddress'];
                 }
-
         break;
-
         case 'CADW':
            if($_SESSION['CADWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/CADW/getNewCADWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/CADW/getCADWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['CADWAddress'];
                 }
-
         break;
-
         case 'TRYW':
           if($_SESSION['TRYWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/TRYW/getNewTRYWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/TRYW/getTRYWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                   $bcc_address = $_SESSION['TRYWAddress'];
                 }
-
         break;
-
         case 'RUBW':
          if($_SESSION['RUBWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/RUBW/getNewRUBWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/RUBW/getRUBWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['RUBWAddress'];
                 }
-
         break;
-
         case 'MXNW':
           if($_SESSION['MXNWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/MXNW/getNewMXNWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/MXNW/getMXNWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['MXNWAddress'];
                 }
-
         break;
-
         case 'CZKW':
           if($_SESSION['CZKWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/CZKW/getNewCZKWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/CZKW/getCZKWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['CZKWAddress'];
                 }
-
         break;
-
         case 'ILSW':
           if($_SESSION['ILSWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/ILSW/getNewILSWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/ILSW/getILSWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                   $bcc_address = $_SESSION['ILSWAddress'];
                 }
-
         break;
-
         case 'NZDW':
           if($_SESSION['NZDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/NZDW/getNewNZDWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/NZDW/getNZDWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['NZDWAddress'];
                 }
-
         break;
-
         case 'JPYW':
            if($_SESSION['JPYWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/JPYW/getNewJPYWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/JPYW/getJPYWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                   $bcc_address = $_SESSION['JPYWAddress'];
                 }
-
         break;
-
         case 'SEKW':
            if($_SESSION['SEKWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/SEKW/getNewSEKWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/SEKW/getSEKWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['SEKWAddress'];
                 }
-
         break;
-
         case 'AUDW':
            if($_SESSION['AUDWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/AUDW/getNewAUDWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/AUDW/getAUDWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                   $bcc_address = $_SESSION['AUDWAddress'];
                 }
-
         break;
          case 'EURW':
           if($_SESSION['EURWAddress']=== false)
                 {
                   $response = file_get_contents($url_api.'/EURW/getNewEURWAddress', false, $context);
-
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
                         }
                 }
-
                 else
                 {
-                    $response = file_get_contents($url_api.'/EURW/getEURWAddressByAccount', false, $context);
-                        $responseData = json_decode($response, true);
-
-                    if (isset($responseData)) {
-                        $bcc_address = $responseData['listaddress'][0];
-                    }
+                    $bcc_address = $_SESSION['EURWAddress'];
                 }
-
         break;
-
-
-
     }
-
-
-
 }
 ?>
 
@@ -410,134 +254,125 @@ if(isset($_GET['curr']))
 
 <div class="content">
 
-	<link href="css/usercenter.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="css/usercenter.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <?php include 'include/left_side_menu.php';?>
 
 
 <script type="text/javascript">
-	$(document).ready(function() {
-
-		var accordion_head = $('.accordion > li > a'),
-			accordion_body = $('.accordion li > .sub-menu');
-
-		var found = false;
-		for (i = 0; i < accordion_body.length; i++) {
-			item = accordion_body.eq(i).find("[data-id='withdraw_coin']");
-			if (item.length > 0) {
-				accordion_head.eq(i).addClass('active').next().slideDown('normal');
-				item.css({'background':' #d4f5f6','border-left-color':'#c1e3e4','border-right-color':'#c1e3e4'});
-				found = true;
-				break;
-			}
-		}
-		if (found == false)
-			accordion_head.eq(2).addClass('active').next().slideDown('normal');
-
-		accordion_head.on('click', function(event) {
-
-			event.preventDefault();
-
-			if ($(this).attr('class') != 'active'){
-				accordion_body.slideUp('normal');
-				$(this).next().stop(true,true).slideToggle('normal');
-				accordion_head.removeClass('active');
-				$(this).addClass('active');
-			}
-		});
-		var icoType='';
-		if(icoType==''){
-			$("#buyIco").parent("li").remove()
-		}
-
-		$("input").focus(function(){
-			$(".failed").html("")
-		});
-
-		$(".files,.cloud,.mail").find("li").click(function () {
-			$.cookie('nav_index', 2,{ path: '/' });
-		});
-		$(".sign").find("li").click(function () {
-			$.cookie('nav_index', 3,{ path: '/' });
-		});
-
-		var url=window.location.href,
-			pagename=url.split('nt/')[1];
-		$('a[data-id="'+pagename+'"]').addClass("mactive");
-		if(url.indexOf('?coin_withdraw') > -1 || url.indexOf('aw/') > -1){
-			$('a[data-id=withdraw_coin]').addClass("mactive");
-		} else if(url.indexOf('?coin_deposit') > -1 || url.indexOf('it/') > -1){
-			$('a[data-id=deposit_coin]').addClass("mactive");
-		}
-		if(url.indexOf('totp/') > -1){
-			$('a[data-id=totp]').addClass("mactive");
-		}
-
-		$(window).scroll(function () {
-			var scrH=$(window).scrollTop();var accHeight=$(".myacc-con").height();
-			if(accHeight>834) {
-				if (scrH > 100) {
-					if(scrH > accHeight-721) {
-						$("#marketlist_wrapper").css({"position": "absolute", "top": "", "bottom": "10px", "width": "100%"});
-					} else {
-						$("#marketlist_wrapper").css({"position": "fixed", "top": "10px", "bottom": "", "width": "22%"});
-					}
-				} else {
-					$("#marketlist_wrapper").attr("style", "");
-				}
-			}
-		});
-	});
+  $(document).ready(function() {
+    var accordion_head = $('.accordion > li > a'),
+      accordion_body = $('.accordion li > .sub-menu');
+    var found = false;
+    for (i = 0; i < accordion_body.length; i++) {
+      item = accordion_body.eq(i).find("[data-id='withdraw_coin']");
+      if (item.length > 0) {
+        accordion_head.eq(i).addClass('active').next().slideDown('normal');
+        item.css({'background':' #d4f5f6','border-left-color':'#c1e3e4','border-right-color':'#c1e3e4'});
+        found = true;
+        break;
+      }
+    }
+    if (found == false)
+      accordion_head.eq(2).addClass('active').next().slideDown('normal');
+    accordion_head.on('click', function(event) {
+      event.preventDefault();
+      if ($(this).attr('class') != 'active'){
+        accordion_body.slideUp('normal');
+        $(this).next().stop(true,true).slideToggle('normal');
+        accordion_head.removeClass('active');
+        $(this).addClass('active');
+      }
+    });
+    var icoType='';
+    if(icoType==''){
+      $("#buyIco").parent("li").remove()
+    }
+    $("input").focus(function(){
+      $(".failed").html("")
+    });
+    $(".files,.cloud,.mail").find("li").click(function () {
+      $.cookie('nav_index', 2,{ path: '/' });
+    });
+    $(".sign").find("li").click(function () {
+      $.cookie('nav_index', 3,{ path: '/' });
+    });
+    var url=window.location.href,
+      pagename=url.split('nt/')[1];
+    $('a[data-id="'+pagename+'"]').addClass("mactive");
+    if(url.indexOf('?coin_withdraw') > -1 || url.indexOf('aw/') > -1){
+      $('a[data-id=withdraw_coin]').addClass("mactive");
+    } else if(url.indexOf('?coin_deposit') > -1 || url.indexOf('it/') > -1){
+      $('a[data-id=deposit_coin]').addClass("mactive");
+    }
+    if(url.indexOf('totp/') > -1){
+      $('a[data-id=totp]').addClass("mactive");
+    }
+    $(window).scroll(function () {
+      var scrH=$(window).scrollTop();var accHeight=$(".myacc-con").height();
+      if(accHeight>834) {
+        if (scrH > 100) {
+          if(scrH > accHeight-721) {
+            $("#marketlist_wrapper").css({"position": "absolute", "top": "", "bottom": "10px", "width": "100%"});
+          } else {
+            $("#marketlist_wrapper").css({"position": "fixed", "top": "10px", "bottom": "", "width": "22%"});
+          }
+        } else {
+          $("#marketlist_wrapper").attr("style", "");
+        }
+      }
+    });
+  });
 </script>
 
-	<div class="main_content  acc-m-con">
+  <div class="main_content  acc-m-con">
 
 
-			<div class='right_mcontent  myacc-con'>
+      <div class='right_mcontent  myacc-con'>
           <div class="m_title"><a href='#'><h4>Tether <?php echo $currencyname;?> Deposit </h4></a></div>
-			<div class="sectioncont">
+      <div class="sectioncont">
 
-				Please send <?php echo $currencyname;?> to this address: <br><br>
-				<input class='coin_add' style='font-size:26px;' readonly value="<?php echo $bcc_address; ?>">
-				<br>Or Scan QR code:<br>
-				<img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $bcc_address;?>"
+        Please send <?php echo $currencyname;?> to this address: <br><br>
+        <input class='coin_add' style='font-size:26px;' readonly value="<?php echo $bcc_address; ?>">
+        <br>Or Scan QR code:<br>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $bcc_address;?>"
                                                 alt="QR Code" style="width:200px;border:0;"/>
-												<br>
-				<br><br>
+                        <br>
+        <br><br>
 
-			</div>
+      </div>
 
-			<br>
-			<div class="m_title"><h4>Trading Markets</h4></div>
-			<div class="sectioncont">
-				<table class='sf-grid'>
-					<tr>
-					</tr>
-				</table>
-			</div>
+      <br>
+      <div class="m_title"><h4>Trading Markets</h4></div>
+      <div class="sectioncont">
+        <table class='sf-grid'>
+          <tr>
+          </tr>
+        </table>
+      </div>
 
-			<br>
+      <br>
 
 
-			<div class="m_title"><h4>Recent deposit records</h4></div>
-			<div class="sectioncont">
+      <div class="m_title"><h4>Recent deposit records</h4></div>
+      <div class="sectioncont">
 
-				<table class='sf-grid'>
-				  <tr> <td align='right'><b>Date</b></td>
-					   <td align='right'><b>Amount</b></td>
-					   <td align='right' ><b>Status</b></td>
+        <table class='sf-grid'>
+          <tr> <td align='right'><b>Date</b></td>
+             <td align='right'><b>Amount</b></td>
+             <td align='right' ><b>Status</b></td>
                   </tr>
 
                 </table>
 
-			</div>
+      </div>
 
-			<br>
-		<br>
+      <br>
+    <br>
 
 
-	</div> <!-- right_mcontent -->
+  </div> <!-- right_mcontent -->
   </div> <!-- main content -->
 
 
@@ -547,45 +382,42 @@ if(isset($_GET['curr']))
 <?php include 'include/footer.php'; ?>
 <script>
     $(function(){
-
-		var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='0.0';
-		loginbar.hover(function(){
+    var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='0.0';
+    loginbar.hover(function(){
             tmenu.stop().slideDown(200);
             $(this).stop().css("color","#f80");
-			barmark.css("opacity","0");
-			pbar.animate({width:pro_val+'%'},800);
+      barmark.css("opacity","0");
+      pbar.animate({width:pro_val+'%'},800);
         },function(){
             tmenu.stop().slideUp(100);
              $(this).stop().css("color","#fff");
-			 barmark.css("opacity","1");
-			 pbar.css('width','0');
+       barmark.css("opacity","1");
+       pbar.css('width','0');
         });
-		tmenu.css("width",pbWidth);
-		fbar.animate({width:pro_val+'%'},800);
+    tmenu.css("width",pbWidth);
+    fbar.animate({width:pro_val+'%'},800);
         if(pro_val > 0){
             fbar.addClass("has-pro-val");
         }
-
-		 $.fn.animateProgress = function(progress, callback) {
-			return this.each(function() {
-			  $(this).animate({
-				width: progress+'%'
-			  }, {
-				duration: 800,
-				easing: 'swing',
-				step: function( progress ){
-				    $('.value').text(Math.ceil(progress) + '%');
-				},
-				complete: function(scope, i, elem) {
-				  if (callback) {
-					callback.call(this, i, elem );
-				  };
-				}
-			  });
-			});
-		  };
-		  if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
-
+     $.fn.animateProgress = function(progress, callback) {
+      return this.each(function() {
+        $(this).animate({
+        width: progress+'%'
+        }, {
+        duration: 800,
+        easing: 'swing',
+        step: function( progress ){
+            $('.value').text(Math.ceil(progress) + '%');
+        },
+        complete: function(scope, i, elem) {
+          if (callback) {
+          callback.call(this, i, elem );
+          };
+        }
+        });
+      });
+      };
+      if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
           var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
         if (lh < mh){lb.css("height",mh)}
         $(".side-sev ul li").hover(function(){
@@ -594,24 +426,21 @@ if(isset($_GET['curr']))
         },function(){
             $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
         });
-
         $("#bottomWXli").hover(function(){
             $(".wx-bottom").show()
         },function(){
             $(".wx-bottom").hide()
         });
-		$("#runTime").hover(function(){
-			$(this).css("height","auto")
+    $("#runTime").hover(function(){
+      $(this).css("height","auto")
         },function(){
-			$(this).css("height","26px")
+      $(this).css("height","26px")
         });
         var notyContent='SMT(SmartMesh) is listed on gate.io(10 million bonus)';
-
         function notyCookie() {
             var noticeMsg = $("#siteNotyCon").text();
             $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
         }
-
         var annCookie = $.cookie('notice');
         if(annCookie != notyContent &&  notyContent != ''){
             var sNoty=$("#siteNoty").noty({
@@ -635,9 +464,7 @@ if(isset($_GET['curr']))
                 }
             });
         }
-
     });
-
   
 </script>
 </body>

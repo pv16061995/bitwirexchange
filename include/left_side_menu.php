@@ -22,12 +22,12 @@
 						  </ul>
 						</li>
 
-						<li id="adn3" class="mail"> <a href="#">Deposit/Withdrawal<span class="umicon"></span></a>
+						<!-- <li id="adn3" class="mail"> <a href="#">Deposit/Withdrawal<span class="umicon"></span></a>
 						  <ul class="sub-menu">
 							<li><a data-id='mydeposits' href="recent_deposit.php"><em>15</em>Recent Deposits</a></li>
 							<li><a data-id='mywithdrawals' href="recent_withdraw.php"><em>15</em>Recent Withdrawals</a></li>
 						  </ul>
-						</li>
+						</li> -->
 						<li id="adn4" class="sign"> <a href="#">Security Settings<span class="umicon"></span></a>
 						  <ul class="sub-menu">
 							<li><a data-id='totp' href="f2auth.php"><em>20</em>Two-factor Authentication</a></li>

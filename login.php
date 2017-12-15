@@ -106,8 +106,11 @@ if (isset($_POST['btnlogin'])) {
         $_SESSION['is_email_verify'] = $responseData['user']['verifyEmail'];
         $_SESSION['user_admin'] = $responseData['user']['isAdmin'];
 
-        $_SESSION['INRWAddress'] = $responseData['user']['isINRWAddress'];
+        $_SESSION['INRWAddress'] = $responseData['user']['isINRAddress'];
+        $_SESSION['userinraddress'] = $responseData['user']['userINRAddress'];
+
         $_SESSION['USDWAddress'] = $responseData['user']['isUSDWAddress'];
+         $_SESSION['userinraddress'] = $responseData['user']['userINRAddress'];
         $_SESSION['EURWAddress'] = $responseData['user']['isEURWAddress'];
 
         $_SESSION['GBPWAddress'] = $responseData['user']['isGBPWAddress'];
