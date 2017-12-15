@@ -485,11 +485,16 @@ if(isset($_GET['curr']))
           <script>
 
           function sell_data(){
-            <?php if(isset($_SESSION['user_id'])){
-              ?>
             var bid_rate = document.getElementById('bid_rate').value;
             var bid_vol = document.getElementById('bid_vol').value;
             var bid_amount = document.getElementById('bid_amount').value;
+
+
+            if(bid_rate !='' && bid_vol !='0' && bid_amount !='0')
+            {
+            <?php if(isset($_SESSION['user_id'])){
+              ?>
+
             var bidownerId=user_details.id;
 
             var json_ask_bch = {
@@ -516,9 +521,11 @@ if(isset($_GET['curr']))
               }
             });
             <?php }else{?>
-              document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please Login First</strong>  </div>';
+              document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please Login First !!!</strong>  </div>';
               <?php }?>
-
+            }else{
+                document.getElementById('alertmsg1').innerHTML='<div class="alert alert-danger"><strong>Please filled price and amount first !!!</strong>  </div>';
+            }
           }
           </script>
 
@@ -945,7 +952,7 @@ checkEmpty(0);
 </script>
 <?php include 'include/footer.php';?>
 <script>
-setInterval(function(){ $('.alert').hide(); }, 3000);
+setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
 </body>
 </html>

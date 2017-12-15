@@ -1693,3 +1693,4 @@ div .tip-con .sub-btn{ width: 100%;display: inline-block;text-align: center;-web
 .icon-16-mana {background-position:0 -1600px}
 .icon-16-god {background-position:0 -1616px}
 .icon-16-bcx {background-position:0 -1632px}
+.alert{padding: 7px;margin-bottom: 20px;border: 1px solid transparent;border-radius: 4px;}
