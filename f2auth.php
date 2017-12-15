@@ -22,6 +22,8 @@ if (isset($_POST['code'])) {
     
     if ($checkResult) {
         $_SESSION['key']=$code;
+        session_start();  
+        session_destroy();
 
         header("Location:login.php");
     } else {
@@ -54,12 +56,7 @@ if (isset($_POST['enable'])) {
 
     $responseData = json_decode($response, true);
 
-    // if ($responseData['statusCode']==200) {
-    //     $_SESSION['tfa'] = $responseData['user']['tfastatus'];
-    //     $_SESSION["user_id"] = $responseData['user']['id'];
-       
-    //     header("location:login.php");
-    // }
+    
 }
 if (isset($_POST['disable'])) {
     $postData = array(
@@ -88,6 +85,7 @@ if (isset($_POST['disable'])) {
 
     if ($responseData['statusCode']==200) {
         $_SESSION['tfa'] = $responseData['user']['tfastatus'];
+        unset($secret);
         header("location:f2auth.php");
     }
 }
@@ -158,18 +156,33 @@ if (isset($_POST['disable'])) {
  
 </div>
 <?php }else{?>
-
-        <tr>                    
+<div class="main_content  acc-m-con">
+       
+    
+            <div class='right_mcontent  myacc-con'>
+            <div class="sectioncont">
+<form enctype="application/x-www-form-urlencoded" method="post" action="">
+                     
+                <table>
+        <!-- <tr>                    
         <td align="right">TOTP: </td><td><input type="text" name="code" id="totp" size="20"> 6 digits code on your smartphone</td>
-        </tr>               
-
+        </tr> -->
+        <br/>
+        <tr>               
         <td>&nbsp;</td>
         <td> <input type="submit" name="disable" id="submit" value="  Disable Two-factor Authentication  " class="sub-btn"></td>
+        </tr>
+        </table>
+        </form>
+        </div>
+        </div>
+        </div>
+
 
 <?php }
 
 ?>
-
+ 
 
 <?php include 'include/footer.php';?>  
 
