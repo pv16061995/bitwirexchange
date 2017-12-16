@@ -29,7 +29,7 @@ div.user-select{display: none;float: left; margin-top: 5px;  padding: 10px 18px;
 tr:hover .user-select{ opacity: 1}
 .top-up{width:100%;height:36px;background: #2b343c;padding: 0 20px 0 30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .top-up a{ color: #ddd}
-.top-up a:hover{ color: #d45858}
+.top-up a:hover{ color: #000000}
 .top-dn{width:100%;height: 80px; clear:both;padding: 0 20px 0 30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .slogan{ color: #b6bbc1;line-height: 32px;  margin-left: 20px}
 /*.nav{float: left;height:55px; margin-top: 15px}*/
@@ -599,7 +599,7 @@ i.icon-code{top:150px;left:140px}
 .left_ti li { width: 33.3%; height: 100%; text-align: center; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif; font-weight: bold; color: #666; float: left }
 .left_btn { width: 33%; height: 40px;line-height: 38px;border: none; border-bottom:1px solid #a3acb5; font-size:15px; font-weight:bold;background: #f1f1f1; float: left; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif;color: #2b343c}
 .en-body .left_btn {white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
-.left_btn:hover{ color: #d45858}
+.left_btn:hover{ color: #00283a}
 .tn_selected{ border:1px solid #a3acb5; border-bottom: 0}
 .leftcionpic { margin-left: 8px }
 #updn font { margin-right: 15px }
@@ -608,7 +608,7 @@ i.icon-code{top:150px;left:140px}
 .main_title {position: absolute;z-index: 66;top: 0;text-align: center;line-height: 25px;padding-bottom: 3px}
 .main_title h1,.main_title h1 strong{ font-weight: normal; font-size: 20px}
 .main_title h1 a{ color: #111}
-.main_title h1 a:hover{ color: #d45858}
+.main_title h1 a:hover{ color: #5d6886}
 .main_content .main_title table { margin: 15px auto 0 auto}
 .right_mcontent {position: relative}
 .myacc-con{ margin:10px auto}
@@ -618,11 +618,11 @@ i.icon-code{top:150px;left:140px}
 .k-line-container .top_botton{position: absolute;right: 0;top: 13px;z-index: 888}
 .k-line-container .button{ border: none; margin-left: 5px; cursor: pointer; background: none}
 .k-line-container .button path{ fill:#787f84}
-.k-line-container .button:hover path,.k-line-container .tool-active path{ fill:#d45858}
+.k-line-container .button:hover path,.k-line-container .tool-active path{ fill:#5d6886}
 #lineOption{ height:30px;display: inline-block; float: right}
 .top_botton li { height: 100%; margin-right: 5px; text-align: center; float: left }
 .timeline_btn { width: 100%; height: 100%;background: none; padding: 0 2px; border: 0;cursor: pointer; font-size: 13px;font-family: Microsoft YaHei, Tahoma, Arial, sans-serif }
-.bo_selected,.timeline_btn:hover { color: #d45858}
+.bo_selected,.timeline_btn:hover { color: #5d6886}
 #choosen {  border: 0;  float: right; margin-right: 15px}
 .choosen li { height: 30px; }
 .mainmap { height: 300px; margin: 0 auto}
@@ -640,7 +640,7 @@ i.icon-code{top:150px;left:140px}
 .reset-psw-con .mairu input{ font-size:14px; padding:10px}
 .jiaoyi_btn { width: 295px; height: 42px; font-size: 1.2em; font-weight: bold; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif; color: #777; margin-top: 16px; margin-bottom: 19px; border: 1px solid #CAD3D8; background: url(/images/jiaoyi_btn.jpg) repeat-x; cursor: pointer }
 .dealbox .jiaoyi_btn { width: 100%; height: 42px; font-size: 1.2em; font-weight: bold; font-family: Microsoft YaHei, Tahoma, Arial, sans-serif; color: #fff; margin-top: 10px; margin-bottom: 19px; border: 0; background: #008069; cursor: pointer }
-.m_con_buy .jiaoyi_btn{ background:#d45858}
+.m_con_buy .jiaoyi_btn{ background:#5d6886}
 .maichu .dealbox .jiaoyi_btn:hover { background:#f80 }
 .maidan { height: 181px; background: #fff }
 .ulorderlist { overflow-y: scroll; overflow-x: hidden }
@@ -652,7 +652,7 @@ i.icon-code{top:150px;left:140px}
 .right-align { width: 33.33%; float: left; text-align: right; line-height: 38px;position: relative;z-index: 1}
 .right-align.price{width: 45%;text-align: left; text-indent: 3px;}
 #ul-ask-list .right-align.price,.en-body #ul-bid-list .right-align.price{color: #008069; font-weight: bold}
-#ul-bid-list .right-align.price,.en-body #ul-ask-list .right-align.price{color: #d45858;; font-weight: bold}
+#ul-bid-list .right-align.price,.en-body #ul-ask-list .right-align.price{color: #5d6886;; font-weight: bold}
 .total.right-align{ width: 27%; padding-right: 5px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .volume.right-align{ width: 28%; padding-right:30px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 .en-body .volume.right-align{ padding-right: 0}
@@ -660,11 +660,11 @@ i.icon-code{top:150px;left:140px}
 .title-line b { min-width: 86px; display: block; font-family: 'Microsoft YaHei' }
 .title-line .price b { min-width: 75px }
 .rect .down, .orange { height: 16px; width: 60px; margin: 11px 0 0 20px; background: #008069!important }
-.rect .up, .fenlv { height: 16px; margin: 11px 0 0 20px; background: #d45858!important }
+.rect .up, .fenlv { height: 16px; margin: 11px 0 0 20px; background: #5d6886!important }
 .trade-list_re li { margin: 0; line-height: 38px; text-align: right; position: relative;overflow: hidden; cursor: default!important }
 #trade-list li{ height: 30px; line-height: 30px}
 .trade-list_re li .time {text-align: left; text-indent: 6px;height: 38px; width: 18%; float: left }
-.fund-deposit,.fund-withdraw,.fund-to-trade{ background: #d45858; color: #fff;width: 55px;text-align: center;line-height: 24px;display: inline-block;}
+.fund-deposit,.fund-withdraw,.fund-to-trade{ background: #5d6886; color: #fff;width: 55px;text-align: center;line-height: 24px;display: inline-block;}
 .fund-withdraw{ background: #008069; margin-left: 6px}
 .sf-grid .fund-withdraw{ margin-left: 0}
 .fund-to-trade{ background: #0a83ab}
@@ -945,7 +945,7 @@ button[disabled],button[disabled]:hover,.sub-btn[disabled],.sub-btn[disabled]:ho
 .gateio-nav {float:left;margin:22px 0 0 15px}
 .gateio-nav li {position:relative;list-style:none !important}
 .gateio-nav > li {float:left}
-.gateio-nav > li > a {display:block;height:38px;line-height:38px;padding:0 15px 10px;font-size:17px; color: #333}
+.gateio-nav > li > a {display:block;height:38px;line-height:38px;padding:0 15px 10px;font-size:17px; color: #fff}
 .caret {position:relative;display:inline-block;width:0;height:0;margin:0 -6px 0 4px;vertical-align:middle;border-top:4px dashed;border-top:4px solid \9;border-right:4px solid transparent;border-left:4px solid transparent;border-width:5px;color:#d8dfe4;/*transition:all 0.3s*/}
 .caret:before {content:'';position:absolute;top:-7px;left:-5px;display:inline-block;width:0;height:0;border-top:4px dashed;border-top:4px solid \9;border-right:4px solid transparent;border-left:4px solid transparent;border-width:5px;color:#fff}
 .lang-option .caret:before, #nickName .caret:before {color: #09162e;}

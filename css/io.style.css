@@ -3,35 +3,35 @@
 #theme #light{ background: #ccc}
 #theme #light:hover{ background: #eee}
 #theme #dark:hover{ background: #000}
-.top-up{ background: #09162e}
+.top-up{ background: #00283a}
 .dealbox .jiaoyi_btn,#coinStatus .normal-st-bg,.push-con .sub-sell,div .alert-sub {background:#25796a; font-weight: normal}
 #coinStatus li{ line-height: 14px}
-.m_con_buy .jiaoyi_btn,.r-btn,.step .button-flat-action,.fund-deposit, .fund-withdraw,.fxts i,.ask_ans i ,.hot:after, .new:after,.sectioncont .sms-setup #submit, .sectioncont #submit.sub-btn, .sectioncont .sub-btn, .sub-btn,.en-body .dealbox .jiaoyi_btn{background:#d45858}
+.m_con_buy .jiaoyi_btn,.r-btn,.step .button-flat-action,.fund-deposit, .fund-withdraw,.fxts i,.ask_ans i ,.hot:after, .new:after,.sectioncont .sms-setup #submit, .sectioncont #submit.sub-btn, .sectioncont .sub-btn, .sub-btn,.en-body .dealbox .jiaoyi_btn{background:#00283a}
 div .room-tag{background: rgba(212, 88, 88,0.9);}
 .fund-withdraw,.en-body .m_con_buy .jiaoyi_btn {background:#25796a}
 .btn-success{background:#25796a !important; color: #fff !important;}
 .btn-warn{background:#da7f0b !important; color: #fff !important;}
-.btn-error{background:#d45858 !important; color: #fff !important;}
+.btn-error{background:#00283a !important; color: #fff !important;}
 .btn-normal{background:#0a83ab !important; color: #fff !important;}
 .btn-success:hover{background:#0db37f !important; color: #fff !important;}
 .btn-warn:hover{background:#e4ad2c !important; color: #fff !important;}
-.btn-error:hover{background:#ca4141 !important; color: #fff !important;}
+.btn-error:hover{background:#5d6886 !important; color: #fff !important;}
 .btn-normal:hover{background:#199fcc !important; color: #fff !important;}
 .topnum{ font-weight: normal}
-.rate_up, .red, font[color="red"], .main_title h1 .red,.icon-arrow-up,#ul-bid-list .right-align.price,.en-body #ul-ask-list .right-align.price,ul#ul-bid-list .price:before,button.btnOn, .line-type button.btnOn,.topnum,.add-dn-qr,.user-info-box p span, .user-info-box em,#crFund span,.funds-p-tier strong,.cion-dtl-ul b,.fail-tip,.navlist .btn-active i,.dataTables_empty, .left_con .marketlist .dataTables_empty,.gateio-nav > li:hover > a, .gateio-nav > .nav-active > a,.tline_btns .btn_selected,.en-body #ul-ask-list .right-align.price,.en-body ul#ul-ask-list .price:before{ color: #de5959;}
-.en-body .down .price, .en-body #ul-trade-list font[color="#cc3333"], .en-body .rate_down, .en-body .red, .en-body font[color="red"], .en-body .main_title h1 .red, .en-body .icon-arrow-down {color: #de5959 !important;}
+.rate_up, .red, font[color="red"], .main_title h1 .red,.icon-arrow-up,#ul-bid-list .right-align.price,.en-body #ul-ask-list .right-align.price,ul#ul-bid-list .price:before,button.btnOn, .line-type button.btnOn,.topnum,.add-dn-qr,.user-info-box p span, .user-info-box em,#crFund span,.funds-p-tier strong,.cion-dtl-ul b,.fail-tip,.navlist .btn-active i,.dataTables_empty, .left_con .marketlist .dataTables_empty,.gateio-nav > li:hover > a, .gateio-nav > .nav-active > a,.tline_btns .btn_selected,.en-body #ul-ask-list .right-align.price,.en-body ul#ul-ask-list .price:before{ color: #00283a;}
+.en-body .down .price, .en-body #ul-trade-list font[color="#cc3333"], .en-body .rate_down, .en-body .red, .en-body font[color="red"], .en-body .main_title h1 .red, .en-body .icon-arrow-down {color: #00283a !important;}
 .no-wrap .go-trade-btn:hover,.r-btn:hover,.step .button-flat-action:hover{ background:#ff5d42 }
-#buyYuE,#buyYuE .coin-unit,.up .price,.en-body #sellYuE,.en-body #sellYuE .coin-unit,.en-body .down .price{color: #de5959 !important;}
+#buyYuE,#buyYuE .coin-unit,.up .price,.en-body #sellYuE,.en-body #sellYuE .coin-unit,.en-body .down .price{color: #00283a !important;}
 .rate_down,.green,font[color="green"],.main_title h1 .green,.icon-arrow-down,#ul-ask-list .right-align.price, ul#ul-ask-list .price:before,.en-body #ul-bid-list .right-align.price,.en-body ul#ul-bid-list .price:before{color:#008069}
 .en-body .up .price, .en-body #ul-trade-list font[color="#339900"], .en-body .rate_up, .en-body .green, .en-body font[color="green"], .en-body .main_title h1 .green, .en-body .icon-arrow-up, #sellYuE,#sellYuE .coin-unit,.down .price,.en-body #buyYuE,.en-body #buyYuE .coin-unit,.en-body .up .price{color:#008069 !important;}
-span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#de5959}
+span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#00283a}
 .dealbox .button-flat-action:hover,.fund-withdraw:hover ,.en-body div.m_con_buy .jiaoyi_btn:hover{background: #0db37f;}
-.sectioncont .sms-setup #submit:hover, .sectioncont #submit.sub-btn:hover, .sectioncont .sub-btn:hover, .sub-btn:hover,.maichu .dealbox .jiaoyi_btn:hover,.room-tag:hover,.fund-deposit:hover {background: #ca4141 !important;}
+.sectioncont .sms-setup #submit:hover, .sectioncont #submit.sub-btn:hover, .sectioncont .sub-btn:hover, .sub-btn:hover,.maichu .dealbox .jiaoyi_btn:hover,.room-tag:hover,.fund-deposit:hover {background: #5d6886 !important;}
 .sub-btn[disabled],.sub-btn[disabled]:hover{cursor: not-allowed;  color: #eee !important; background: #aaa !important}
 .warn-depo, .warn-depo:hover {background: #ce9900 !important;}
 .err-depo, .err-depo:hover {background: #888 !important;}
 .inputRate{ border-radius:0; box-shadow: none}
-#logoColor1,#logoColor2{ fill: #de5959}
+#logoColor1,#logoColor2{ fill: #00283a}
 .dark-body #logoWhite{fill:#eee}
 #full-screen-slider {margin-bottom:0;/* background:#962536*/}
 .dark-body .content{ border-color: #313b44}
@@ -53,7 +53,7 @@ span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#de5959}
 .dataTables_wrapper .coin-name {margin: 16px 0;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: calc(100% - 32px);text-align: left;}
 .en-body .dataTables_wrapper .coin-name{width: auto}
 .coin-name b{ margin-left:5px;color: #2b343c;}
-.coin-name b:hover{color: #d45858;}
+.coin-name b:hover{color: #00283a;}
 .area-btn-bg {background:#252e3e;;height:52px;}
 .tline_btns .btn_selected {background:transparent;border:none;}
 .tline_btns .btn_selected:hover,.tline_btns .button:hover {background:#303e4c;color:#fff;border:none;}
@@ -63,7 +63,7 @@ span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#de5959}
 .leftbar{ min-height: 1348px;}
 .leftbar,.left_btn{background: #fff;}
 .fkcont,.top-nav .nav-bottom-bg{ display: none}
-.fnav {background:#09162e;}
+.fnav {background:#00283a;}
 .tail {border:none}
 .flin,.top-nav{ border: none}
 .fnavcon {height:auto; padding: 21px 0}
@@ -83,7 +83,7 @@ span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#de5959}
 .trade-main .m_title{ margin-bottom: 20px}
 .side-sev {top:145px}
 .side-sev ul li{ border: none}
-.top-dn{ height: 50px}
+.top-dn{ height: 50px; background-color: #5d6886;}
 .gateio-nav {margin-top:5px}
 .gateio-nav > li > a {height: 32px;line-height: 36px;margin-bottom:0;padding: 0 10px 10px;font-size: 16px;}
 .qqtel a{ color: #333}
@@ -98,7 +98,7 @@ span.order-t-active,.fkicon .fico,#theme .cur-theme{ border-color:#de5959}
 div.header {border:none;}
 .market-choose-ul { margin-top: 10px}
 .market-choose-ul li {float:left;padding:10px;font-size:16px;margin-bottom:10px; border-bottom: 2px solid transparent; cursor: default}
-.market-choose-ul .mc-active {border-bottom-color:#de5959}
+.market-choose-ul .mc-active {border-bottom-color:#00283a}
 div.co-intro{ width: 100%}
 .item.coin_about{ margin-bottom: 50px}
 .index-content .coin-selected td:last-child:after{ display: none}
@@ -106,7 +106,7 @@ div.co-intro{ width: 100%}
 div.box-padding{ margin-bottom: 15px}
 .load8{ right: 27%}
 .top-nav .expand{ border-top: 1px solid transparent;border-bottom: 1px solid transparent; background: none; box-shadow: none}
-.top-nav .navlist a.btn-active,.top-nav .navlist a.btn-active:hover{ border-bottom: 1px solid #de5959; background: none}
+.top-nav .navlist a.btn-active,.top-nav .navlist a.btn-active:hover{ border-bottom: 1px solid #00283a; background: none}
 .navlist .btn-active i.caret:before{ color: #fff}
 .second-nav{ left: -30px; top:42px}
 .second-nav .caret:before{color:#333a44 !important;}
