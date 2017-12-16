@@ -39,7 +39,7 @@ $subcat=json_decode($datasub, true);
                          <?php if(isset($_SESSION['user_id']))
                         {?>
 
-                        <li class="toplogin"><?php echo  $_SESSION['user_session'];?>&nbsp;|&nbsp; </li>
+                        <li class="toplogin" style="color:#dbe2e4;"><?php echo  $_SESSION['user_session'];?>&nbsp;|&nbsp; </li>
                         <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
                         <?php }else 
                         {?>
@@ -52,7 +52,7 @@ $subcat=json_decode($datasub, true);
 
             </ul>
             <ul id="theme">
-                <span>Theme:</span>
+                <span style="color:#dbe2e4;">Theme:</span>
                 <li id="dark" title="Dark">Dark</li>
                 <li id="light" title="Light">Light</li>
             </ul>

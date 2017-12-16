@@ -47,13 +47,13 @@
         </div>
         <div class="tail">
             <span><a href="#"><?php echo PROJECT_TITLE?></a>&nbsp;&nbsp;Copyright © 2017&nbsp;&nbsp; </span>
-			<div class="vol-all">
+			<!-- <div class="vol-all">
                 <span>Volume:</span>
 				<span> USDT : $<span id="usdtAll">14872167</span> </span>
                 <span> BTC : ฿<span id="btcAll">476</span> </span>
                 <span> LTC : Ł<span id="ltcAll">9732</span> </span>
                 <span> ETH : E<span id="ethAll">13904</span> </span>
-            </div>
+            </div> -->
               </div>
     </div>
 </div>

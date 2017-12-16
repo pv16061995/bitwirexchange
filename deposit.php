@@ -27,7 +27,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewINRAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                             
                         }
                 }
@@ -43,7 +43,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewUSDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -57,7 +57,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewGBPAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -71,7 +71,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewBRLAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -85,7 +85,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewPLNAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -99,7 +99,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewCADAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -113,7 +113,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewTRYAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -127,7 +127,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewRUBAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -141,7 +141,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewMXNAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -155,7 +155,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewCZKAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -169,7 +169,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewILSAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -183,7 +183,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewNZDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -197,7 +197,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewJPYAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -211,7 +211,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewSEKAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -225,7 +225,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewAUDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -239,7 +239,7 @@ if(isset($_GET['curr']))
                   $response = file_get_contents($url_api.'/addrgen/getNewEURAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
-                            $bcc_address = $responseData['message'];
+                            $bcc_address = $responseData['newaddress'];
                         }
                 }
                 else
@@ -327,7 +327,7 @@ if(isset($_GET['curr']))
   });
 </script>
 
-  <div class="main_content  acc-m-con">
+  <div class="main_content  acc-m-con" style="text-align:center;">
 
 
       <div class='right_mcontent  myacc-con'>
@@ -335,45 +335,16 @@ if(isset($_GET['curr']))
       <div class="sectioncont">
 
         Please send <?php echo $currencyname;?> to this address: <br><br>
-        <input class='coin_add' style='font-size:26px;' readonly value="<?php echo $bcc_address; ?>">
+        <input class='coin_add' style='font-size:26px;text-align:center;' readonly value="<?php echo $bcc_address; ?>">
         <br>Or Scan QR code:<br>
         <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $bcc_address;?>"
                                                 alt="QR Code" style="width:200px;border:0;"/>
-                        <br>
-        <br><br>
+                       
 
       </div>
 
-      <br>
-      <div class="m_title"><h4>Trading Markets</h4></div>
-      <div class="sectioncont">
-        <table class='sf-grid'>
-          <tr>
-          </tr>
-        </table>
-      </div>
-
-      <br>
-
-
-      <div class="m_title"><h4>Recent deposit records</h4></div>
-      <div class="sectioncont">
-
-        <table class='sf-grid'>
-          <tr> <td align='right'><b>Date</b></td>
-             <td align='right'><b>Amount</b></td>
-             <td align='right' ><b>Status</b></td>
-                  </tr>
-
-                </table>
-
-      </div>
-
-      <br>
-    <br>
-
-
-  </div> <!-- right_mcontent -->
+      
+      
   </div> <!-- main content -->
 
 
@@ -381,7 +352,7 @@ if(isset($_GET['curr']))
 
 
 <?php include 'include/footer.php'; ?>
-<script>
+<!-- <script>
     $(function(){
     var pb=$("#ProgressBar"),pbWidth=pb.width(),loginbar=$("#topLoginBar"),tmenu=$("#tierMenu"),barcon=$("#pbCon"),barmark=barcon.find("i"),pbar=$("#proBar"),fbar=$("#fproBar"),pro_val='0.0';
     loginbar.hover(function(){
@@ -467,6 +438,12 @@ if(isset($_GET['curr']))
         }
     });
 
-</script>
+</script> -->
 </body>
 </html>
+
+<style type="text/css">
+  .leftbar{
+    min-height: 450px;
+  }
+</style>

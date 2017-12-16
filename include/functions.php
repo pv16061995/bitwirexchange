@@ -39,7 +39,7 @@ var url=url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/addAsk"+sub_cu
 
 var json_ask = {
 "askAmountBTC":ask_amount,
-"askAmountINR":ask_vol,
+"askAmount<?php echo substr($currency1,0,3);?>":ask_vol,
 "askRate":ask_rate,
 "askownerId":askownerId
 }
@@ -97,8 +97,8 @@ var url=url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/addAsk"+sub_cu
 
 
 var json_ask = {
-      "bidAmountBTC":bid_amount,
-      "bidAmountINR":bid_vol,
+      "bidAmount<?php echo  $currency2;?>":bid_amount,
+      "bidAmount<?php echo substr($currency1,0,3);?>":bid_vol,
       "bidRate":bid_rate,
       "bidownerId":bidownerId,
 

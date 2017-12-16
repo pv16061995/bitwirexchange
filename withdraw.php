@@ -514,28 +514,9 @@ ob_end_flush();
 
 				</form>
 
-				<br>
+				
 			</div>
 
-			<br>
-
-
-			<div class="m_title"><h4>Last 10 withdrawal records</h4></div>
-			<div class="sectioncont">
-				<table class='sf-grid'>
-				  <tr> <td align='right'width="50px"><b>ID</b></td>
-					   <td align='right'><b>Address/TxID</b></td>
-					   <td align='right' width="100px"><b>Amount</b></td>
-					   <td align='right' width="160px"><b>Date</b></td>
-					   <td align='right' width="100px"><b>Operation</b></td>
-                  </tr>
-
-                </table>
-			</div>
-
-			<br>
-
-		<br>
 
 </div> 
   </div> <!-- main content -->
@@ -547,3 +528,9 @@ ob_end_flush();
 </script>
 </body>
 </html>
+<style type="text/css">
+  .leftbar{
+    min-height: 450px;
+  }
+</style>
+
