@@ -28,6 +28,7 @@ if(isset($_GET['curr']))
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
+                            
                         }
                 }
                 else
@@ -39,7 +40,7 @@ if(isset($_GET['curr']))
         case 'USDW':
           if($_SESSION['USDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewUSDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewUSDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -53,7 +54,7 @@ if(isset($_GET['curr']))
         case 'GBPW':
           if($_SESSION['GBPWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewGBPWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewGBPAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -67,7 +68,7 @@ if(isset($_GET['curr']))
         case 'BRLW':
         if($_SESSION['BRLWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewBRLWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewBRLAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -81,7 +82,7 @@ if(isset($_GET['curr']))
         case 'PLNW':
           if($_SESSION['PLNWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewPLNWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewPLNAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -95,7 +96,7 @@ if(isset($_GET['curr']))
         case 'CADW':
            if($_SESSION['CADWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewCADWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewCADAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -109,7 +110,7 @@ if(isset($_GET['curr']))
         case 'TRYW':
           if($_SESSION['TRYWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewTRYWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewTRYAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -123,7 +124,7 @@ if(isset($_GET['curr']))
         case 'RUBW':
          if($_SESSION['RUBWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewRUBWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewRUBAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -137,7 +138,7 @@ if(isset($_GET['curr']))
         case 'MXNW':
           if($_SESSION['MXNWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewMXNWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewMXNAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -151,7 +152,7 @@ if(isset($_GET['curr']))
         case 'CZKW':
           if($_SESSION['CZKWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewCZKWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewCZKAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -165,7 +166,7 @@ if(isset($_GET['curr']))
         case 'ILSW':
           if($_SESSION['ILSWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewILSWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewILSAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -179,7 +180,7 @@ if(isset($_GET['curr']))
         case 'NZDW':
           if($_SESSION['NZDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewNZDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewNZDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -193,7 +194,7 @@ if(isset($_GET['curr']))
         case 'JPYW':
            if($_SESSION['JPYWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewJPYWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewJPYAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -207,7 +208,7 @@ if(isset($_GET['curr']))
         case 'SEKW':
            if($_SESSION['SEKWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewSEKWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewSEKAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -221,7 +222,7 @@ if(isset($_GET['curr']))
         case 'AUDW':
            if($_SESSION['AUDWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewAUDWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewAUDAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];
@@ -235,7 +236,7 @@ if(isset($_GET['curr']))
          case 'EURW':
           if($_SESSION['EURWAddress']=== false)
                 {
-                  $response = file_get_contents($url_api.'/addrgen/getNewEURWAddress', false, $context);
+                  $response = file_get_contents($url_api.'/addrgen/getNewEURAddress', false, $context);
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['message'];

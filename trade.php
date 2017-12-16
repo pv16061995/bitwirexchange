@@ -502,7 +502,7 @@ if(isset($_GET['curr']))
 
 				<?php include 'include/trade_right.php';?>
 
-					<?php include 'include/functions.php';?> 
+					<?php include 'include/functionsbtc.php';?> 
 
 				</div>
 			</div>
