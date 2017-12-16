@@ -38,7 +38,7 @@ var askownerId=user_id;
 var url=url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/addAsk"+sub_curr+"Market";
 
 var json_ask = {
-"askAmountBTC":ask_amount,
+"askAmount<?php echo  $currency2;?>":ask_amount,
 "askAmount<?php echo substr($currency1,0,3);?>":ask_vol,
 "askRate":ask_rate,
 "askownerId":askownerId
@@ -93,7 +93,7 @@ var user_id = '<?php echo $_SESSION['user_id']; ?>';
 
 var bidownerId=user_id;
 
-var url=url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/addAsk"+sub_curr+"Market";
+var url=url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/addBid"+sub_curr+"Market";
 
 
 var json_ask = {
