@@ -299,20 +299,20 @@ if(isset($_GET['curr']))
 							<tr class="tableOrderTr" t="static" >
 								<td width="20%"><font color="#2ba892"><b>Your balance</b></font></td>
 								<td id="buyYuE" colspan="2" width="40%" style="color:#2ba892;">
-                  <span  id="balance_ask_able" style="font-weight:600">0.0000</span>
+                  <span  id="balance_bid_able" style="font-weight:600"></span>
                   <span class="coin-unit" style="color:#2ba892"><?= $currency2;?></span></td>
 							</tr>
 							<tr class="tableOrderTr" t="static" >
-								<td>Obtainable</td>
-								<td><span  id="amount_ask_able" style="font-weight:600">0.0000</span><span class="coin-unit"><?= $currency1;?></span></td>
+								<td>Freeze Balance</td>
+								<td><span  id="balance_bid_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency1;?></span></td>
 								<td></td>
 							</tr>
 
 							<tr>
 
 								<td colspan="3" class="input-td">
-								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2.' / '.$currency1;?></span></span>
-									<input id="bid_rate" class="inputRate" maxlength="10" onkeydown="return check_number(event);"
+								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
+									<input id="bid_rate" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmount()"
 										  
 										   value=""  />
 								</td>
@@ -322,8 +322,8 @@ if(isset($_GET['curr']))
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title">Amount <?= $currency1;?></span>
-									<input id="bid_vol" class="inputRate" maxlength="10" onkeydown="return check_number(event);"
-										value="0" />
+									<input id="bid_vol" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmount()"
+										value="" />
 								</td>
 
 							</tr>
@@ -331,8 +331,8 @@ if(isset($_GET['curr']))
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title" id='bid_total_label'>Total <?= $currency2;?></span>
-									<input id="bid_amount" class="inputRate" maxlength="10" onkeydown="return check_number(event);"
-										value="0" />
+									<input id="bid_amount" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmountTotal()"
+										value="" />
 								</td>
 
 							</tr>
@@ -381,20 +381,20 @@ if(isset($_GET['curr']))
 								<tr class="tableOrderTr" t="static" >
 									<td width="15%"><font color="#de5959"><b>Your balance</b></font></td>
 									<td id="sellYuE" colspan="2" width="40%" style="color:#de5959;">
-                    <span id="balance_bid_able" style="font-weight:600">0.0000</span>
+                    <span id="balance_ask_able" style="font-weight:600"></span>
                     <span class="coin-unit" style="color:#de5959"><?= $currency1;?></span></td>
 								</tr>
 								<tr class="tableOrderTr" t="static" >
-									<td>Obtainable</td>
-									<td><span  id="amount_bid_able" style="font-weight:600">0.0000</span><span class="coin-unit"><?= $currency2;?></span></td>
+									<td>Freeze Balance</td>
+									<td><span  id="balance_ask_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency2;?></span></td>
 									<td></td>
 								</tr>
 
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span><?= $currency2.' / '.$currency1;?></span></span>
+									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
 										<input id="ask_rate" class="inputRate" maxlength="10"
-											   onkeydown="return check_number(event);"
+											   onkeydown="return check_number(event);" onkeyup="askAmount()"
 											    />
 									</td>
 
@@ -403,16 +403,16 @@ if(isset($_GET['curr']))
 
 									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency1;?></span>
 										<input id="ask_vol" class="inputRate" maxlength="10"
-											   onkeydown="return check_number(event);"
-											   value="0" />
+											   onkeydown="return check_number(event);" onkeyup="askAmount()"
+											   value="" />
 									</td>
 
 								</tr>
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit input-title" id='ask_total_label'>Total <?= $currency2;?></span>
-										<input id="ask_amount" class="inputRate" maxlength="10"
-											   value="0" />
+									<input id="ask_amount" class="inputRate" maxlength="10" onkeyup="askTotalAmount()"
+											   value="" />
 									</td>
 
 								</tr>
@@ -518,5 +518,6 @@ if(isset($_GET['curr']))
 <script>
 setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
+
 </body>
 </html>
