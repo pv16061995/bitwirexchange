@@ -986,7 +986,7 @@ button[disabled],button[disabled]:hover,.sub-btn[disabled],.sub-btn[disabled]:ho
 .nav-help li {width:100%}
 .en-body .third-nav{ left: 165px}
 .en-body .nav-trade-item .third-nav{ min-width: 600px; width: 600px}
-.en-body .nav-trade-item .third-nav strong{ width: 50%}
+.en-body .nav-trade-item .third-nav strong{ width: 75%}
 .en-body .second-nav{ left: -30px}
 .en-body .second-nav > li,.en-body .nav-help{ width: 165px}
 /*jquery.jslides*/

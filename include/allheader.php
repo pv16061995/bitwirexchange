@@ -88,7 +88,7 @@ $subcat=json_decode($datasub, true);
                           {
                             $menuname=explode("W/",$subcatgory);
                         ?>
-                        <li><a href='trade.php?curr=<?php echo base64_encode($subcatgory);?>'><strong><?php echo $menuname[0]?></strong></a></li>
+                        <li><a href='trade.php?curr=<?php echo base64_encode($subcatgory);?>'><strong><?php echo $subcatgory?></strong></a></li>
                         <?php
                         }
                         ?>
