@@ -12,15 +12,24 @@
 </div>
     <div class="m_con maidan">
       <box padding-bottom=0 class= "right-list list" >
-      <li class= "title-line sorting" style="height:30px; margin-top:15px;border-bottom: 1px solid #e4ebf0">
+     <!--  <li class= "title-line sorting" style="height:30px; margin-top:15px;border-bottom: 1px solid #e4ebf0">
           <span class= "right-align price" ><b>Price</b></span>
           <span class= "volume right-align" ><b>Amount</b></span>
           <span class= "total right-align" ><b>Total(BTC)</b></span>
-        </li>
+        </li> -->
+        <table  class="dataTable">  
+                  <thead>    
+                  <tr>        
+                  <td  width="20%">Ask</td>       
+                  <td width="20%">Amount</td>      
+                  <td width="40%">Price</td>       
+                  <td  width="40%">Total(BTC)</td>     
+                  </tr>        
+                  </thead>     
+                  <tbody  id="bid-list"></tbody>   
+                  </table>
 
-        <table id="bid-list">
-       
-        </table>
+                
       </box>
     </div>
   </div>
@@ -35,19 +44,33 @@
     </div>
     <div class="m_con maidan">
       <box padding-bottom=0 class= "right-list list" >
-          <li class= "title-line sorting" style="height:30px; margin-top:15px;border-bottom: 1px solid #e4ebf0">
+          <!-- <li class= "title-line sorting" style="height:30px; margin-top:15px;border-bottom: 1px solid #e4ebf0">
           <span class= "right-align price" ><b>Price</b></span>
           <span class= "volume right-align" ><b>Amount</b></span>
           <span class= "total right-align" ><b>Total(BTC)</b></span>
-        </li>
-        <table id="ask-list" >
-        
-        </table>
+        </li> -->
+               <table class="dataTable">      
+                <thead>          
+                <tr>         
+                <td  width="20%">Ask</td>    
+                <td width="20%">Amount</td>     
+                <td width="40%">Price</td>      
+                <td  width="40%">Total(BTC)</td>    
+                </tr>    
+                </thead>      
+                <tbody id="ask-list"></tbody>     
+                 </table>
       </box>
     </div>
   </div>
 
+<style>
+.dataTable tbody tr:nth-child(odd) {    background-color:#fff;
+}
 
+.dataTable tbody tr:nth-child(even) {    background-color:#f8f8f8;
+}
+</style>
 
   
   <?php include 'include/functions.php';?>

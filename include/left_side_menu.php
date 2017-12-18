@@ -17,8 +17,8 @@
 
 						<li id="adn2" class="cloud"> <a href="#">Orders<span class="umicon"></span></a>
 						 <ul class="sub-menu">
-							<li><a data-id='myorders' href="openhistory.php"><em>06</em>Open orders</a></li>
-							<li><a data-id='myhistory' href="tradehistory.php"><em>07</em>Trade history</a></li>
+							<li><a data-id='myorders' href="#"><em>06</em>Open orders</a></li>
+							<li><a data-id='myhistory' href="#"><em>07</em>Trade history</a></li>
 						  </ul>
 						</li>
 

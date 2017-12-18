@@ -19,6 +19,7 @@ $subcat=json_decode($datasub, true);
     <link href="css/io.style.css" rel="stylesheet" type="text/css">
     <link href="css/theme_dark.css" rel="stylesheet" type="text/css" id="darkStyle" disabled="disabled">
     <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/jquery.common.tools.js"></script>
 

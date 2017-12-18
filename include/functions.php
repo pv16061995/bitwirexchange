@@ -172,6 +172,40 @@ $('#alertmsg').html('<div class="alert alert-danger"><strong>Please Login First 
 $('#alertmsg').html('<div class="alert alert-danger"><strong>Please filled price and amount first !!!</strong>  </div>');
 }
 }
+function del(bidIdINR,bidownerId) {
+
+    if (confirm("Do You Want To Delete!")) {
+      $.ajax({
+        type: "POST",
+        url: url_api + '/trademarketbtcinr/removeBidINRMarket',
+        data: {
+          "bidIdINR": bidIdINR,
+          "bidownerId": bidownerId
+        },
+        success: function(result){
+          alert('Data Delete Successfully');
+
+        }
+      });
+    }
+  }
+  function del_ask(askIdINR,askownerId) {
+    if (confirm("Do You Want To Delete!")) {
+      $.ajax({
+        type: "POST",
+        url: url_api + '/trademarketbtcinr/removeAskINRMarket',
+        data: {
+          "askIdINR":askIdINR,
+          "askownerId":askownerId
+
+        },
+        success: function(result){
+          alert('Data Delete Successfully');
+
+        }
+      });
+    }
+  }
 
 getAllDetailsOfUser();
 getAllAskTotal();
@@ -182,7 +216,39 @@ getUsermaincurrencyBalance();
 getUsersubcurrencyBalance();
 userOpenOrders();
 userClosedOrders();
+getCurrentAskPrice();
 
+function getCurrentAskPrice(data){
+  $.ajax({
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
+      data: {
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
+      },
+      success: function(data)
+      {
+        
+        
+    if(data.asksINR){
+      
+      $('#ask_current').empty();
+      for(var i=0; i< data.asksINR.length;i++){
+        if(data.asksINR[i].status == 2){
+          $('#ask_current').append(" &nbsp;"+data.asksINR[i].askRate+"");
+          
+          break;
+        }
+      }
+    }
+
+      },
+      error: function(err){
+      }
+    });
+  }
+    
+  
 
 function getAllDetailsOfUser(){
     $.ajax({
@@ -419,7 +485,6 @@ function userOpenOrders(){
 
       },
       success: function(res){
-        console.log("closee list ",res);
         
     $('#my-fund-list').empty();
     $('#my-fund-list').empty();
@@ -470,6 +535,7 @@ function userOpenOrders(){
     orderBookAsk();
     userOpenOrders();
     userClosedOrders();
+    getCurrentAskPrice();
     });
   io.socket.on('INR_BID_ADDED', function bidCreated(data){
    
@@ -477,19 +543,20 @@ function userOpenOrders(){
     orderBookBid();
     userOpenOrders();
     userClosedOrders();
+    getCurrentAskPrice();
      
     });
    io.socket.on('INR_BID_DESTROYED', function bidCreated(data){
-
+      getAllBidTotal();
       orderBookBid();
       userOpenOrders();
-    userClosedOrders();
+     userClosedOrders();
     });
    io.socket.on('INR_ASK_DESTROYED', function askCreated(data){
-
+      getAllAskTotal();
       orderBookAsk();
       userOpenOrders();
-    userClosedOrders();
+     userClosedOrders();
     });
   
   

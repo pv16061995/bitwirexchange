@@ -252,13 +252,13 @@ if(isset($_GET['curr']))
             <span class="icon-32 icon-32-eos"></span></a>
             <a href="javascript:;"><?= $currency1.' '.$currency1; ?></a> / <strong style="margin-right: 20px"> <?= $currency2; ?> </strong></li>
 					<li class="top_last_li">
-						<span style="float: left; padding: 0; margin-right: 3px" id='market_unit_symbol'>฿</span>
+						<!-- <span style="float: left; padding: 0; margin-right: 3px" id='market_unit_symbol'>฿</span>
                     	<span id="top_last_rate_change">
 							<i id="currPrice">0.000249</i>
 															<small> Or </small><em>$</em><i id="currFiat">3.74</i>
 														<em><font  class='red'>-9.56%</font></em><span class=arr-con><i class="caret" id="upArrow"></i><i class="caret" id="dnArrow"></i></span>
 						</span>
-						<i id="currVol"><small>Volume: </small>฿14.6</i>
+						<i id="currVol"><small>Volume: </small>฿14.6</i> -->
 					</li>
 				</ul>
 			</h1>
@@ -266,23 +266,13 @@ if(isset($_GET['curr']))
 
 
 
-			<div class="right_mcontent clearfix">
+		
+			<div class="right_mcontent clearfix">      
+			    <div id="container" class="container" width="500"></div>    
+			        </div>
 <div class="kline-title"><?= $currency1;?> / <?= $currency2;?> KLINE</div>
-														<div class="k-line-container box-padding clearfix ">
-							<ul class="top_botton">
-								<li>
-									<span class="button k-tools"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.4 120.9 600 600" width="17" height="17"><path d="M594 473.5V368.8h-76c-5.7-23.8-15.2-46.4-27.5-66.4l53.8-53.8-73.9-73.9-53.8 53.4c-20.6-12.8-42.7-21.8-66.4-27.5v-75.9H245.5v75.9c-23.8 5.7-46.4 15.2-66.4 27.5l-53.8-53.8-73.9 73.9 53.4 53.8C92 322.6 83 344.7 77.3 368.4h-76V473h75.9c5.7 23.8 15.2 46.4 27.5 66.4L51 593.3l73.9 73.9 53.8-53.4c20.6 12.8 42.7 21.8 66.4 27.5v75.9h104.6v-75.9c23.8-5.7 46.4-15.2 66.4-27.5l53.8 53.8 73.9-73.9-53.4-53.8c12.8-20.6 21.8-42.7 27.5-66.4H594zm-296.4 69.7c-67.3 0-122.3-54.6-122.3-122.3 0-67.3 54.6-122.3 122.3-122.3 67.3 0 122.3 54.6 122.3 122.3-.4 67.4-54.9 122.3-122.3 122.3z"/></svg></span>
-								</li>
-								<li>
-									<span class="button fullscreen"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M4.712 10.043L2.045 12.71 0 10.667V16h5.334L3.29 13.955l2.667-2.667M5.334 0H0v5.334L2.045 3.29l2.667 2.667 1.245-1.245L3.29 2.045M10.666 0l2.045 2.045-2.666 2.667 1.245 1.245 2.666-2.667L16 5.334V0m-4.712 10.043l-1.245 1.245 2.668 2.667L10.668 16H16v-5.334l-2.045 2.045"/></svg></span>
-								</li>
-								<li>
-									<span class="button kline-on-off"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M0 0v5.333h16V0H0zm15 4.167H1v-3h14v3zM0 16v-5.333h7.12v-1.5H4.23L8 5.393l3.77 3.772H8.88v1.5H16V16H0z"/></svg></span>
-								</li>
-							</ul>
-							<div id="kline" class="box-container clearfix"><div class="load8" id="klineLoader"><div class="loader">Loading</div><p>Loading...</p></div></div>
-						</div>
 
+													
 
 				<div class="trade-main clearfix">
 
@@ -454,21 +444,24 @@ if(isset($_GET['curr']))
 			<div id="currOrder" class="m_con cjbox" style="height: 250px;border: 1px solid #ddd;background: #fff;">
 				<div id="order-info-box" class="box">
 					<div class="list-wrapper">
-						<ul class="trade-list_re">
-						<li class="number sorting dealtop">
-							<span class='right-align' id="tlist-date">Time</span>
-							<span class='right-align my-type'>Type</span>
-							<span class='right-align'>Price(BTC)</span>
-							<span class='right-align'>Amount</span>
-							<span class='right-align'>Operation</span>
-						</li>
-						</ul>
-						<ul class="trade-list_re" 	style="height: 209px; overflow-y: scroll; overflow-x: hidden;">
-						<table id="ulMyOrderList" >
 						
+						<table class="dataTable" >
+						<thead>
+						<tr>
+							<td width="20%">ORDER DATE	</td>
+							<td width="10%">BID/ASK	</td>
+							<td width="10%">UNITS FILLED<?= $currency1;?></td>
+							<td width="10%">ACTUAL RATE	</td>
+							<td width="10%">UNITS TOTAL	<?= $currency1;?></td>
+							<td width="10%">UNITS TOTAL <?= $currency2;?>	</td>
+							<td width="10%">ACTION</td>
+						</tr>
+						</thead>
+						<tbody id="ulMyOrderList" >
+						</tbody>
 						</table>
 
-						</ul>
+						
 					</div>
 
 				</div>
@@ -483,22 +476,23 @@ if(isset($_GET['curr']))
 <div id="currFunds" class="m_con cjbox" style="border: 1px solid #ddd;background: #fff;">
 		<div id="fund-info-box" class="box">
 			<div class="list-wrapper">
-				<ul class="trade-list_re" id="my-fund-title">
-				<li class="number sorting dealtop">
-					<span class='right-align' id="tlist-date">Time</span>
-							<span class='right-align my-type'>Type</span>
-							<span class='right-align'>Price(BTC)</span>
-							<span class='right-align'>Amount</span>
-							<span class='right-align'>Operation</span>
-
-				</li>
-				</ul>
-				<ul id="my-fund-list" class="trade-list_re" style="height: 209px; overflow-y: auto; overflow-x: hidden; text-align: center;position: relative">
+				
 					
-					<table id="my-fund-list" >
-						
+					<table class="dataTable" >
+						<thead>
+						<tr>
+							<td width="20%">ORDER DATE	</td>
+							<td width="10%">BID/ASK	</td>
+							<td width="10%">UNITS FILLED <?= $currency1;?></td>
+							<td width="10%">ACTUAL RATE	</td>
+							<td width="10%">UNITS TOTAL<?= $currency1;?></td>
+							<td width="10%">UNITS TOTAL <?= $currency2;?></td>
+							
+						</tr>
+						</thead>
+						<tbody id="my-fund-list" >
+						</tbody>
 						</table>
-				</ul>
 				
 			</div>
 
@@ -517,13 +511,132 @@ if(isset($_GET['curr']))
 			</div>
 		</div>
   </div>
+<style>
+.dataTable tbody tr:nth-child(odd) {    background-color:#fff;
+}
+
+.dataTable tbody tr:nth-child(even) {    background-color:#f8f8f8;
+}
+</style>
 
 <script src='js/main.chart.js'></script>
 <script src="js/trader_en.js"></script>
 <script src="js/socket.io.slim.js"></script>
 <script src="js/main.js"></script>
 
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
 <?php include 'include/footer.php';?>
+<script>
+setInterval(function(){ $('.alert').hide(); }, 5000);
+</script>
+<script>
+
+url_api = '<?php echo URL_API;?>';
+var arrayObject = [];
+var bidorderTime =[];
+var arrayObjectask = [];
+var askorderTime =[];
+$.getJSON(url_api + '/trademarketbtcinr/getBidsINRSuccess', function (data) {
+   //console.log(data);
+     /* var bid_orders = $.parseJSON(data);
+    for(var i = 0; i < data.length ; i++){
+           console.log('jfd' + bid_orders.bidsBCH[i].bidRate + bid_orders.bidsBCH[i].createdAt);
+    }*/
+    var  temp =data.bidsINR;
+    var date = 1317888000000;
+    if(temp){
+      for (var i = 0; i < temp.length; i++) {
+
+        arrayObject.push([Number(temp[i].createTimeUTC)*1000,temp[i].bidRate]);
+        bidorderTime.push(temp[i].updatedAt);
+      }
+    }
+    $.getJSON(url_api + '/trademarketbtcinr/getAsksINRSuccess', function (dataask) {
+       //console.log(data);
+         /* var bid_orders = $.parseJSON(data);
+        for(var i = 0; i < data.length ; i++){
+               console.log('jfd' + bid_orders.bidsBCH[i].bidRate + bid_orders.bidsBCH[i].createdAt);
+        }*/
+        var  tempask =dataask.asksINR;
+        //console.log("asdfasdf "+JSON.stringify(tempask));
+        if(tempask){
+          for (var i = 0; i < tempask.length; i++) {
+
+            arrayObjectask.push([Number(tempask[i].createTimeUTC)*1000,tempask[i].askRate]);
+
+          }
+        }
+        Highcharts.chart('container', {
+           chart: {
+               zoomType: 'x'
+           },
+
+           subtitle: {
+               text: document.ontouchstart === undefined ?
+                       'Click and drag in the plot area to zoom in' : 'Pinch the chart to zoom in'
+           },
+           xAxis: {
+               type: 'datetime'
+           },
+           yAxis: {
+               title: {
+                   text: 'Exchange rate'
+               }
+           },
+           legend: {
+               enabled: true
+           },
+           plotOptions: {
+               area: {
+                   fillColor: {
+                       linearGradient: {
+                           x1: 0,
+                           y1: 0,
+                           x2: 0,
+                           y2: 1
+                       },
+                       stops: [
+                           [0, Highcharts.getOptions().colors[0]],
+                           [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                       ]
+                   },
+                   marker: {
+                       radius: 2
+                   },
+                   lineWidth: 1,
+                   states: {
+                       hover: {
+                           lineWidth: 1
+                       }
+                   },
+                   threshold: null
+               }
+           },
+
+           series: [
+             // {
+             //   type: 'area',
+             //   name: 'Buy',
+             //   data: arrayObject
+             // },
+             {
+               type: 'area',
+               name: 'Sell',
+               data: arrayObjectask
+           }],
+           responsive: {
+              rules: [{
+                  condition: {
+                      maxWidth: 500
+                  }
+              }]
+            }
+       });
+  });
+  });
+</script>
 <script>
 setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
