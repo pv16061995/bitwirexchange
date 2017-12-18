@@ -459,11 +459,14 @@ if(isset($_GET['curr']))
 							<span class='right-align' id="tlist-date">Time</span>
 							<span class='right-align my-type'>Type</span>
 							<span class='right-align'>Price(BTC)</span>
-							<span class='right-align'>Amount(EOS)</span>
+							<span class='right-align'>Amount</span>
 							<span class='right-align'>Operation</span>
 						</li>
 						</ul>
-						<ul id="ulMyOrderList" class="trade-list_re" 	style="height: 209px; overflow-y: scroll; overflow-x: hidden;">
+						<ul class="trade-list_re" 	style="height: 209px; overflow-y: scroll; overflow-x: hidden;">
+						<table id="ulMyOrderList" >
+						
+						</table>
 
 						</ul>
 					</div>
@@ -475,22 +478,28 @@ if(isset($_GET['curr']))
 						<div class="maichu my-order-box">
 
 	<div class="m_title" id="myFunds">
-		My Funds (<a href='/myaccount'>All</a>)
+		My Success Orders
 			</div>
 <div id="currFunds" class="m_con cjbox" style="border: 1px solid #ddd;background: #fff;">
 		<div id="fund-info-box" class="box">
 			<div class="list-wrapper">
 				<ul class="trade-list_re" id="my-fund-title">
 				<li class="number sorting dealtop">
-					<span class='right-align my-type'>Currency</span>
-					<span class='right-align'>Avaliable</span>
-					<span class='right-align'>In orders</span>
-					<span class='right-align'>Total</span>
+					<span class='right-align' id="tlist-date">Time</span>
+							<span class='right-align my-type'>Type</span>
+							<span class='right-align'>Price(BTC)</span>
+							<span class='right-align'>Amount</span>
+							<span class='right-align'>Operation</span>
 
 				</li>
 				</ul>
-				<ul id="my-fund-list" class="trade-list_re" style="height: 209px; overflow-y: auto; overflow-x: hidden; text-align: center;position: relative"></ul>
-				<pre id="fundData" style="display: none"></pre>
+				<ul id="my-fund-list" class="trade-list_re" style="height: 209px; overflow-y: auto; overflow-x: hidden; text-align: center;position: relative">
+					
+					<table id="my-fund-list" >
+						
+						</table>
+				</ul>
+				
 			</div>
 
 		</div>

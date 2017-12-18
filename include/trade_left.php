@@ -33,8 +33,8 @@
 							<thead>
 								<tr role="row" style="height:40px">
 										<th class="no-wrap sortable sorting"><b>Type</b></th>
-										<th class="no-wrap sortable sorting">Price<span id="leftPriceType">(<?php echo $cat->name;?>)</span></th>
-										<th class="no-wrap sortable sorting" id="leftbarupdntop">24h %</th>
+										<th class="no-wrap sortable sorting">Ask<span id="leftPriceType">(<?php echo $cat->name;?>)</span></th>
+										<!-- <th class="no-wrap sortable sorting" id="leftbarupdntop">24h %</th> -->
 									</tr>
 			</thead><tbody>
 			<?php
@@ -43,8 +43,8 @@
 				{?>
 				 <tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
 				  <td><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
-				  <td class="alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">12</a></td>
-				  <td class=" alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td>
+				  <td class="alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>"><span ></span></a></td>
+				  <!-- <td class=" alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td> -->
 				</tr>
 
 			<?php $i++;}?>
@@ -64,7 +64,7 @@
 	</td>
 	</tr>
 </table>
-
+<?php include 'include/functions.php';?>
 <script>
 
     $(function () {

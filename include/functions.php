@@ -180,18 +180,21 @@ orderBookBid();
 orderBookAsk();
 getUsermaincurrencyBalance();
 getUsersubcurrencyBalance();
+userOpenOrders();
+userClosedOrders();
 
 
 function getAllDetailsOfUser(){
     $.ajax({
-      type: "POST", url: url_api+ "/user/getAllDetailsOfUser",
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
       data: {
-        userMailId: '<?php echo $_SESSION['user_id']; ?>'
-        
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
       },
       success: function(res)
       {
-        console.log("working",res);
+        
          getUsermaincurrencyBalance(res);
           getUsersubcurrencyBalance(res);
 
@@ -201,18 +204,50 @@ function getAllDetailsOfUser(){
     });
   }
   function getUsermaincurrencyBalance(res){
+      $.ajax({
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
+      data: {
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
+      },
+      success: function(res)
+      {
+        
+        
     $('#balance_bid_able').empty();
     $('#balance_bid_freeze').empty();
-    $('#balance_bid_able').append(res.user.BTCbalance.toFixed(5)+" ");
-    $('#balance_bid_freeze').append(res.user.FreezedBTCbalance+" ");
+    $('#balance_bid_able').append(res.user.BTCbalance);
+    $('#balance_bid_freeze').append(res.user.FreezedBTCbalance);
+
+      },
+      error: function(err){
+      }
+    });
   }
-  function getUsersubcurrencyBalance(res){
+    function getUsersubcurrencyBalance(res){
+      $.ajax({
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
+      data: {
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
+      },
+      success: function(res)
+      {
+        
     
     $('#balance_ask_able').empty();
     $('#balance_ask_freeze').empty();
-    $('#balance_ask_able').append(res.user.INRbalance+" ");
-    $('#balance_ask_freeze').append(res.user.FreezedINRbalance+" ");
+    $('#balance_ask_able').append(res.user.INRbalance);
+    $('#balance_ask_freeze').append(res.user.FreezedINRbalance);
+
+      },
+      error: function(err){
+      }
+    });
   }
+ 
 function getAllAsk(){
     $.ajax({
       type: "POST",
@@ -221,7 +256,7 @@ function getAllAsk(){
       data: {},
       success: function(data){
         
-        console.log(data.asksINR);
+        
 
       }
     });
@@ -235,7 +270,7 @@ function getAllAsk(){
       data: {},
       success: function(data){
        
-  console.log("wprking",data.bidsINR);
+ 
 
         }
       });
@@ -323,29 +358,139 @@ function getAllAsk(){
       }
   });
 }
+function userOpenOrders(){
+     $.ajax({
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
+      data: {
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
+      },
+      success: function(res){
+        
+    $('#ulMyOrderList').empty();
+    $('#ulMyOrderList').empty();
+    bid=res.user.bidsINR;
+    ask=res.user.asksINR;
+    var finalObj = bid.concat(ask);
+    
+   
+    for( var i=0; i<finalObj.length; i++)
+    {
+      if(finalObj[i].status == 2 ){
+        if(finalObj[i].bidAmountINR){
+          $('#ulMyOrderList').append('<tr><td>'
+            +finalObj[i].createdAt+
+            '</td><td>BID</td><td>'
+            +finalObj[i].bidAmountINR+
+            '</td><td>'
+            +finalObj[i].bidRate+
+            '</td><td>'
+            +finalObj[i].totalbidAmountINR+
+            '</td><td>'
+            +finalObj[i].totalbidAmountBTC+
+            '</td><td><a class="text-danger" onclick="del(id='+finalObj[i].id +',ownwe='+finalObj[i].bidownerINR+');"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a></td></tr>');
+        }
+        else{
+          $('#ulMyOrderList').append('<tr><td>'
+            +finalObj[i].createdAt+
+            '</td><td>Ask</td><td>'
+            +finalObj[i].askAmountINR+
+            '</td><td>'
+            +finalObj[i].askRate+
+            '</td><td>'
+            +finalObj[i].totalaskAmountINR+
+            '</td><td>'
+            +finalObj[i].totalaskAmountBTC+
+            '</td><td><a class="text-danger" onclick="del_ask(id='+finalObj[i].id+',askowner='+finalObj[i].askownerINR+');" ><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>'+
+            '</td></tr>');
+        }
+      }
+    }
+    }
+    });
+  }
+  function userClosedOrders(){
+     $.ajax({
+      type: "POST",
+      url: url_api+ "/user/getAllDetailsOfUser",
+      data: {
+        userMailId: '<?php echo $_SESSION['user_session']; ?>'
+
+      },
+      success: function(res){
+        console.log("closee list ",res);
+        
+    $('#my-fund-list').empty();
+    $('#my-fund-list').empty();
+    bid=res.user.bidsINR;
+    ask=res.user.asksINR;
+    var finalObj = bid.concat(ask);
+   
+    for( var i=0; i<finalObj.length; i++)
+    {
+      if(finalObj[i].status == 1 )
+      {
+        if(finalObj[i].bidAmountINR){
+          $('#my-fund-list').append('<tr><td>'
+            +finalObj[i].createdAt+
+            '</td><td>Buy</td><td>'
+            +finalObj[i].bidAmountINR+
+            '</td><td>'
+            +finalObj[i].bidRate+
+            '</td><td>'
+            +finalObj[i].totalbidAmountINR+
+            '</td><td>'
+            +finalObj[i].totalbidAmountBTC+
+            '</td></tr>');
+        }
+        else{
+          $('#my-fund-list').append('<tr><td>'
+            +finalObj[i].createdAt+
+            '</td><td>Sell</td><td>'
+            +finalObj[i].askAmountINR+
+            '</td><td>'
+            +finalObj[i].askRate+
+            '</td><td>'
+            +finalObj[i].totalaskAmountINR+
+            '</td><td>'
+            +finalObj[i].totalaskAmountBTC+
+            '</td></tr>');
+        }
+      }
+    }
+  }
+    });
+  }
+  
+
   io.socket.on('INR_ASK_ADDED', function askCreated(data){
     
     getAllAskTotal();
-    orderBookAsk(data);
+    orderBookAsk();
+    userOpenOrders();
+    userClosedOrders();
     });
   io.socket.on('INR_BID_ADDED', function bidCreated(data){
    
     getAllBidTotal();
-    orderBookBid(data);
+    orderBookBid();
+    userOpenOrders();
+    userClosedOrders();
      
     });
    io.socket.on('INR_BID_DESTROYED', function bidCreated(data){
 
-      orderBookBid(data);
+      orderBookBid();
+      userOpenOrders();
+    userClosedOrders();
     });
    io.socket.on('INR_ASK_DESTROYED', function askCreated(data){
 
-      orderBookAsk(data);
+      orderBookAsk();
+      userOpenOrders();
+    userClosedOrders();
     });
-   io.socket.post(url_api+'/user/getAllDetailsOfUser', { userMailId: '<?php echo $_SESSION['user_id']; ?>' },function(err,details){
-      getUsermaincurrencyBalance();
-      getUsersubcurrencyBalance();
-
-    });
+  
   
 </script>
