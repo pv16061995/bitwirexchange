@@ -1,5 +1,5 @@
 <div class="footer">
-    <div class="fkicon">
+    <!-- <div class="fkicon">
         <ul class="clearfix">
             <li><a href="#"><div class="fico fc5"></div>
                 <div class="fkcont">
@@ -26,7 +26,7 @@
         <div class="fxts">
             <p style="text-align: center"><i>!</i>Please be aware of the high risks in the crypto-currency trading markets due to the price fluctuation and other factors.</p>
         </div>
-    </div>
+    </div> -->
 
     <div class="fnav">
         <div class="fnavcon">

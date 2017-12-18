@@ -109,8 +109,8 @@ $("#marketlist_wrapper").attr("style", "");
         <thead>
             <tr role="row" style="height:40px">
                 <th align='right'><b>Type</b></th>
-                <th align='right'><b>INR Balance</b></th>
-                <th align='right'><b>INR Freeze Balance</b></th>
+                <th align='right'><b> Balance</b></th>
+                <th align='right'><b> Freeze Balance</b></th>
                 <th align='right'><b>Total</b></th>
 
                 <th align='right'><b>Operation</b></th>

@@ -60,7 +60,7 @@ class allapi
   public function getallcurrency()
   {
     $data = array(
-          "INRW","USDW","EURW","GBPW","BRLW","PLNW","CADW","TRYW","RUBW","MXNW","CZKW","ILSW","NZDW","JPYW","SEKW","AUDW"
+          "BTC","BCH","LTC","INRW","USDW","EURW","GBPW","BRLW","PLNW","CADW","TRYW","RUBW","MXNW","CZKW","ILSW","NZDW","JPYW","SEKW","AUDW"
     );
     $data=json_encode($data);
     return $data;
