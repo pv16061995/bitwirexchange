@@ -443,6 +443,14 @@ if(isset($_GET['curr']))
 				            <style type="text/css">
 				            	.myorder td{
 				            		border:1px solid;
+				            		text-align: center;
+
+				            	}
+				            	.thead
+				            	{
+				            		text-align:center;
+				            		color:#fff;
+				            		background-color: #25796a;
 				            	}
 
 				            	.closebtn{
@@ -540,19 +548,24 @@ if(isset($_GET['curr']))
 setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
 <script>
+var sub_curr='<?php echo substr($currency1,0,3);?>';
+
+var main_curr='<?php echo  strtolower($currency2);?>';
+
 
 url_api = '<?php echo URL_API;?>';
 var arrayObject = [];
 var bidorderTime =[];
 var arrayObjectask = [];
 var askorderTime =[];
-$.getJSON(url_api + '/trademarketbtcinr/getBidsINRSuccess', function (data) {
+$.getJSON(url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/getBids"+sub_curr+"Success", function (data) {
    //console.log(data);
      /* var bid_orders = $.parseJSON(data);
     for(var i = 0; i < data.length ; i++){
            console.log('jfd' + bid_orders.bidsBCH[i].bidRate + bid_orders.bidsBCH[i].createdAt);
     }*/
-    var  temp =data.bidsINR;
+    var  temp =data.bids<?php echo substr($currency1,0,3);?>;
+
     var date = 1317888000000;
     if(temp){
       for (var i = 0; i < temp.length; i++) {
@@ -561,13 +574,14 @@ $.getJSON(url_api + '/trademarketbtcinr/getBidsINRSuccess', function (data) {
         bidorderTime.push(temp[i].updatedAt);
       }
     }
-    $.getJSON(url_api + '/trademarketbtcinr/getAsksINRSuccess', function (dataask) {
+    $.getJSON(url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAsks"+sub_curr+"Success", function (dataask) {
        //console.log(data);
          /* var bid_orders = $.parseJSON(data);
         for(var i = 0; i < data.length ; i++){
                console.log('jfd' + bid_orders.bidsBCH[i].bidRate + bid_orders.bidsBCH[i].createdAt);
         }*/
-        var  tempask =dataask.asksINR;
+        var  tempask = dataask.asks<?php echo substr($currency1,0,3);?>;
+       
         //console.log("asdfasdf "+JSON.stringify(tempask));
         if(tempask){
           for (var i = 0; i < tempask.length; i++) {

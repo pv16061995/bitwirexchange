@@ -379,7 +379,7 @@ if(isset($_GET['curr']))
 
 
       <div class='right_mcontent  myacc-con'>
-          <div class="m_title"><a href='#'><h4>Tether <?php echo $currencyname;?> Deposit </h4></a></div>
+          <div class="m_title"><a href='#'><h4> <?php echo $currencyname;?> Deposit </h4></a></div>
       <div class="sectioncont">
 
         Please send <?php echo $currencyname;?> to this address: <br><br>

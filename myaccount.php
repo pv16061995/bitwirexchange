@@ -152,21 +152,21 @@ function hidezerobalance()
   $('.rowhidebal').show();
 }
 }
-    $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ) {
-                var min = parseFloat( $('#min').val());
-                var max = parseFloat( $('#max').val());
-                var acc = parseFloat( data[1] ) || 0;
-                if ( ( isNaN( min ) && isNaN( max ) ) ||
-                        ( isNaN( min ) && acc <= max ) ||
-                        ( min <= acc   && isNaN( max ) ) ||
-                        ( min <= acc   && acc <= max ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-    );
+    // $.fn.dataTable.ext.search.push(
+    //         function( settings, data, dataIndex ) {
+    //             var min = parseFloat( $('#min').val());
+    //             var max = parseFloat( $('#max').val());
+    //             var acc = parseFloat( data[1] ) || 0;
+    //             if ( ( isNaN( min ) && isNaN( max ) ) ||
+    //                     ( isNaN( min ) && acc <= max ) ||
+    //                     ( min <= acc   && isNaN( max ) ) ||
+    //                     ( min <= acc   && acc <= max ) )
+    //             {
+    //                 return true;
+    //             }
+    //             return false;
+    //         }
+    // );
 
 function cancel_withdraw(uid, wid){
 var json_req = {
@@ -207,7 +207,7 @@ complete : function(){
                 [4, null]
             ],
             "columnDefs": [
-                { "orderable": false, "targets": [ 5 ] }
+                { "orderable": false, "targets": [ 4 ] }
             ]
         });
 
@@ -245,12 +245,12 @@ lb.css("height",mh)
         // });
 
 var $dep=$("#latestDepo"), $wit=$("#latestWith");
-if($dep.find("tr").size() > 5){
+if($dep.find("tr").size() > 4){
 $dep.parent().css("padding-right","10px").prev("table").css("padding-right","26px");
 } else if($dep.find("tr").size() == 1){
 $dep.find(".table-empty").show()
 }
-if($wit.find("tr").size() > 5){
+if($wit.find("tr").size() > 4){
 $wit.parent().css("padding-right","10px").prev("table").css("padding-right","26px");
 } else if($wit.find("tr").size() == 1){
 $wit.find(".table-empty").show()
@@ -277,57 +277,57 @@ $("td:contains('Processing')").css("color","#0086b3");
 
 
 <script>
-    $(function(){
-$.fn.animateProgress = function(progress, callback) {
-return this.each(function() {
-  $(this).animate({
-width: progress+'%'
-  }, {
-duration: 800,
-easing: 'swing',
-step: function( progress ){
-    $('.value').text(Math.ceil(progress) + '%');
-},
-complete: function(scope, i, elem) {
-  if (callback) {
-callback.call(this, i, elem );
-  };
-}
-  });
-});
-  };
-  if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
-
-        var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
-        if (lh < mh){lb.css("height",mh)}
-
-        $(".side-sev ul li").hover(function(){
-            var _this=$(this);
-            _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
-        },function(){
-            $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
-        });
-
-        $("#bottomWXli").hover(function(){
-            $(".wx-bottom").show()
-        },function(){
-            $(".wx-bottom").hide()
-        });
-$("#runTime").hover(function(){
-$(this).css("height","auto")
-        },function(){
-$(this).css("height","26px")
-        });
-
-        var notyContent='SMT(SmartMesh) is listed on gate.io(10 million bonus)';
-
-        function notyCookie() {
-            var noticeMsg = $("#siteNotyCon").text();
-            $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
-        }
-
-
-    });
+//     $(function(){
+// $.fn.animateProgress = function(progress, callback) {
+// return this.each(function() {
+//   $(this).animate({
+// width: progress+'%'
+//   }, {
+// duration: 800,
+// easing: 'swing',
+// step: function( progress ){
+//     $('.value').text(Math.ceil(progress) + '%');
+// },
+// complete: function(scope, i, elem) {
+//   if (callback) {
+// callback.call(this, i, elem );
+//   };
+// }
+//   });
+// });
+//   };
+//   if(pro_val=='') barcon.animateProgress(0); else barcon.animateProgress(pro_val);
+//
+//         var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
+//         if (lh < mh){lb.css("height",mh)}
+//
+//         $(".side-sev ul li").hover(function(){
+//             var _this=$(this);
+//             _this.find(".sidebox").stop().animate({"width":"165px"},2).css({"background":"#009173"});
+//         },function(){
+//             $(this).find(".sidebox").stop().animate({"width":"45px"},2).css({"background":"none"});
+//         });
+//
+//         $("#bottomWXli").hover(function(){
+//             $(".wx-bottom").show()
+//         },function(){
+//             $(".wx-bottom").hide()
+//         });
+// $("#runTime").hover(function(){
+// $(this).css("height","auto")
+//         },function(){
+// $(this).css("height","26px")
+//         });
+//
+//         var notyContent='SMT(SmartMesh) is listed on gate.io(10 million bonus)';
+//
+//         function notyCookie() {
+//             var noticeMsg = $("#siteNotyCon").text();
+//             $.cookie('notice', noticeMsg, { expires: 365, path: '/' });
+//         }
+//
+//
+//     });
 
 
 </script>

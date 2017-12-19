@@ -5,10 +5,10 @@
 
   <div class="maichu">
   <div class="b-s-title clearfix">
-     <div class="b-s-t-left">Total BID <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_BID'></span></div>
+     <div class="">Total BID <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_BID'></span></div>
       <br>
 
-      <div class="b-s-t-left">Total BID <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastbid'></span></div>
+      <div class="">Total BID <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastbid'></span></div>
 </div>
     <div class="m_con maidan">
       <box padding-bottom=0 class= "right-list list" >
@@ -17,10 +17,10 @@
           <span class= "volume right-align" ><b>Amount</b></span>
           <span class= "total right-align" ><b>Total(BTC)</b></span>
         </li> -->
-        <table  class="dataTable">  
-                  <thead>    
+        <table  class="dataTable myorder" style="width:100%">  
+                  <thead class="thead">    
                   <tr>        
-                  <td  width="20%">Ask</td>       
+                  <td  width="20%">Bid</td>       
                   <td width="20%">Amount</td>      
                   <td width="40%">Price</td>       
                   <td  width="40%">Total(BTC)</td>     
@@ -36,10 +36,10 @@
 
   <div class="mairu">
     <div class="b-s-title clearfix">
-      <div class="b-s-t-left">Total ASK <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_ASK'></span></div>
+      <div class="">Total ASK <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_ASK'></span></div>
       <br>
 
-      <div class="b-s-t-left">Total ASK <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastask'></span></div>
+      <div class="">Total ASK <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastask'></span></div>
       
     </div>
     <div class="m_con maidan">
@@ -49,8 +49,8 @@
           <span class= "volume right-align" ><b>Amount</b></span>
           <span class= "total right-align" ><b>Total(BTC)</b></span>
         </li> -->
-               <table class="dataTable">      
-                <thead>          
+               <table class="dataTable myorder" style="width:100%">      
+                <thead class="thead">          
                 <tr>         
                 <td  width="20%">Ask</td>    
                 <td width="20%">Amount</td>     

@@ -22,9 +22,7 @@ if (isset($_POST['code'])) {
     
     if ($checkResult) {
         $_SESSION['key']=$code;
-        session_start();  
-        session_destroy();
-
+        
         header("Location:login.php");
     } else {
         $failcode = "Failed Code Incorrect";

@@ -62,14 +62,14 @@ $subcat=json_decode($datasub, true);
     <div class="top-dn">
         <div class="logo">
             <a href="index.php" target="_top">
-                <img src="<?php echo BASE_PATH?>/images/logo.png" />
+                <img src="<?php echo BASE_PATH;?>/images/logo.png" />
             </a>
         </div>
 
 
         <ul class="gateio-nav">
             <li>
-                <a href="<?php echo BASE_PATH;?>">Home</a>
+                <a href="myaccount.php">Home</a>
 
             </li>
             <li class="nav-trade-item">

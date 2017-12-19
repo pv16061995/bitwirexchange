@@ -212,7 +212,7 @@ if (isset($_POST['btnlogin'])) {
 	.completer-container .completer-selected, .completer-container li:hover,.pla .completer-selected{ margin-left: -1px; background-color: #eee; border-left: 1px solid #ff5e23; }
 
 	.has-feedback{ position: relative; clear: both }
-	.has-feedback .form-control { float: left;  width: 40%;padding-right: 42.5px; font-size: 15px;margin-bottom: 0; }
+	.has-feedback .form-control { float: left;  width: 40%;padding-right: 0px; font-size: 15px;margin-bottom: 0; }
 	.form-control-feedback { position: absolute; top: 0; right: 30%; z-index: 2; display: block; width: 34px; height: 34px; line-height: 34px; text-align: center; pointer-events: none }
 	.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label { color: #3c763d }
 	.has-success .form-control { border-color: #3c763d; }
