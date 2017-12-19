@@ -13,31 +13,7 @@ $user_session = $_SESSION['user_session'];
 <link href="css/usercenter.css" rel="stylesheet" type="text/css">
 <?php include 'include/left_side_menu.php';?>
 <script type="text/javascript">
-$(document).ready(function() {
 
-var accordion_head = $('.accordion > li > a'),
-accordion_body = $('.accordion li > .sub-menu');
-    var found = false;
-for (i = 0; i < accordion_body.length; i++) {
-item = accordion_body.eq(i).find("[data-id='withdraw_coin']");
-if (item.length > 0) {
-accordion_head.eq(i).addClass('active').next().slideDown('normal');
-item.css({'background':' #d4f5f6','border-left-color':'#c1e3e4','border-right-color':'#c1e3e4'});
-found = true;
-break;
-}
-}
-if (found == false)
-accordion_head.eq(2).addClass('active').next().slideDown('normal');
-accordion_head.on('click', function(event) {
-event.preventDefault();
-if ($(this).attr('class') != 'active'){
-accordion_body.slideUp('normal');
-$(this).next().stop(true,true).slideToggle('normal');
-accordion_head.removeClass('active');
-$(this).addClass('active');
-}
-});
 
 var icoType='';
 if(icoType==''){
@@ -80,7 +56,7 @@ $("#marketlist_wrapper").attr("style", "");
 }
 }
 });
-});
+
 </script>
 
 <div class="main_content  acc-m-con">
@@ -99,7 +75,7 @@ $("#marketlist_wrapper").attr("style", "");
     <div class="m_title" id="wallet"> Currencies: </div>
     <div class="HideZeroDiv pull-left" id="hideZbtn">
         <label for="hidezero">
-        <input type="checkbox" id="hidezero"  name='hidezero' style="width: 20px;" />
+        <input type="checkbox" id="hidezero"  name='hidezero' style="width: 20px;" value="1" onclick="hidezerobalance();" />
         <label for="hidezero" class="vr-btn"></label>
         <span class="hidezero-span">Hide zero balances</span>
         </label>
@@ -108,12 +84,12 @@ $("#marketlist_wrapper").attr("style", "");
     <table id="funds" class='dataTable sf-grid all-funds-table' cellspacing="0" cellpadding="0">
         <thead>
             <tr role="row" style="height:40px">
-                <th align='right'><b>Type</b></th>
-                <th align='right'><b> Balance</b></th>
-                <th align='right'><b> Freeze Balance</b></th>
-                <th align='right'><b>Total</b></th>
-
-                <th align='right'><b>Operation</b></th>
+              <!-- <th align='right' style="width:0%"><b></b></th> -->
+              <th align='right' style="width:10%"><b>Type</b></th>
+              <th align='right' style="width:10%"><b> Balance</b></th>
+              <th align='right' style="width:10%"><b> Freeze Balance</b></th>
+              <th align='right' style="width:10%"><b>Total</b></th>
+              <th align='right' style="width:40%"><b>Operation</b></th>
             </tr>
         </thead>
         <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -137,12 +113,13 @@ $result=json_decode($data);
             ));
          $response = file_get_contents($url_api.'/user/getAllDetailsOfUser', false, $context);
          $responseData = json_decode($response, true);
-
+         $i=1;
         foreach($result as $currencyname){
           $cun=substr($currencyname,0,3);
 
           ?>
-                  <tr class='odd hanga'  data-id=zero >
+                  <tr class='odd hanga <?php $chkbal=$responseData['user'][$cun.'balance']+$responseData['user']['Freezed'.$cun.'balance'];if($chkbal==0){echo "rowhidebal";}?>'  data-id='zero' >
+                    <!-- <td align='left'></td> -->
                     <td align='right'><span class='icon-16 icon-16-usdt'></span><span style='color:#08a287'>
                     <b><?php echo $currencyname; ?></b></span></td>
                     <td align='right'><?php echo $responseData['user'][$cun.'balance']; ?></td>
@@ -155,7 +132,7 @@ title='Working'>Deposit</a>
 <a href="withdraw.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-withdraw' title='Working'>Withdraw</a>
 <a href="transaction.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-to-trade' title='Working'>History</a></td>
                 </tr>
-                <?php }?>
+                <?php $i++;}?>
                     </tbody>
     </table>
 
@@ -164,6 +141,17 @@ title='Working'>Deposit</a>
 <br>
 <script src="js/jquery.dataTables.min.js"></script>
 <script>
+
+function hidezerobalance()
+{
+
+  if ($('#hidezero').is(":checked"))
+{
+    $('.rowhidebal').hide();
+}else{
+  $('.rowhidebal').show();
+}
+}
     $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {
                 var min = parseFloat( $('#min').val());
@@ -227,34 +215,34 @@ tableIndex.on('draw.dt',function() {
 var lb=$(".leftbar"), mc=$(".main_content"),lh=lb.height(),mh=mc.height();
 lb.css("height",mh)
 });
-    if ($.cookie('show_zero_funds') === undefined || $.cookie('show_zero_funds') === '0') {
-            $('#hidezero').prop('checked', false).removeClass('zero-active');
-            $('#min,#max').val('');
-            tableIndex.draw();
-        } else {
-            $('#hidezero').prop('checked', true).addClass('zero-active');
-            $('#min').val('0.00000001');
-            $('#max').val('9999999999');
-            tableIndex.draw();
-        }
+    // if ($.cookie('show_zero_funds') === undefined || $.cookie('show_zero_funds') === '0') {
+    //         $('#hidezero').prop('checked', false).removeClass('zero-active');
+    //         $('#min,#max').val('');
+    //         tableIndex.draw();
+    //     } else {
+    //         $('#hidezero').prop('checked', true).addClass('zero-active');
+    //         $('#min').val('0.00000001');
+    //         $('#max').val('9999999999');
+    //         tableIndex.draw();
+    //     }
 
-        $('#hideZbtn').on('click', function() {
-
-            if ($('#hidezero').hasClass("zero-active")) {
-                $('#min,#max').val('');
-                tableIndex.draw();
-                setTimeout(function(){$('#hidezero').removeClass('zero-active')},200);
-                $.cookie('show_zero_funds', '0',{ expires:30,path: '/' });
-
-            } else { //全部币种显示
-                $('#min').val('0.00000001');
-                $('#max').val('9999999999');
-                tableIndex.draw();
-                setTimeout(function(){$('#hidezero').addClass('zero-active')},200);
-                $.cookie('show_zero_funds', '1',{ expires:30,path: '/' });
-
-            }
-        });
+        // $('#hideZbtn').on('click', function() {
+        //
+        //     if ($('#hidezero').hasClass("zero-active")) {
+        //         $('#min,#max').val('');
+        //         tableIndex.draw();
+        //         setTimeout(function(){$('#hidezero').removeClass('zero-active')},200);
+        //         $.cookie('show_zero_funds', '0',{ expires:30,path: '/' });
+        //
+        //     } else { //全部币种显示
+        //         $('#min').val('0.00000001');
+        //         $('#max').val('9999999999');
+        //         tableIndex.draw();
+        //         setTimeout(function(){$('#hidezero').addClass('zero-active')},200);
+        //         $.cookie('show_zero_funds', '1',{ expires:30,path: '/' });
+        //
+        //     }
+        // });
 
 var $dep=$("#latestDepo"), $wit=$("#latestWith");
 if($dep.find("tr").size() > 5){
@@ -290,9 +278,6 @@ $("td:contains('Processing')").css("color","#0086b3");
 
 <script>
     $(function(){
-
-
-
 $.fn.animateProgress = function(progress, callback) {
 return this.each(function() {
   $(this).animate({

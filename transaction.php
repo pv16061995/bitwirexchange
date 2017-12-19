@@ -27,75 +27,87 @@ $postData = array(
   $currencyname=base64_decode($_GET['curr']);
 
     switch ($currencyname) {
+      case 'BTC':
+
+                 $response = file_get_contents($url_api.'/tx/getTxsListBTC', false, $context);
+          break;
+          case 'BCH':
+
+                 $response = file_get_contents($url_api.'/tx/getTxsListBCH', false, $context);
+          break;
+          case 'LTC':
+
+                 $response = file_get_contents($url_api.'/tx/getTxsListLTC', false, $context);
+          break;
       case 'INRW':
 
-                 $response = file_get_contents($url_api.'/INRW/getTxsListINRW', false, $context);
+                 $response = file_get_contents($url_api.'/tx/getTxsListINR', false, $context);
           break;
           case 'EURW':
 
-               $response = file_get_contents($url_api.'/EURW/getTxsListEURW', false, $context);
+               $response = file_get_contents($url_api.'/tx/getTxsListEUR', false, $context);
           break;
           case 'USDW':
-           $response = file_get_contents($url_api.'/USDW/getTxsListUSDW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListUSD', false, $context);
           break;
 
           case 'GBPW':
-           $response = file_get_contents($url_api.'/GBPW/getTxsListGBPW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListGBP', false, $context);
 
           break;
 
           case 'BRLW':
-           $response = file_get_contents($url_api.'/BRLW/getTxsListBRLW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListBRL', false, $context);
 
           break;
 
           case 'PLNW':
-           $response = file_get_contents($url_api.'/PLNW/getTxsListPLNW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListPLN', false, $context);
 
           break;
 
           case 'CADW':
-          $response = file_get_contents($url_api.'/CADW/getTxsListCADW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListCAD', false, $context);
           break;
 
           case 'TRYW':
-          $response = file_get_contents($url_api.'/TRYW/getTxsListTRYW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListTRY', false, $context);
           break;
 
           case 'RUBW':
-          $response = file_get_contents($url_api.'/RUBW/getTxsListRUBW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListRUB', false, $context);
           break;
 
           case 'MXNW':
-          $response = file_get_contents($url_api.'/MXNW/getTxsListMXNW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListMXN', false, $context);
            break;
           case 'CZKW':
-           $response = file_get_contents($url_api.'/CZKW/getTxsListCZKW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListCZK', false, $context);
           break;
 
           case 'ILSW':
-           $response = file_get_contents($url_api.'/ILSW/getTxsListILSW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListILS', false, $context);
           break;
 
           case 'NZDW':
-          $response = file_get_contents($url_api.'/NZDW/getTxsListNZDW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListNZD', false, $context);
           break;
 
           case 'JPYW':
-           $response = file_get_contents($url_api.'/JPYW/getTxsListJPYW', false, $context);
+           $response = file_get_contents($url_api.'/tx/getTxsListJPY', false, $context);
           break;
 
           case 'SEKW':
-          $response = file_get_contents($url_api.'/SEKW/getTxsListSEKW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListSEK', false, $context);
           break;
 
           case 'AUDW':
-          $response = file_get_contents($url_api.'/AUDW/getTxsListAUDW', false, $context);
+          $response = file_get_contents($url_api.'/tx/getTxsListAUD', false, $context);
           break;
 
           default:
                 $currencyname='INRW';
-                 $response = file_get_contents($url_api.'/INRW/getTxsListINRW', false, $context);
+                 $response = file_get_contents($url_api.'/tx/getTxsListINR', false, $context);
 
 
 
@@ -205,8 +217,8 @@ $postData = array(
 </style>
 
  <div class="sectioncont funds-dtl myfunds-dtl">
-<<<<<<< HEAD
-    <div class="m_title" id="wallet"> Your <?= strtoupper($currencyname); ?> Transactions </div>
+
+    <div class="m_title" id="wallet"><span style="text-align:center;"> Your <?= strtoupper($currencyname); ?> Transactions </span></div>
     <div class="HideZeroDiv pull-left" id="hideZbtn">
       <div class="row">
         <a href="javascript:;" onclick="showtable('alldetail');" class="normal-depo fund-deposit">All</a>
@@ -222,7 +234,7 @@ $postData = array(
         <input type="hidden" id="min"><input type="hidden" id="max"> -->
     </div>
 
-    <div class="m_title" id="wallet"> YOUR <?= strtoupper($currencyname); ?> TRANSACTIONS: </div>
+    <div class="m_title" id="wallet"></div>
 
 
 
@@ -255,11 +267,7 @@ $postData = array(
                       } elseif ($transaction['category']=="receive") {
                           $tx_type = '<b style="color: #01DF01;">Received</b>';
                       } else {
-                          $tx_type = '<b style="color: #01DF01;">Admin</b>';
-                          $transaction['address'] = 'BitwireX ';
-                          $transaction['confirmations'] = 'Confirmed ';
-                          $blockchain_url='';
-                          $transaction['txid']= '';
+                          continue;
                       }
                       echo '<tr>
 

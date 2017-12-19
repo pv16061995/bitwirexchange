@@ -27,14 +27,13 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
 
 
           switch ($currencyname) {
-
-             case 'INRW':
+            case 'BTC':
 
               $postData = array(
                                   "userMailId"=> $user_session,
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
-                                  "recieverINRWCoinAddress"=> $reciever_address
+                                  "recieverBTCCoinAddress"=> $reciever_address
 
                               );
 
@@ -46,7 +45,71 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                 'content' => json_encode($postData)
                                 )
                       ));
-                      $response = file_get_contents($url_api.'/INRW/sendINRW', false, $context);
+                      $response = file_get_contents($url_api.'/sendamount/sendBTC', false, $context);
+
+                          break;
+                          case 'BCH':
+
+              $postData = array(
+                                  "userMailId"=> $user_session,
+                                  "amount"=> $coin_amount,
+                                  "spendingPassword"=>$spendingpassword,
+                                  "recieverBCHCoinAddress"=> $reciever_address
+
+                              );
+
+                      // Create the context for the request
+                      $context = stream_context_create(array(
+                                'http' => array(
+                                'method' => 'POST',
+                                'header' => "Content-Type: application/json\r\n",
+                                'content' => json_encode($postData)
+                                )
+                      ));
+                      $response = file_get_contents($url_api.'/sendamount/sendBCH', false, $context);
+
+                          break;
+                          case 'LTC':
+
+              $postData = array(
+                                  "userMailId"=> $user_session,
+                                  "amount"=> $coin_amount,
+                                  "spendingPassword"=>$spendingpassword,
+                                  "recieverLTCCoinAddress"=> $reciever_address
+
+                              );
+
+                      // Create the context for the request
+                      $context = stream_context_create(array(
+                                'http' => array(
+                                'method' => 'POST',
+                                'header' => "Content-Type: application/json\r\n",
+                                'content' => json_encode($postData)
+                                )
+                      ));
+                      $response = file_get_contents($url_api.'/sendamount/sendLTC', false, $context);
+
+                          break;
+
+             case 'INRW':
+
+              $postData = array(
+                                  "userMailId"=> $user_session,
+                                  "amount"=> $coin_amount,
+                                  "spendingPassword"=>$spendingpassword,
+                                  "recieverINRCoinAddress"=> $reciever_address
+
+                              );
+
+                      // Create the context for the request
+                      $context = stream_context_create(array(
+                                'http' => array(
+                                'method' => 'POST',
+                                'header' => "Content-Type: application/json\r\n",
+                                'content' => json_encode($postData)
+                                )
+                      ));
+                      $response = file_get_contents($url_api.'/sendamount/sendINR', false, $context);
 
                           break;
                           case 'EURW':
@@ -55,7 +118,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverEURWCoinAddress"=> $reciever_address
+                                                    "recieverEURCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -67,7 +130,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/EURW/sendEURW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendEUR', false, $context);
 
                           break;
                           case 'USDW':
@@ -75,7 +138,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverUSDWCoinAddress"=> $reciever_address
+                                                    "recieverUSDCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -87,7 +150,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/USDW/sendUSDW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendUSD', false, $context);
 
                           break;
 
@@ -108,7 +171,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/GBPW/sendGBPW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendGBP', false, $context);
 
 
                           break;
@@ -118,7 +181,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverBRLWCoinAddress"=> $reciever_address
+                                                    "recieverBRLCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -130,7 +193,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/BRLW/sendBRLW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendBRL', false, $context);
 
 
                           break;
@@ -140,7 +203,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverPLNWCoinAddress"=> $reciever_address
+                                                    "recieverPLNCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -152,7 +215,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/PLNW/sendPLNW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendPLN', false, $context);
 
                           break;
 
@@ -162,7 +225,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverCADWCoinAddress"=> $reciever_address
+                                                    "recieverCADCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -174,7 +237,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/CADW/sendCADW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendCAD', false, $context);
 
                           break;
 
@@ -183,7 +246,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverTRYWCoinAddress"=> $reciever_address
+                                                    "recieverTRYCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -195,7 +258,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/TRYW/sendTRYW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendTRY', false, $context);
 
                           break;
 
@@ -216,7 +279,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/RUBW/sendRUBW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendRUB', false, $context);
 
                           break;
 
@@ -225,9 +288,8 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverMXNWCoinAddress"=> $reciever_address,
-                                                    "commentForReciever"=> "Comment for Reciever",
-                                                    "commentForSender"=> "Comment for sender"
+                                                    "recieverMXNCoinAddress"=> $reciever_address,
+                                                    
                                                 );
 
                                         // Create the context for the request
@@ -238,7 +300,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/MXNW/sendMXNW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendMXN', false, $context);
 
                            break;
                           case 'CZKW':
@@ -246,7 +308,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverCZKWCoinAddress"=> $reciever_address
+                                                    "recieverCZKCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -258,7 +320,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/CZKW/sendCZKW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendCZK', false, $context);
 
                           break;
 
@@ -267,7 +329,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverILSWCoinAddress"=> $reciever_address
+                                                    "recieverILSCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -279,7 +341,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/ILSW/sendILSW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendILS', false, $context);
 
                           break;
 
@@ -288,7 +350,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverNZDWCoinAddress"=> $reciever_address
+                                                    "recieverNZDCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -300,7 +362,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/NZDW/sendNZDW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendNZD', false, $context);
 
                           break;
 
@@ -309,7 +371,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverJPYWCoinAddress"=> $reciever_address
+                                                    "recieverJPYCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -321,7 +383,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/JPYW/sendJPYW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendJPY', false, $context);
 
                           break;
 
@@ -330,7 +392,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "userMailId"=> $user_session,
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
-                                                    "recieverSEKWCoinAddress"=> $reciever_address
+                                                    "recieverSEKCoinAddress"=> $reciever_address
 
                                                 );
 
@@ -342,7 +404,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                   'content' => json_encode($postData)
                                                   )
                                         ));
-                                        $response = file_get_contents($url_api.'/SEKW/sendSEKW', false, $context);
+                                        $response = file_get_contents($url_api.'/sendamount/sendSEK', false, $context);
 
                           break;
 
@@ -351,7 +413,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                           "userMailId"=> $user_session,
                                           "amount"=> $coin_amount,
                                           "spendingPassword"=>$spendingpassword,
-                                          "recieverAUDWCoinAddress"=> $reciever_address
+                                          "recieverAUDCoinAddress"=> $reciever_address
 
                                       );
 
@@ -363,7 +425,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                         'content' => json_encode($postData)
                                         )
                               ));
-                              $response = file_get_contents($url_api.'/AUDW/sendAUDW', false, $context);
+                              $response = file_get_contents($url_api.'/sendamount/sendAUD', false, $context);
 
                           break;
 

@@ -5,10 +5,10 @@
 
   <div class="maichu">
   <div class="b-s-title clearfix">
-     <div class="b-s-t-left">Last BID <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_BID'></span></div>
+     <div class="b-s-t-left">Total BID <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_BID'></span></div>
       <br>
 
-      <div class="b-s-t-left">Last BID <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastbid'></span></div>
+      <div class="b-s-t-left">Total BID <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastbid'></span></div>
 </div>
     <div class="m_con maidan">
       <box padding-bottom=0 class= "right-list list" >
@@ -36,10 +36,10 @@
 
   <div class="mairu">
     <div class="b-s-title clearfix">
-      <div class="b-s-t-left">Last ASK <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_ASK'></span></div>
+      <div class="b-s-t-left">Total ASK <?= $currency1;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span class="red" id='orderbook_last_ASK'></span></div>
       <br>
 
-      <div class="b-s-t-left">Last ASK <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastask'></span></div>
+      <div class="b-s-t-left">Total ASK <?= $currency2;?><span class="unit-symbol" id="orderUnitSymbol"></span><span class="unit-symbol hide" id="cnySymbol"></span><span style="margin:10px;" class="red" id='orderbook_lastask'></span></div>
       
     </div>
     <div class="m_con maidan">

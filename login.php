@@ -106,6 +106,15 @@ if (isset($_POST['btnlogin'])) {
         $_SESSION['is_email_verify'] = $responseData['user']['verifyEmail'];
         $_SESSION['user_admin'] = $responseData['user']['isAdmin'];
 
+        $_SESSION['BTCAddress'] = $responseData['user']['isBTCAddress'];
+        $_SESSION['userbtcaddress'] = $responseData['user']['userBTCAddress'];
+
+        $_SESSION['BCHAddress'] = $responseData['user']['isBCHAddress'];
+        $_SESSION['userbchaddress'] = $responseData['user']['userBCHAddress'];
+
+        $_SESSION['LTCAddress'] = $responseData['user']['isLTCAddress'];
+        $_SESSION['userltcaddress'] = $responseData['user']['userLTCAddress'];
+
         $_SESSION['INRWAddress'] = $responseData['user']['isINRAddress'];
         $_SESSION['userinraddress'] = $responseData['user']['userINRAddress'];
 

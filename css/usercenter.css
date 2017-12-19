@@ -42,7 +42,7 @@ div.header {color: #aaa;background: #09162e;}
 .dark-body div.header {color: #aaa;background: none;}
 .header .caret:before{ color: #09162e}
 .leftbar,.main_content{ border-top: none}
-.leftbar{ min-height: 834px;position: relative}
+.leftbar{ min-height: 930px;position: relative}
 .qqtel{ position: inherit; float: left;right: 10px;top: -6px;}
 #funds_wrapper .dataTables_filter{ bottom: auto; top:-55px}
 #funds_wrapper input{ width: 100%}

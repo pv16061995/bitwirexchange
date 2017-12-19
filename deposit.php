@@ -21,6 +21,54 @@ if(isset($_GET['curr']))
 {
   $currencyname=base64_decode($_GET['curr']);
   switch ($currencyname) {
+    case 'BTC':
+                if($_SESSION['BTCAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/addrgen/getNewBTCAddress', false, $context);
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                            
+                        }
+                }
+                else
+                {
+                    $bcc_address = $_SESSION['userbtcaddress'];
+
+                }
+        break;
+        case 'BCH':
+                if($_SESSION['BCHAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/addrgen/getNewBCHAddress', false, $context);
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                            
+                        }
+                }
+                else
+                {
+                    $bcc_address = $_SESSION['userbchaddress'];
+
+                }
+        break;
+        case 'LTC':
+                if($_SESSION['LTCAddress']=== false)
+                {
+                  $response = file_get_contents($url_api.'/addrgen/getNewLTCAddress', false, $context);
+                          $responseData = json_decode($response, true);
+                        if (isset($responseData)) {
+                            $bcc_address = $responseData['newaddress'];
+                            
+                        }
+                }
+                else
+                {
+                    $bcc_address = $_SESSION['userltcaddress'];
+
+                }
+        break;
         case 'INRW':
                 if($_SESSION['INRWAddress']=== false)
                 {

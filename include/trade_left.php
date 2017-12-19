@@ -33,7 +33,7 @@
 							<thead>
 								<tr role="row" style="height:40px">
 										<th class="no-wrap sortable sorting"><b>Type</b></th>
-										<th class="no-wrap sortable sorting">Ask<span id="leftPriceType">(<?php echo $cat->name;?>)</span></th>
+										<th class="no-wrap sortable sorting">Ask<span id="leftPriceType"></span></th>
 										<!-- <th class="no-wrap sortable sorting" id="leftbarupdntop">24h %</th> -->
 									</tr>
 			</thead><tbody>

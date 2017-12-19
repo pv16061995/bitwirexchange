@@ -172,14 +172,16 @@ $('#alertmsg').html('<div class="alert alert-danger"><strong>Please Login First 
 $('#alertmsg').html('<div class="alert alert-danger"><strong>Please filled price and amount first !!!</strong>  </div>');
 }
 }
-function del(bidIdINR,bidownerId) {
+var sub_curr='<?php echo substr($currency1,0,3);?>';
+var main_curr='<?php echo   strtolower($currency2);?>';
+function del(bidId,bidownerId) {
 
     if (confirm("Do You Want To Delete!")) {
       $.ajax({
         type: "POST",
-        url: url_api + '/trademarketbtcinr/removeBidINRMarket',
+         url: url_api + "/trademarket"+main_curr+sub_curr.toLowerCase()+"/removeBid"+sub_curr+"Market",
         data: {
-          "bidIdINR": bidIdINR,
+          "bidId<?php echo substr($currency1,0,3);?>": bidId,
           "bidownerId": bidownerId
         },
         success: function(result){
@@ -189,13 +191,13 @@ function del(bidIdINR,bidownerId) {
       });
     }
   }
-  function del_ask(askIdINR,askownerId) {
+  function del_ask(askId,askownerId) {
     if (confirm("Do You Want To Delete!")) {
       $.ajax({
         type: "POST",
-        url: url_api + '/trademarketbtcinr/removeAskINRMarket',
+        url: url_api + "/trademarket"+main_curr+sub_curr.toLowerCase()+"/removeAsk"+sub_curr+"Market",
         data: {
-          "askIdINR":askIdINR,
+          "askId<?php echo substr($currency1,0,3);?>":askId,
           "askownerId":askownerId
 
         },
@@ -221,7 +223,7 @@ getCurrentAskPrice();
 function getCurrentAskPrice(data){
   $.ajax({
       type: "POST",
-      url: url_api+ "/trademarketbtcinr/getAllAskINR",
+      url: url_api+ "/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAllAsk"+sub_curr+"",
       data: {},
       success: function(data)
       {

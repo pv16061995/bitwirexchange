@@ -294,7 +294,7 @@ if(isset($_GET['curr']))
 							</tr>
 							<tr class="tableOrderTr" t="static" >
 								<td>Freeze Balance</td>
-								<td><span  id="balance_bid_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency1;?></span></td>
+								<td><span  id="balance_bid_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency2;?></span></td>
 								<td></td>
 							</tr>
 
@@ -376,7 +376,7 @@ if(isset($_GET['curr']))
 								</tr>
 								<tr class="tableOrderTr" t="static" >
 									<td>Freeze Balance</td>
-									<td><span  id="balance_ask_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency2;?></span></td>
+									<td><span  id="balance_ask_freeze" style="font-weight:600"></span><span class="coin-unit"><?= $currency1;?></span></td>
 									<td></td>
 								</tr>
 
@@ -391,7 +391,7 @@ if(isset($_GET['curr']))
 								</tr>
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency1;?></span>
+									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency2;?></span>
 										<input id="ask_vol" class="inputRate" maxlength="10"
 											   onkeydown="return check_number(event);" onkeyup="askAmount()"
 											   value="" />
