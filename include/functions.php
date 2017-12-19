@@ -221,11 +221,8 @@ getCurrentAskPrice();
 function getCurrentAskPrice(data){
   $.ajax({
       type: "POST",
-      url: url_api+ "/user/getAllDetailsOfUser",
-      data: {
-        userMailId: '<?php echo $_SESSION['user_session']; ?>'
-
-      },
+      url: url_api+ "/trademarketbtcinr/getAllAskINR",
+      data: {},
       success: function(data)
       {
         
@@ -455,7 +452,7 @@ function userOpenOrders(){
             +finalObj[i].totalbidAmountINR+
             '</td><td>'
             +finalObj[i].totalbidAmountBTC+
-            '</td><td><a class="text-danger" onclick="del(id='+finalObj[i].id +',ownwe='+finalObj[i].bidownerINR+');"><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a></td></tr>');
+            '</td><td><a class="text-danger " onclick="del(id='+finalObj[i].id +',ownwe='+finalObj[i].bidownerINR+');"><i class="fa fa-window-close fa-2x closebtn" aria-hidden="true"></i></a></td></tr>');
         }
         else{
           $('#ulMyOrderList').append('<tr><td>'
@@ -468,7 +465,7 @@ function userOpenOrders(){
             +finalObj[i].totalaskAmountINR+
             '</td><td>'
             +finalObj[i].totalaskAmountBTC+
-            '</td><td><a class="text-danger" onclick="del_ask(id='+finalObj[i].id+',askowner='+finalObj[i].askownerINR+');" ><i class="fa fa-window-close fa-2x" aria-hidden="true"></i></a>'+
+            '</td><td><a class="text-danger" onclick="del_ask(id='+finalObj[i].id+',askowner='+finalObj[i].askownerINR+');" ><i class="fa fa-window-close fa-2x closebtn" aria-hidden="true"></i></a>'+
             '</td></tr>');
         }
       }

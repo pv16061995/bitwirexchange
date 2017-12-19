@@ -440,12 +440,20 @@ if(isset($_GET['curr']))
 				
 				            </div>
 
+				            <style type="text/css">
+				            	.myorder td{
+				            		border:1px solid;
+				            	}
 
+				            	.closebtn{
+				            		margin-top: 2px !important;
+				            	}
+				            </style>
 			<div id="currOrder" class="m_con cjbox" style="height: 250px;border: 1px solid #ddd;background: #fff;">
 				<div id="order-info-box" class="box">
 					<div class="list-wrapper">
 						
-						<table class="dataTable" >
+						<table class="dataTable myorder" >
 						<thead>
 						<tr>
 							<td width="20%">ORDER DATE	</td>
@@ -478,7 +486,7 @@ if(isset($_GET['curr']))
 			<div class="list-wrapper">
 				
 					
-					<table class="dataTable" >
+					<table class="dataTable myorder" >
 						<thead>
 						<tr>
 							<td width="20%">ORDER DATE	</td>
