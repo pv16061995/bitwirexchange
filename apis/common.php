@@ -1,6 +1,8 @@
 <?php
+
 class allapi
 {
+ 
 
   public function getallcategory()
   {
@@ -66,6 +68,8 @@ class allapi
     return $data;
   }
 }
+
+
 
 function page_protect()
 {

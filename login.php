@@ -279,7 +279,7 @@ if (isset($_POST['btnlogin'])) {
 							<label for="password">Password</label>
 							<input type="password" class="form-control" name="emailpassword" id="password">
 							<div class="input-item-info">
-                <a href="resetpw.html" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
+                <a href="#" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
 
 						</div>
 
@@ -326,7 +326,7 @@ if (isset($_POST['btnlogin'])) {
 							<div class="form-group has-feedback" id="signup_pswGroup">
 								<label for="sig_password">Password</label>
 								<input type="password"  name="signuppassword" class="form-control" id="sig_password" autocomplete="new-password">
-								<div class="input-item-info"><span class="r-tip">(Passwords must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<div class="input-item-info"><span class="r-tip">(Password must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
 								<div class="password-level hide clearfix" id="signPswLevel">
 									<div class="col-md-4"><span id="loWeak">Too weak</span></div>
 									<div class="col-md-4"><span id="loNormal">Good</span></div>
@@ -339,7 +339,7 @@ if (isset($_POST['btnlogin'])) {
 							<div class="form-group has-feedback" id="signup_pswGroup">
 								<label for="sig_password">Confirm Password</label>
 								<input type="password"  name="confirmpassword" class="form-control" id="sig_password" autocomplete="new-password">
-								<div class="input-item-info"><span class="r-tip">(Passwords must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
+								<div class="input-item-info"><span class="r-tip">(Password must be at least 6 characters, non-pure numbers)</span></div><span class="glyphicon glyphicon-ok form-control-feedback"></span>
 								<div class="password-level hide clearfix" id="signPswLevel">
 									<div class="col-md-4"><span id="loWeak">Too weak</span></div>
 									<div class="col-md-4"><span id="loNormal">Good</span></div>

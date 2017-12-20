@@ -14,11 +14,11 @@
             <td class="no-wrap alignRight" width="100%" style="border-bottom:0">
                 <ul id='market_controller' class="clearfix">
 
-									<?php
-										$i=1;
-									foreach($result as $cat) { ?>
-											<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if($i==1){echo "tn_selected";} ?>"><?php echo $cat->name;?></button>
-											<?php $i++; }?>
+			<?php
+				$i=1;
+			foreach($result as $cat) { ?>
+					<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if(($i==1) && ($currency2==$cat->name)){echo "tn_selected";} if($currency2==$cat->name){echo "tn_selected";}?>"><?php echo $cat->name;?></button>
+					<?php $i++; }?>
 
                 </ul>
                 <!-- <input type="text" class="search" id="marketSearch" value="Search..." /> -->
@@ -39,11 +39,17 @@
 			</thead><tbody>
 			<?php
 			$i=1;
+			$money=getallaskbid();
+
+			
 			foreach($subcat[$cat->id]['subcat'] as $subcatgory)
-				{?>
+				{
+					$pricecat=explode("W/",$subcatgory);
+
+					?>
 				 <tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
 				  <td><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
-				  <td class="alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>"><span id="ask_current"></span></a></td>
+				  <td class="alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">Ask:<span style="color:red;"><?php echo $money['ask'.$pricecat[1].$pricecat[0]];?></span><br>Bid:<span style="color:green;"><?php echo $money['bid'.$pricecat[1].$pricecat[0]];?></span></a></td>
 				  <!-- <td class=" alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td> -->
 				</tr>
 
@@ -89,15 +95,15 @@
 
 
             if (td == 'BTC') {
-							$("#marketlist_container_bch,#marketlist_container_ltc").css('display', 'none');
+				$("#marketlist_container_bch,#marketlist_container_ltc").css('display', 'none');
                 $("#marketlist_container_btc").css('display', 'block');
                 base = 'USDT';
             } else if (td == 'BCH') {
-							$("#marketlist_container_btc,#marketlist_container_ltc").css('display', 'none');
+				$("#marketlist_container_btc,#marketlist_container_ltc").css('display', 'none');
                 $("#marketlist_container_bch").css('display', 'block');
                 base = 'BTC';
             } else if (td == 'LTC') {
-							$("#marketlist_container_btc,#marketlist_container_bch").css('display', 'none');
+				$("#marketlist_container_btc,#marketlist_container_bch").css('display', 'none');
                 $("#marketlist_container_ltc").css('display', 'block');
                 base = 'ETH';
             }
@@ -105,6 +111,10 @@
 
         return false;
     });
+$( document ).ready(function() {
+			$("#marketlist_container_bch,#marketlist_container_ltc,#marketlist_container_btc").css('display', 'none');
+			$('#marketlist_container_<?php echo strtolower($currency2);?>').show();
+		});
 
 // 	$('#marketSearch').keyup(function(e) {
 // 		var needle = $(this).val();
@@ -131,4 +141,44 @@
 //     });
  });
 
+</script>
+
+
+<?php 
+
+function getallaskbid()
+  {
+  
+      $content = file_get_contents( URL_API."/balance/getRatesAllBidAsk");
+
+	   $data=json_decode($content,true);
+
+
+
+    return $data;
+  }
+?>
+<script type="text/javascript" src="js/sails.io.js"></script>
+<script type="text/javascript">
+  io.sails.url = 'http://209.188.21.216:1338';
+  window.ioo = io;
+  socket = io.connect( 'http://209.188.21.216:1338', {
+    reconnection: true,
+    reconnectionDelay: 1000,
+    reconnectionDelayMax : 5000,
+    reconnectionAttempts: 99999
+  });
+
+  socket.on( 'connect', function () {} );
+  socket.on( 'disconnect', function () { socket.connect();  } );
+
+  io.socket.on('INR_ASK_ADDED', function askCreated(data){
+
+    getallaskbid();
+    });
+  io.socket.on('INR_BID_ADDED', function bidCreated(data){
+
+    getallaskbid();
+
+    });
 </script>

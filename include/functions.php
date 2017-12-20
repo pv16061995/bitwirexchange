@@ -421,7 +421,7 @@ function getAllAsk(){
                 if(j==data.asks<?php echo substr($currency1,0,3);?>.length) break;
                 if(data.asks<?php echo substr($currency1,0,3);?>[j].status != 1){
 
-                $('#ask-list').append('<tr><td> ASK  </td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askRate + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo substr($currency1,0,3);?> + '</td><td>' + data.asksINR[j].askAmount<?php echo $currency2;?> + '</td></tr>');
+                $('#ask-list').append('<tr><td> ASK  </td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askRate + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo substr($currency1,0,3);?> + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo $currency2;?> + '</td></tr>');
                 }
           }
         }
@@ -546,7 +546,7 @@ function userOpenOrders(){
         for (var i = 0; i < 30; i++) {
           if(i==bid_orders.bids<?php echo substr($currency1,0,3);?>.length) break;
           $('#my-fund-list').append('<tr><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].createTimeUTC + '</td>'+
-            '</td><td>BID</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmountBTC + '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo substr($currency1,0,3);?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo $currency2;?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo substr($currency1,0,3);?> + '</td></tr>')
+            '</td><td>BID</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo $currency2;?>+ '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo substr($currency1,0,3);?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo $currency2;?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo substr($currency1,0,3);?> + '</td></tr>')
         }
 
       }
@@ -572,7 +572,7 @@ function userOpenOrders(){
     });
   }
 
-  io.socket.on('INR_ASK_ADDED', function askCreated(data){
+  io.socket.on('<?php echo substr($currency1,0,3);?>_ASK_ADDED', function askCreated(data){
 
     getAllAskTotal();
     orderBookAsk();
@@ -581,7 +581,7 @@ function userOpenOrders(){
     getCurrentAskPrice();
     getAsksSuccess();
     });
-  io.socket.on('INR_BID_ADDED', function bidCreated(data){
+  io.socket.on('<?php echo substr($currency1,0,3);?>_BID_ADDED', function bidCreated(data){
 
     getAllBidTotal();
     orderBookBid();
@@ -591,19 +591,21 @@ function userOpenOrders(){
     getBidsSuccess();
 
     });
-   io.socket.on('INR_BID_DESTROYED', function bidCreated(data){
+   io.socket.on('<?php echo substr($currency1,0,3);?>_BID_DESTROYED', function bidCreated(data){
       getAllBidTotal();
       orderBookBid();
       userOpenOrders();
      userClosedOrders();
+     getBidsSuccess();
 
 
     });
-   io.socket.on('INR_ASK_DESTROYED', function askCreated(data){
+   io.socket.on('<?php echo substr($currency1,0,3);?>_ASK_DESTROYED', function askCreated(data){
       getAllAskTotal();
       orderBookAsk();
       userOpenOrders();
      userClosedOrders();
+     getAsksSuccess();
 
     });
 

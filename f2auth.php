@@ -139,7 +139,7 @@ if (isset($_POST['disable'])) {
 
 
 				<br>
-				<p>Notice: <b>Do NOT delete the "Google Authenticator" app on your smartphone when it's enabled. </b>If you lost your phone or deleted the "Google Authenticator", please contact us at Email: support@bitwire.io </p>
+				<p>Notice: <b>Do NOT delete the "Google Authenticator" app on your smartphone when it's enabled. </b>If you lost your phone or deleted the "Google Authenticator", please contact us at Email: support@bitwireX.io </p>
 
 				</div>
 			</div>
