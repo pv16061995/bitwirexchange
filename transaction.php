@@ -25,95 +25,19 @@ $postData = array(
     {
 
   $currencyname=base64_decode($_GET['curr']);
+if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $currencyname=='GBPW' || $currencyname=='BRLW'
+ || $currencyname=='PLNW' || $currencyname=='CADW' || $currencyname=='TRYW' || $currencyname=='RUBW'
+  || $currencyname=='MXNW' || $currencyname=='CZKW' || $currencyname=='ILSW' || $currencyname=='NZDW' || $currencyname=='USDW'
+   || $currencyname=='SEKW' || $currencyname=='AUDW' || $currencyname=='BTC' || $currencyname=='BCH' || $currencyname=='LTC'
+ )
+ {
+   $response = file_get_contents($url_api.'/tx/getTxsList'.substr($currencyname,0,3), false, $context);
+ }else{
+   $currencyname='INRW';
+   $response = file_get_contents($url_api.'/tx/getTxsList'.substr($currencyname,0,3), false, $context);
+ }
 
-    switch ($currencyname) {
-      case 'BTC':
-
-                 $response = file_get_contents($url_api.'/tx/getTxsListBTC', false, $context);
-          break;
-          case 'BCH':
-
-                 $response = file_get_contents($url_api.'/tx/getTxsListBCH', false, $context);
-          break;
-          case 'LTC':
-
-                 $response = file_get_contents($url_api.'/tx/getTxsListLTC', false, $context);
-          break;
-      case 'INRW':
-
-                 $response = file_get_contents($url_api.'/tx/getTxsListINR', false, $context);
-          break;
-          case 'EURW':
-
-               $response = file_get_contents($url_api.'/tx/getTxsListEUR', false, $context);
-          break;
-          case 'USDW':
-           $response = file_get_contents($url_api.'/tx/getTxsListUSD', false, $context);
-          break;
-
-          case 'GBPW':
-           $response = file_get_contents($url_api.'/tx/getTxsListGBP', false, $context);
-
-          break;
-
-          case 'BRLW':
-           $response = file_get_contents($url_api.'/tx/getTxsListBRL', false, $context);
-
-          break;
-
-          case 'PLNW':
-           $response = file_get_contents($url_api.'/tx/getTxsListPLN', false, $context);
-
-          break;
-
-          case 'CADW':
-          $response = file_get_contents($url_api.'/tx/getTxsListCAD', false, $context);
-          break;
-
-          case 'TRYW':
-          $response = file_get_contents($url_api.'/tx/getTxsListTRY', false, $context);
-          break;
-
-          case 'RUBW':
-          $response = file_get_contents($url_api.'/tx/getTxsListRUB', false, $context);
-          break;
-
-          case 'MXNW':
-          $response = file_get_contents($url_api.'/tx/getTxsListMXN', false, $context);
-           break;
-          case 'CZKW':
-           $response = file_get_contents($url_api.'/tx/getTxsListCZK', false, $context);
-          break;
-
-          case 'ILSW':
-           $response = file_get_contents($url_api.'/tx/getTxsListILS', false, $context);
-          break;
-
-          case 'NZDW':
-          $response = file_get_contents($url_api.'/tx/getTxsListNZD', false, $context);
-          break;
-
-          case 'JPYW':
-           $response = file_get_contents($url_api.'/tx/getTxsListJPY', false, $context);
-          break;
-
-          case 'SEKW':
-          $response = file_get_contents($url_api.'/tx/getTxsListSEK', false, $context);
-          break;
-
-          case 'AUDW':
-          $response = file_get_contents($url_api.'/tx/getTxsListAUD', false, $context);
-          break;
-
-          default:
-                $currencyname='INRW';
-                 $response = file_get_contents($url_api.'/tx/getTxsListINR', false, $context);
-
-
-
-    }
-
-  }
+}
 
   $responseData = json_decode($response, true);
 

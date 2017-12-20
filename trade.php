@@ -3,16 +3,17 @@ include 'include/allheader.php';
 if(isset($_GET['curr']))
 {
   $currencyname=base64_decode($_GET['curr']);
-
+  $curre=explode("/",$currencyname);
+  $currency1=$curre['0'];
+  $currency2=$curre['1'];
+}else{
+  $currencyname='INRW/BTC';
   $curre=explode("/",$currencyname);
   $currency1=$curre['0'];
   $currency2=$curre['1'];
 }
 
 ?>
-<script>
-
-</script>
 
 <style>
 	.side-sev{ top:235px; display: none}
@@ -67,72 +68,7 @@ if(isset($_GET['curr']))
 	#ul-bid-list .price:before{color: #de5959;}
 	#ul-ask-list,#ul-ask-list li{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);z-index: 9991}
 	#ul-ask-list{ height: 768px}
-	/*卖单档位名称*/
-	#ul-ask-list li:nth-child(1) .price:before{ content: 'Sell1'}
-	#ul-ask-list li:nth-child(2) .price:before{ content: 'Sell2'}
-	#ul-ask-list li:nth-child(3) .price:before{ content: 'Sell3'}
-	#ul-ask-list li:nth-child(4) .price:before{ content: 'Sell4'}
-	#ul-ask-list li:nth-child(5) .price:before{ content: 'Sell5'}
-	#ul-ask-list li:nth-child(6) .price:before{ content: 'Sell6'}
-	#ul-ask-list li:nth-child(7) .price:before{ content: 'Sell7'}
-	#ul-ask-list li:nth-child(8) .price:before{ content: 'Sell8'}
-	#ul-ask-list li:nth-child(9) .price:before{ content: 'Sell9'}
-	#ul-ask-list li:nth-child(10) .price:before{ content: 'Sell10'}
-	#ul-ask-list li:nth-child(11) .price:before{ content: 'Sell11'}
-	#ul-ask-list li:nth-child(12) .price:before{ content: 'Sell12'}
-	#ul-ask-list li:nth-child(13) .price:before{ content: 'Sell13'}
-	#ul-ask-list li:nth-child(14) .price:before{ content: 'Sell14'}
-	#ul-ask-list li:nth-child(15) .price:before{ content: 'Sell15'}
-	#ul-ask-list li:nth-child(16) .price:before{ content: 'Sell16'}
-	#ul-ask-list li:nth-child(17) .price:before{ content: 'Sell17'}
-	#ul-ask-list li:nth-child(18) .price:before{ content: 'Sell18'}
-	#ul-ask-list li:nth-child(19) .price:before{ content: 'Sell19'}
-	#ul-ask-list li:nth-child(20) .price:before{ content: 'Sell20'}
-	#ul-ask-list li:nth-child(21) .price:before{ content: 'Sell21'}
-	#ul-ask-list li:nth-child(22) .price:before{ content: 'Sell22'}
-	#ul-ask-list li:nth-child(23) .price:before{ content: 'Sell23'}
-	#ul-ask-list li:nth-child(24) .price:before{ content: 'Sell24'}
-	#ul-ask-list li:nth-child(25) .price:before{ content: 'Sell25'}
-	#ul-ask-list li:nth-child(26) .price:before{ content: 'Sell26'}
-	#ul-ask-list li:nth-child(27) .price:before{ content: 'Sell27'}
-	#ul-ask-list li:nth-child(28) .price:before{ content: 'Sell28'}
-	#ul-ask-list li:nth-child(29) .price:before{ content: 'Sell29'}
-	#ul-ask-list li:nth-child(30) .price:before{ content: 'Sell30'}
-	#ul-ask-list li:nth-child(31) .price:before{ content: 'Sell31'}
-	#ul-ask-list li:nth-child(32) .price:before{ content: 'Sell32'}
-	/*买单档位名称*/
-	#ul-bid-list li:nth-child(1) .price:before{ content: 'Buy1'}
-	#ul-bid-list li:nth-child(2) .price:before{ content: 'Buy2'}
-	#ul-bid-list li:nth-child(3) .price:before{ content: 'Buy3'}
-	#ul-bid-list li:nth-child(4) .price:before{ content: 'Buy4'}
-	#ul-bid-list li:nth-child(5) .price:before{ content: 'Buy5'}
-	#ul-bid-list li:nth-child(6) .price:before{ content: 'Buy6'}
-	#ul-bid-list li:nth-child(7) .price:before{ content: 'Buy7'}
-	#ul-bid-list li:nth-child(8) .price:before{ content: 'Buy8'}
-	#ul-bid-list li:nth-child(9) .price:before{ content: 'Buy9'}
-	#ul-bid-list li:nth-child(10) .price:before{ content: 'Buy10'}
-	#ul-bid-list li:nth-child(11) .price:before{ content: 'Buy11'}
-	#ul-bid-list li:nth-child(12) .price:before{ content: 'Buy12'}
-	#ul-bid-list li:nth-child(13) .price:before{ content: 'Buy13'}
-	#ul-bid-list li:nth-child(14) .price:before{ content: 'Buy14'}
-	#ul-bid-list li:nth-child(15) .price:before{ content: 'Buy15'}
-	#ul-bid-list li:nth-child(16) .price:before{ content: 'Buy16'}
-	#ul-bid-list li:nth-child(17) .price:before{ content: 'Buy17'}
-	#ul-bid-list li:nth-child(18) .price:before{ content: 'Buy18'}
-	#ul-bid-list li:nth-child(19) .price:before{ content: 'Buy19'}
-	#ul-bid-list li:nth-child(20) .price:before{ content: 'Buy20'}
-	#ul-bid-list li:nth-child(21) .price:before{ content: 'Buy21'}
-	#ul-bid-list li:nth-child(22) .price:before{ content: 'Buy22'}
-	#ul-bid-list li:nth-child(23) .price:before{ content: 'Buy23'}
-	#ul-bid-list li:nth-child(24) .price:before{ content: 'Buy24'}
-	#ul-bid-list li:nth-child(25) .price:before{ content: 'Buy25'}
-	#ul-bid-list li:nth-child(26) .price:before{ content: 'Buy26'}
-	#ul-bid-list li:nth-child(27) .price:before{ content: 'Buy27'}
-	#ul-bid-list li:nth-child(28) .price:before{ content: 'Buy28'}
-	#ul-bid-list li:nth-child(29) .price:before{ content: 'Buy29'}
-	#ul-bid-list li:nth-child(30) .price:before{ content: 'Buy30'}
-	#ul-bid-list li:nth-child(31) .price:before{ content: 'Buy31'}
-	#ul-bid-list li:nth-child(32) .price:before{ content: 'Buy32'}
+	
 
 	.top-up a,.login_lan .lang-option,.top-up .ask_ans,.gateio-nav > li > a{ color: #dbe2e4}
 	div.top-up {float:right;width:auto;background:none;margin-top:6px;padding-left:0;}
@@ -266,13 +202,13 @@ if(isset($_GET['curr']))
 
 
 
-		
-			<div class="right_mcontent clearfix">      
-			    <div id="container" class="container" width="500"></div>    
+
+			<div class="right_mcontent clearfix">
+			    <div id="container" class="container" width="500"></div>
 			        </div>
 <div class="kline-title"><?= $currency1;?> / <?= $currency2;?> KLINE</div>
 
-													
+
 
 				<div class="trade-main clearfix">
 
@@ -303,7 +239,7 @@ if(isset($_GET['curr']))
 								<td colspan="3" class="input-td">
 								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
 									<input id="bid_rate" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmount()"
-										  
+
 										   value=""  />
 								</td>
 
@@ -348,7 +284,7 @@ if(isset($_GET['curr']))
 
                     </div>
                 </div>
-               
+
 
 <!--  ..............ASK FORM............ -->
 
@@ -421,23 +357,23 @@ if(isset($_GET['curr']))
 								</tr>
                 <tr>
   								<td colspan="3" class="input-td" style="border:0" id="alertmsg1">
-  							
+
   								</td>
-  								
+
   							</tr>
 							</table>
 
 
 						</div>
 					</div>
-        
+
 
 					<div id='divMyOrderSection'><!--style='display:none'-->
 						<div class="mairu my-order-box">
 
 			<div class="m_title">
                 <span class="order-tab order-t-active" id="ot1">My Orders</span>
-				
+
 				            </div>
 
 				            <style type="text/css">
@@ -456,13 +392,24 @@ if(isset($_GET['curr']))
 				            	.closebtn{
 				            		margin-top: 2px !important;
 				            	}
+                      .list-wrapper
+                      {
+                        overflow-x: scroll;
+                        height: 250px !important;
+                      }
+                      .thead-blu
+                      {
+                        color:#fff;
+                        text-align:center;
+				            		background-color: #00283a;
+                      }
 				            </style>
 			<div id="currOrder" class="m_con cjbox" style="height: 250px;border: 1px solid #ddd;background: #fff;">
 				<div id="order-info-box" class="box">
 					<div class="list-wrapper">
-						
+
 						<table class="dataTable myorder" >
-						<thead>
+						<thead class="thead-blu">
 						<tr>
 							<td width="20%">ORDER DATE	</td>
 							<td width="10%">BID/ASK	</td>
@@ -477,25 +424,27 @@ if(isset($_GET['curr']))
 						</tbody>
 						</table>
 
-						
+
 					</div>
 
 				</div>
 			</div>
-		
+
 						</div>
 						<div class="maichu my-order-box">
 
 	<div class="m_title" id="myFunds">
+      <span class="order-tab order-t-active" >
 		My Success Orders
+  </span>
 			</div>
 <div id="currFunds" class="m_con cjbox" style="border: 1px solid #ddd;background: #fff;">
 		<div id="fund-info-box" class="box">
 			<div class="list-wrapper">
-				
-					
+
+
 					<table class="dataTable myorder" >
-						<thead>
+						<thead class="thead">
 						<tr>
 							<td width="20%">ORDER DATE	</td>
 							<td width="10%">BID/ASK	</td>
@@ -503,13 +452,13 @@ if(isset($_GET['curr']))
 							<td width="10%">ACTUAL RATE	</td>
 							<td width="10%">UNITS TOTAL<?= $currency1;?></td>
 							<td width="10%">UNITS TOTAL <?= $currency2;?></td>
-							
+
 						</tr>
 						</thead>
 						<tbody id="my-fund-list" >
 						</tbody>
 						</table>
-				
+
 			</div>
 
 		</div>
@@ -521,7 +470,7 @@ if(isset($_GET['curr']))
 
 				<?php include 'include/trade_right.php';?>
 
-					<?php include 'include/functions.php';?> 
+					<?php include 'include/functions.php';?>
 
 				</div>
 			</div>
@@ -581,7 +530,7 @@ $.getJSON(url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/getBids"+sub
                console.log('jfd' + bid_orders.bidsBCH[i].bidRate + bid_orders.bidsBCH[i].createdAt);
         }*/
         var  tempask = dataask.asks<?php echo substr($currency1,0,3);?>;
-       
+
         //console.log("asdfasdf "+JSON.stringify(tempask));
         if(tempask){
           for (var i = 0; i < tempask.length; i++) {
@@ -593,6 +542,9 @@ $.getJSON(url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/getBids"+sub
         Highcharts.chart('container', {
            chart: {
                zoomType: 'x'
+           },
+           title:{
+             text:'      '
            },
 
            subtitle: {
@@ -645,7 +597,7 @@ $.getJSON(url_api+"/trademarket"+main_curr+sub_curr.toLowerCase()+"/getBids"+sub
              // },
              {
                type: 'area',
-               name: 'Sell',
+               name: 'Price',
                data: arrayObjectask
            }],
            responsive: {

@@ -977,7 +977,7 @@ button[disabled],button[disabled]:hover,.sub-btn[disabled],.sub-btn[disabled]:ho
 .nav-trade-item .second-nav > li:nth-child(4) .third-nav{  background-color: #714300 }
 .nav-trade-item .second-nav > li:nth-child(5) .third-nav{  background-color: #67001e }
 .second-nav > li:hover .third-nav li:first-child {border-left:1px solid #ff6e00;margin-left:-1px}
-.third-nav li {width:16.66%;height:39px;border-bottom: 1px solid transparent;float:left}
+.third-nav li {width:25%;height:39px;border-bottom: 1px solid transparent;float:left}
 .nav-finance {width:20vw;min-width:320px}
 .nav-finance li {width:50%}
 .nav-finance .nav-big {width:100%}

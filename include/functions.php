@@ -233,15 +233,15 @@ function getCurrentAskPrice(data){
       data: {},
       success: function(data)
       {
-      
-        
+
+
     if(data.asks<?php echo substr($currency1,0,3);?>){
 
       $('#ask_current').empty();
       for(var i=0; i< data.asks<?php echo substr($currency1,0,3);?>.length;i++){
         if(data.asks<?php echo substr($currency1,0,3);?>[i].status == 2){
           $('#ask_current').append(" &nbsp;"+data.asks<?php echo substr($currency1,0,3);?>[i].askRate+"");
-          
+
           break;
         }
       }
@@ -252,8 +252,8 @@ function getCurrentAskPrice(data){
       }
     });
   }
-    
-  
+
+
 
 function getAllDetailsOfUser(){
     $.ajax({
@@ -265,7 +265,7 @@ function getAllDetailsOfUser(){
       },
       success: function(res)
       {
-        
+
          getUsermaincurrencyBalance(res);
           getUsersubcurrencyBalance(res);
 
@@ -283,8 +283,8 @@ function getAllDetailsOfUser(){
       },
       success: function(res)
       {
-        
-        
+
+
     $('#balance_bid_able').empty();
     $('#balance_bid_freeze').empty();
     $('#balance_bid_able').append(res.user.<?php echo $currency2;?>balance);
@@ -305,8 +305,8 @@ function getAllDetailsOfUser(){
       },
       success: function(res)
       {
-        
-    
+
+
     $('#balance_ask_able').empty();
     $('#balance_ask_freeze').empty();
     $('#balance_ask_able').append(res.user.<?php echo substr($currency1,0,3);?>balance);
@@ -317,7 +317,7 @@ function getAllDetailsOfUser(){
       }
     });
   }
- 
+
 function getAllAsk(){
     $.ajax({
       type: "POST",
@@ -325,8 +325,8 @@ function getAllAsk(){
       url: url_api+ "/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAllAsk"+sub_curr,
       data: {},
       success: function(data){
-        
-        
+
+
 
       }
     });
@@ -339,13 +339,13 @@ function getAllAsk(){
       url: url_api+ "/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAllBid"+sub_curr,
       data: {},
       success: function(data){
-       
- 
+
+
 
         }
       });
     }
-  
+
   function getAllAskTotal(){
     $.ajax({
       type: "POST",
@@ -353,7 +353,7 @@ function getAllAsk(){
       url: url_api+ "/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAllAsk"+sub_curr,
       data: {},
       success: function(data){
-        
+
         $('#orderbook_last_ASK').empty();
         $('#orderbook_lastask').empty();
         if(data.askAmount<?php echo $currency2;?>Sum && data.askAmount<?php echo substr($currency1,0,3);?>Sum){
@@ -373,7 +373,7 @@ function getAllAsk(){
       url: url_api+ "/trademarket"+main_curr+sub_curr.toLowerCase()+"/getAllBid"+sub_curr,
       data: {},
       success: function(data){
-        
+
         var bid_orders = data;
         $('#orderbook_last_BID').empty();
         $('#orderbook_lastbid').empty();
@@ -396,7 +396,7 @@ function getAllAsk(){
           $('#bid-list').empty();
 
           if(data.bids<?php echo substr($currency1,0,3);?>){
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < 20; i++) {
           if(i==bid_orders.bids<?php echo substr($currency1,0,3);?>.length) break;
           if(data.bids<?php echo substr($currency1,0,3);?>[i].status != 1){
 
@@ -417,7 +417,7 @@ function getAllAsk(){
 
                 $('#ask-list').empty();
                 if(data.asks<?php echo substr($currency1,0,3);?>){
-                for (var j = 0; j < 10; j++){
+                for (var j = 0; j < 20; j++){
                 if(j==data.asks<?php echo substr($currency1,0,3);?>.length) break;
                 if(data.asks<?php echo substr($currency1,0,3);?>[j].status != 1){
 
@@ -437,14 +437,14 @@ function userOpenOrders(){
 
       },
       success: function(res){
-        
+
     $('#ulMyOrderList').empty();
     $('#ulMyOrderList').empty();
     bid=res.user.bids<?php echo substr($currency1,0,3);?>;
     ask=res.user.asks<?php echo substr($currency1,0,3);?>;
     var finalObj = bid.concat(ask);
-    
-   
+
+
     for( var i=0; i<finalObj.length; i++)
     {
       if(finalObj[i].status == 2 ){
@@ -489,13 +489,13 @@ function userOpenOrders(){
 
       },
       success: function(res){
-        
+
     $('#my-fund-list').empty();
     $('#my-fund-list').empty();
     bid=res.user.bids<?php echo substr($currency1,0,3);?>;
     ask=res.user.asks<?php echo substr($currency1,0,3);?>;
     var finalObj = bid.concat(ask);
-   
+
     for( var i=0; i<finalObj.length; i++)
     {
       if(finalObj[i].status == 1 )
@@ -573,7 +573,7 @@ function userOpenOrders(){
   }
 
   io.socket.on('INR_ASK_ADDED', function askCreated(data){
-    
+
     getAllAskTotal();
     orderBookAsk();
     userOpenOrders();
@@ -582,21 +582,21 @@ function userOpenOrders(){
     getAsksSuccess();
     });
   io.socket.on('INR_BID_ADDED', function bidCreated(data){
-   
+
     getAllBidTotal();
     orderBookBid();
     userOpenOrders();
     userClosedOrders();
     getCurrentAskPrice();
     getBidsSuccess();
-     
+
     });
    io.socket.on('INR_BID_DESTROYED', function bidCreated(data){
       getAllBidTotal();
       orderBookBid();
       userOpenOrders();
      userClosedOrders();
-     
+
 
     });
    io.socket.on('INR_ASK_DESTROYED', function askCreated(data){
@@ -604,8 +604,8 @@ function userOpenOrders(){
       orderBookAsk();
       userOpenOrders();
      userClosedOrders();
-     
+
     });
-  
-  
+
+
 </script>
