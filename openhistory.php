@@ -3,7 +3,7 @@ include 'include/allheader.php';
 
 page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
+  header("location:".BASE_PATH."logout");
  }
  $user_session = $_SESSION['user_session'];
   $url_api=URL_API;

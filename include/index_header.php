@@ -60,13 +60,13 @@ $subcat=json_decode($datasub, true);
                         <?php if(isset($_SESSION['user_id']))
                         {?>
 
-                        <li class="toplogin"><a href="myaccount.php">My Account&nbsp;</a>|&nbsp; </li>
-                        <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
-                        <?php }else 
+                        <li class="toplogin"><a href="<?= BASE_PATH?>myaccount">My Account&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin" id="toplogin"><a href="<?= BASE_PATH?>logout">Logout</a></li>
+                        <?php }else
                         {?>
-                        <li class="toplogin"><a href="login.php">Signup&nbsp;</a>|&nbsp; </li>
-                        <li class="toplogin" id="toplogin"><a href="login.php">Login</a></li>
-                        <?php 
+                        <li class="toplogin"><a href="<?= BASE_PATH?>login">Signup&nbsp;</a>|&nbsp; </li>
+                        <li class="toplogin" id="toplogin"><a href="<?= BASE_PATH?>login">Login</a></li>
+                        <?php
 
                         }
                         ?>
@@ -85,7 +85,7 @@ $subcat=json_decode($datasub, true);
     </div>
     <div class="top-dn">
         <div class="logo">
-            <a href="index.php" target="_top">
+            <a href="<?= BASE_PATH?>home" target="_top">
               <img src="<?php echo BASE_PATH;?>images/logo.png"/>
             </a>
         </div>
@@ -93,7 +93,7 @@ $subcat=json_decode($datasub, true);
 
         <ul class="gateio-nav">
             <li>
-                <a href="index.php">Home</a>
+                <a href="<?= BASE_PATH?>home">Home</a>
 
             </li>
             <li class="nav-trade-item">
@@ -112,7 +112,7 @@ $subcat=json_decode($datasub, true);
                   				{
                             $menuname=explode("W/",$subcatgory);
                         ?>
-                        <li><a href='trade.php?curr=<?php echo base64_encode($subcatgory);?>'><strong><?php echo $subcatgory?></strong></a></li>
+                        <li><a href='<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>'><strong><?php echo $subcatgory?></strong></a></li>
                         <?php
                         }
                         ?>
@@ -123,7 +123,7 @@ $subcat=json_decode($datasub, true);
                 </ul>
             </li>
             <li>
-                <a href="myaccount.php">Wallets</a>
+                <a href="<?= BASE_PATH?>myaccount">Wallets</a>
 
             </li>
 

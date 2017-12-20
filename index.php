@@ -62,26 +62,25 @@ session_start();
                <div class="top-nav s-12 l-10">
                   <p class="nav-text"></p>
                   <ul class="right">
+                    <li class="active-item"><a href="#carousel">Home</a></li>
+                    <li><a href="#features">Why Bitwire-X</a></li>
+                    <li><a href="#services">Currencies</a></li>
+                    <li><a href="#contact">Contact</a></li>
                    <?php if(isset($_SESSION['user_id']))
                         {?>
 
-                        <li class="toplogin" style="color:#dbe2e4;"><a href="myaccount.php"><?php echo  $_SESSION['user_session'];?></a> </li>
-                        <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
-                        <?php }else 
+                        <li class="toplogin" style="color:#dbe2e4;"><a href="<?= BASE_PATH?>myaccount">My Account</a> </li>
+                        <li class="toplogin" id="toplogin"><a href="<?= BASE_PATH?>logout">Logout</a></li>
+                        <?php }else
                         {?>
-                         <li class="active-item"><a href="#carousel">Home</a></li>
-                              <li><a href="#features">Why Bitwire-X</a></li>
 
-
-                     <li><a href="#services">Currencies</a></li>
-                     <li><a href="#contact">Contact</a></li>
-                     <li><a href="login.php">Sign In</a></li>
-                     <li><a href="login.php">Sign Up</a></li>
-                        <?php 
+                     <li><a href="<?= BASE_PATH?>login">Sign In</a></li>
+                     <li><a href="<?= BASE_PATH?>login">Sign Up</a></li>
+                        <?php
 
                         }
                         ?>
-                    
+
 
                   </ul>
                </div>

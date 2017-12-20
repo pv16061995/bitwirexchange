@@ -6,7 +6,7 @@ ob_start();
 /*-----------Add Session-----------*/
 page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
+    header("location:".BASE_PATH."logout");
  }
  $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
@@ -289,7 +289,7 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
                                                     "amount"=> $coin_amount,
                                                     "spendingPassword"=>$spendingpassword,
                                                     "recieverMXNCoinAddress"=> $reciever_address,
-                                                    
+
                                                 );
 
                                         // Create the context for the request
@@ -442,7 +442,8 @@ if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
         $responseData = json_decode($response, true);
         $message = "Successfully";
         if (isset($responseData['user'])) {
-            header("location:successsend.php?s=".$message);
+          header("location:".BASE_PATH."successsend?s=".$message);
+
         } else {
             $error = $responseData['message'];
         }
@@ -576,11 +577,11 @@ ob_end_flush();
 
 				</form>
 
-				
+
 			</div>
 
 
-</div> 
+</div>
   </div> <!-- main content -->
 
 
@@ -595,4 +596,3 @@ ob_end_flush();
     min-height: 450px;
   }
 </style>
-

@@ -68,7 +68,7 @@ if(isset($_GET['curr']))
 	#ul-bid-list .price:before{color: #de5959;}
 	#ul-ask-list,#ul-ask-list li{transform:rotate(180deg);-ms-transform:rotate(180deg);-moz-transform:rotate(180deg);-webkit-transform:rotate(180deg);-o-transform:rotate(180deg);z-index: 9991}
 	#ul-ask-list{ height: 768px}
-	
+
 
 	.top-up a,.login_lan .lang-option,.top-up .ask_ans,.gateio-nav > li > a{ color: #dbe2e4}
 	div.top-up {float:right;width:auto;background:none;margin-top:6px;padding-left:0;}
@@ -174,6 +174,15 @@ if(isset($_GET['curr']))
     background-color: #f2dede;
     border-color: #ebccd1;
   }
+  .loader-img
+  {
+    width: 20%;
+display: block;
+text-align: center;
+margin-left: 40%;
+margin-top: 7%;
+margin-bottom: 10%;
+  }
 </style>
 
 
@@ -204,7 +213,7 @@ if(isset($_GET['curr']))
 
 
 			<div class="right_mcontent clearfix">
-			    <div id="container" class="container" width="500"></div>
+			    <div id="container" class="container" width="500"><img src="images/loader.gif" class="loader-img"></div>
 			        </div>
 <div class="kline-title"><?= $currency1;?> / <?= $currency2;?> KLINE</div>
 

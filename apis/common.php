@@ -93,6 +93,6 @@ function logout()
     unset($_SESSION['HTTP_USER_AGENT']);
     session_unset();
     session_destroy();
-    header("Location:index.php");
+    header("Location:".BASE_PATH.'home');
 }
 ?>

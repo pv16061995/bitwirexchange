@@ -2,7 +2,7 @@
 include 'include/allheader.php';
   page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
+  header("location:".BASE_PATH."logout");
 }
 $user_session = $_SESSION['user_session'];
 
@@ -127,10 +127,10 @@ $result=json_decode($data);
                     <td align='right'><?php echo $total=$responseData['user'][$cun.'balance']+$responseData['user']['Freezed'.$cun.'balance'];?></td>
 
                     <td align='right'>
-<a href="deposit.php?curr=<?php echo base64_encode($currencyname);?> " class='normal-depo fund-deposit'
+<a href="<?= BASE_PATH?>deposit?curr=<?php echo base64_encode($currencyname);?> " class='normal-depo fund-deposit'
 title='Working'>Deposit</a>
-<a href="withdraw.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-withdraw' title='Working'>Withdraw</a>
-<a href="transaction.php?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-to-trade' title='Working'>History</a></td>
+<a href="<?= BASE_PATH?>withdraw?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-withdraw' title='Working'>Withdraw</a>
+<a href="<?= BASE_PATH?>transaction?curr=<?php echo base64_encode($currencyname);?>" class='normal-depo fund-to-trade' title='Working'>History</a></td>
                 </tr>
                 <?php $i++;}?>
                     </tbody>

@@ -2,7 +2,7 @@
 include 'include/allheader.php';
 page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
+    header("location:".BASE_PATH.'logout');
  }
  $user_session = $_SESSION['user_session'];
    $url_api = URL_API;
@@ -28,7 +28,7 @@ if(isset($_GET['curr']))
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
-                            
+
                         }
                 }
                 else
@@ -44,7 +44,7 @@ if(isset($_GET['curr']))
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
-                            
+
                         }
                 }
                 else
@@ -60,7 +60,7 @@ if(isset($_GET['curr']))
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
-                            
+
                         }
                 }
                 else
@@ -76,7 +76,7 @@ if(isset($_GET['curr']))
                           $responseData = json_decode($response, true);
                         if (isset($responseData)) {
                             $bcc_address = $responseData['newaddress'];
-                            
+
                         }
                 }
                 else
@@ -387,12 +387,12 @@ if(isset($_GET['curr']))
         <br>Or Scan QR code:<br>
         <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=<?php echo $bcc_address;?>"
                                                 alt="QR Code" style="width:200px;border:0;"/>
-                       
+
 
       </div>
 
-      
-      
+
+
   </div> <!-- main content -->
 
 

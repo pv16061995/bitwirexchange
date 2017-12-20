@@ -175,9 +175,9 @@ if (isset($_POST['btnlogin'])) {
 
 
     if ($responseData['statusCode'] != 401 && $responseData['user']['tfastatus']==true) {
-        header("location:device_confirmations.php");
+        header("location:".BASE_PATH."device_confirmations");
     } elseif (isset($responseData['user'])) {
-        header("location:myaccount.php");
+        header("location:".BASE_PATH."myaccount");
     }
 
 }
@@ -310,7 +310,7 @@ if (isset($_POST['btnlogin'])) {
 					echo $errorpassword;
 				}?> </p>
 				<div class="m_con_buy leftregi">
-					<form role="form" id="signupForm" name="signup" method="post" action="login.php">
+					<form role="form" id="signupForm" name="signup" method="post" action="<?= BASE_PATH?>login">
 						<input type="hidden" name="ref_uid" id="ref_uid" value=""/>
 						<input type="hidden" name="language" id="language" value="cn"/>
 

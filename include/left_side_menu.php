@@ -10,7 +10,7 @@
 					<ul class="accordion">
 						<li id="adn1" class="files"> <a href="#adn1">My funds<span class="umicon"></span></a>
 						 <ul class="sub-menu">
-							<li><a data-id='myfunds' href="myaccount.php"><em>01</em>My balances</a></li>
+							<li><a data-id='myfunds' href="<?= BASE_PATH?>myaccount"><em>01</em>My balances</a></li>
 
 						  </ul>
 						</li>
@@ -30,7 +30,7 @@
 						</li> -->
 						<li id="adn4" class="sign"> <a href="#">Security Settings<span class="umicon"></span></a>
 						  <ul class="sub-menu">
-							<li><a data-id='totp' href="f2auth.php"><em>20</em>Two-factor Authentication</a></li>
+							<li><a data-id='totp' href="<?= BASE_PATH?>f2auth"><em>20</em>Two-factor Authentication</a></li>
 						  </ul>
 						</li>
 					</ul>

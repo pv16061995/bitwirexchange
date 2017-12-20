@@ -1,4 +1,4 @@
-<div id='sectioncont' class="buy-sell-order clearfix">
+<div id='sectioncont' class="buy-sell-order clearfix" style="margin-top: 3.5%;">
   <div id='tableAskList' data-id="sectioncont">
 
 

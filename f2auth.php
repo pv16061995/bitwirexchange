@@ -1,9 +1,10 @@
-<?php include 'include/allheader.php';?>  
+<?php include 'include/allheader.php';?>
 <?php include 'include/left_side_menu.php';?>
-<?php 
+<?php
 page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-    header("location:logout.php");
+
+    header("location:".BASE_PATH."logout");
  }
  $user_session = $_SESSION['user_session'];
  $url_api = URL_API;
@@ -19,11 +20,11 @@ if (isset($_POST['code'])) {
     $code=$_POST['code'];
     $secret = $_SESSION['key'];
     $checkResult = $ga->verifyCode($secret, $code, 2);    // 2 = 2*30sec clock tolerance
-    
+
     if ($checkResult) {
         $_SESSION['key']=$code;
-        
-        header("Location:login.php");
+
+        header("Location:".BASE_PATH."login");
     } else {
         $failcode = "Failed Code Incorrect";
     }
@@ -54,7 +55,7 @@ if (isset($_POST['enable'])) {
 
     $responseData = json_decode($response, true);
 
-    
+
 }
 if (isset($_POST['disable'])) {
     $postData = array(
@@ -84,7 +85,7 @@ if (isset($_POST['disable'])) {
     if ($responseData['statusCode']==200) {
         $_SESSION['tfa'] = $responseData['user']['tfastatus'];
         unset($secret);
-        header("location:f2auth.php");
+        header("location:".BASE_PATH."f2auth");
     }
 }
 ?>
@@ -95,17 +96,17 @@ if (isset($_POST['disable'])) {
 
 <?php if($tfacode==false) { ?>
 	<div class="main_content  acc-m-con">
-       
-	
+
+
 			<div class='right_mcontent  myacc-con'>
-	 
+
 			<div class="m_title"><h4>Two-factor Authentication</h4></div>
 			<div class="sectioncont">
 				<p>You can enable Google Time based One Time Password (TOTP) Two-factor Authentication to further protect your account.  When it's enable, you are required to input the TOTP every time you login or withdraw funds. If you have an iOS or Android smartphone, you can do the following steps to enable it. In case you don't have a smartphone available, you can use the Google Authenticator on Windows as instructed in the later part, but it's less secure. </p>
-				
+
 				<h3><b>1st step</b>: Install Google Authenticator on your smartphone.</h3>
-				 
-				
+
+
 				<br/>
 				<h3><b>2nd step</b>: Setup "Google Authenticator" and scan the following barcode</h3>
 				<lu>
@@ -113,36 +114,36 @@ if (isset($_POST['disable'])) {
 				</li>
 				<li>Also you can choose "Enter provided key" and input this key: <b><?php echo $secret;?></b></li>
 				</lu>
-				
+
 				<br/>
 				<h3><b>3rd step</b>: Input the TOTP showing on your smartphone: </h3>
 
 
 				<form enctype="application/x-www-form-urlencoded" method="post" action="">
-					 
+
 				<table>
-				<tr> 					
+				<tr>
 					<td align="right">TOTP: </td><td><input type="text" name="code" id="totp" size="20"> 6 digits code on your smartphone</td>
-				</tr>				
+				</tr>
 
 				<td>&nbsp;</td>
 				<td> <input type="submit" name="enable" id="submit" value="  Enable Two-factor Authentication  " class="sub-btn"></td>
 				</tr>
-                    <p style="color:red;font-size:20px;text-align:center"> 
+                    <p style="color:red;font-size:20px;text-align:center">
                     <?php if (isset($failcode)) {
                     echo $failcode;
                     }?> </p>
 				</table>
-			
-				</form> 
+
+				</form>
 
 
 				<br>
 				<p>Notice: <b>Do NOT delete the "Google Authenticator" app on your smartphone when it's enabled. </b>If you lost your phone or deleted the "Google Authenticator", please contact us at Email: support@bitwire </p>
 				<p>Notice: If the code on your smartphone doesn't work, please choose "Settings->Time correction for codes->Sync now" to synchronize your phone time. Current server time is <b>2017-12-14 19:04:32 UTC+8</b></p>
 
-				
-				
+
+
 				</div>
 			</div>
 
@@ -151,22 +152,22 @@ if (isset($_POST['disable'])) {
 	</div> <!-- right_mcontent -->
   </div> <!-- main content -->
 
- 
+
 </div>
 <?php }else{?>
 <div class="main_content  acc-m-con">
-       
-    
+
+
             <div class='right_mcontent  myacc-con'>
             <div class="sectioncont">
 <form enctype="application/x-www-form-urlencoded" method="post" action="">
-                     
+
                 <table>
-        <!-- <tr>                    
+        <!-- <tr>
         <td align="right">TOTP: </td><td><input type="text" name="code" id="totp" size="20"> 6 digits code on your smartphone</td>
         </tr> -->
         <br/>
-        <tr>               
+        <tr>
         <td>&nbsp;</td>
         <td> <input type="submit" name="disable" id="submit" value="  Disable Two-factor Authentication  " class="sub-btn"></td>
         </tr>
@@ -180,14 +181,12 @@ if (isset($_POST['disable'])) {
 <?php }
 
 ?>
- 
 
-<?php include 'include/footer.php';?>  
+
+<?php include 'include/footer.php';?>
 
 
 
 
 </body>
 </html>
-
-

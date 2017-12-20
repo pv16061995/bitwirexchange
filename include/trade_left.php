@@ -19,7 +19,7 @@
 									foreach($result as $cat) { ?>
 											<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if($i==1){echo "tn_selected";} ?>"><?php echo $cat->name;?></button>
 											<?php $i++; }?>
-                  
+
                 </ul>
                 <!-- <input type="text" class="search" id="marketSearch" value="Search..." /> -->
             </td>
@@ -42,9 +42,9 @@
 			foreach($subcat[$cat->id]['subcat'] as $subcatgory)
 				{?>
 				 <tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
-				  <td><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
-				  <td class="alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>"><span id="ask_current"></span></a></td>
-				  <!-- <td class=" alignRight"><a href="trade.php?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td> -->
+				  <td><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
+				  <td class="alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>"><span id="ask_current"></span></a></td>
+				  <!-- <td class=" alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td> -->
 				</tr>
 
 			<?php $i++;}?>

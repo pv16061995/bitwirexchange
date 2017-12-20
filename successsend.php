@@ -4,17 +4,17 @@
 ob_start();
 
 /*-----------Add Session-----------*/
-// page_protect();
-// if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-//     header("location:logout.php");
-// }
-// $user_session = $_SESSION['user_session'];
+page_protect();
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
+    header("location:".BASE_PATH."logout");
+}
+$user_session = $_SESSION['user_session'];
    $url_api = URL_API;
  if(isset($_GET['curr']))
-        {
-          $currencyname=base64_decode($_GET['curr']);
+{
+  $currencyname=base64_decode($_GET['curr']);
 
-          }
+  }
     if (isset($_POST['submit_btn'])) {
         $reciever_address = $_POST['addr'];
         $coin_amount = $_POST['amount'];
@@ -31,7 +31,7 @@ ob_start();
              case 'INRW':
 
               $postData = array(
-                                  "userMailId"=> "priyankagarg1112@gmail.com",
+                                  "userMailId"=> $user_session,
                                   "amount"=> $coin_amount,
                                   "spendingPassword"=>$spendingpassword,
                                   "recieverINRWCoinAddress"=> $reciever_address
@@ -380,7 +380,7 @@ ob_start();
         $responseData = json_decode($response, true);
         $message = "Successfully";
         if (isset($responseData['user'])) {
-            header("location:successsend.php?s=".$message);
+            header("location:".BASE_PATH."successsend?s=".$message);
         } else {
             $error = $responseData['message'];
         }
@@ -455,7 +455,7 @@ ob_end_flush();
 </style>
 
 			<div class="sectioncont">
-			<form action="successsend.php" method="post">
+			<form action="<?= BASE_PATH?>successsend" method="post">
 			    	<div class="card text-black bg-success">
 		                <div class="card-header text-center text-black">
 		                    <h1 class="text-black">Withdrawal Response</h1>
