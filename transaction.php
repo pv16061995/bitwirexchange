@@ -2,7 +2,7 @@
 include 'include/allheader.php';
 page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-  header("location:".BASE_PATH."logout");
+     header("location:".BASE_PATH."logout");
  }
  $user_session = $_SESSION['user_session'];
 
@@ -40,6 +40,7 @@ if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $c
 }
 
   $responseData = json_decode($response, true);
+
 
   if (isset($responseData['tx'])) {
       $transactionList_BTC = $responseData['tx'];
@@ -142,23 +143,11 @@ if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $c
 
  <div class="sectioncont funds-dtl myfunds-dtl">
 
-    <div class="m_title" id="wallet"><span style="text-align:center;"> Your <?= strtoupper($currencyname); ?> Transactions </span></div>
+    <div class="m_title" id="wallet"> Your <?= strtoupper($currencyname); ?> Transactions </div>
     <div class="HideZeroDiv pull-left" id="hideZbtn">
-      <div class="row">
-        <a href="javascript:;" onclick="showtable('alldetail');" class="normal-depo fund-deposit">All</a>
-          <a href="javascript:;" onclick="showtable('senddetail');" class="normal-depo fund-withdraw">Send</a>
 
-            <a href="javascript:;" onclick="showtable('receivedetail');" class="normal-depo fund-to-trade">Receive</a>
-      </div>
-        <!-- <label for="hidezero">
-        <input type="checkbox" id="hidezero"  name='hidezero' style="width: 20px;" />
-        <label for="hidezero" class="vr-btn"></label>
-        <span class="hidezero-span">Hide zero balances</span>
-        </label>
-        <input type="hidden" id="min"><input type="hidden" id="max"> -->
     </div>
 
-    <div class="m_title" id="wallet"></div>
 
 
 
@@ -188,30 +177,24 @@ if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $c
                   foreach (array_reverse($transactionList_BTC) as $transaction) {
                       if ($transaction['category']=="send") {
                           $tx_type = '<b style="color: #FF0000;">Sent</b>';
-                      } elseif ($transaction['category']=="receive") {
-                          $tx_type = '<b style="color: #01DF01;">Received</b>';
-                      } else {
-                          continue;
-                      }
-                      echo '<tr>
 
+                echo '<tr>
                 <td>'.date('n/j/Y h:i a', $transaction['time']).'</td>
                 <td>'.$transaction['address'].'</td>
                 <td>'.$tx_type.'</td>
                 <td>'.abs($transaction['amount']).'</td>
                 <td>'.$transaction['confirmations'].'</td>
-
-              </tr>';
-                  $i++;}
+                </tr>';
+                  $i++;} }
               } elseif ((count($transactionList_BTC)== 0)) {
-                  echo "<tr><td colspan=\"3\">There is no Transaction exists</td><td></td><td></td><td></td></tr>";
+                  echo "<tr><td colspan='5'>There is no Transaction exists</td></tr>";
               }
                 ?>
                         </tbody>
         </table>
       </div>
 
-      <div id="senddetail">
+      <!-- <div id="senddetail">
         <style>
           td{
             text-align: center;
@@ -252,9 +235,9 @@ if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $c
                 ?>
                         </tbody>
         </table>
-      </div>
+      </div> -->
 
-      <div id="receivedetail">
+      <!-- <div id="receivedetail">
         <style>
           td{
             text-align: center;
@@ -295,23 +278,13 @@ if($currencyname=='INRW' || $currencyname=='EURW' || $currencyname=='USDW' || $c
                 ?>
                         </tbody>
         </table>
-      </div>
+      </div> -->
 
 </div>
 <br>
-<script src="js/jquery.dataTables.min.js"></script>
+<!-- <script src="js/jquery.dataTables.min.js"></script> -->
 <script>
-$( function () {
-showtable('alldetail');
-});
 
-function showtable(id)
-{
-  $('#alldetail').hide();
-  $('#senddetail').hide();
-  $('#receivedetail').hide();
-  $('#'+id).show();
-}
 
     $.fn.dataTable.ext.search.push(
             function( settings, data, dataIndex ) {

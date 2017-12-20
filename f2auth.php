@@ -139,10 +139,7 @@ if (isset($_POST['disable'])) {
 
 
 				<br>
-				<p>Notice: <b>Do NOT delete the "Google Authenticator" app on your smartphone when it's enabled. </b>If you lost your phone or deleted the "Google Authenticator", please contact us at Email: support@bitwire </p>
-				<p>Notice: If the code on your smartphone doesn't work, please choose "Settings->Time correction for codes->Sync now" to synchronize your phone time. Current server time is <b>2017-12-14 19:04:32 UTC+8</b></p>
-
-
+				<p>Notice: <b>Do NOT delete the "Google Authenticator" app on your smartphone when it's enabled. </b>If you lost your phone or deleted the "Google Authenticator", please contact us at Email: support@bitwire.io </p>
 
 				</div>
 			</div>

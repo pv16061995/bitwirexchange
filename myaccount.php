@@ -2,7 +2,7 @@
 include 'include/allheader.php';
   page_protect();
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['token'])) {
-  header("location:".BASE_PATH."logout");
+  header("location:".BASE_PATH."login");
 }
 $user_session = $_SESSION['user_session'];
 

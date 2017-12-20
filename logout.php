@@ -1,6 +1,7 @@
 <?php
  //logout.php
- session_start();
+ include 'config/config.php';
+
  session_destroy();
- header("location:".BASE_PATH."home");  
+ header("location:".BASE_PATH."home");
  ?>
