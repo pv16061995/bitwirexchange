@@ -195,7 +195,7 @@ margin-bottom: 10%;
 				<ul id="mianTlist" class="clearfix">
 					<li><a href="javascript:;">
             <span class="icon-32 icon-32-eos"></span></a>
-            <a href="javascript:;"><?= $currency1.' '.$currency1; ?></a> / <strong style="margin-right: 20px"> <?= $currency2; ?> </strong></li>
+            <a href="javascript:;"><?= $currency1; ?></a> / <strong style="margin-right: 20px"> <?= $currency2; ?> </strong></li>
 					<li class="top_last_li">
 						<!-- <span style="float: left; padding: 0; margin-right: 3px" id='market_unit_symbol'>฿</span>
                     	<span id="top_last_rate_change">
@@ -247,9 +247,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
-									<input id="bid_rate" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmount()"
-
-										   value=""  />
+							    <input type="number" id="bid_rate" class="inputRate"   onkeyup="bidAmount()" value=""/>
 								</td>
 
 							</tr>
@@ -257,7 +255,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title">Amount <?= $currency1;?></span>
-									<input id="bid_vol" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmount()"
+									<input type="number" id="bid_vol" class="inputRate" onkeyup="bidAmount()"
 										value="" />
 								</td>
 
@@ -266,7 +264,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title" id='bid_total_label'>Total <?= $currency2;?></span>
-									<input id="bid_amount" class="inputRate" maxlength="10" onkeydown="return check_number(event);" onkeyup="bidAmountTotal()"
+									<input type="number" id="bid_amount" class="inputRate" onkeydown="return check_number(event);"  onkeyup="bidAmountTotal()"
 										value="" />
 								</td>
 
@@ -328,8 +326,7 @@ margin-bottom: 10%;
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
-										<input id="ask_rate" class="inputRate" maxlength="10"
-											   onkeydown="return check_number(event);" onkeyup="askAmount()"
+										<input id="ask_rate" class="inputRate" type="number"  onkeyup="askAmount()"
 											    />
 									</td>
 
@@ -337,8 +334,8 @@ margin-bottom: 10%;
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency2;?></span>
-										<input id="ask_vol" class="inputRate" maxlength="10"
-											   onkeydown="return check_number(event);" onkeyup="askAmount()"
+										<input id="ask_vol" class="inputRate" type="number" 
+											   onkeyup="askAmount()"
 											   value="" />
 									</td>
 
@@ -346,7 +343,7 @@ margin-bottom: 10%;
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit input-title" id='ask_total_label'>Total <?= $currency2;?></span>
-									<input id="ask_amount" class="inputRate" maxlength="10" onkeyup="askTotalAmount()"
+									<input id="ask_amount" class="inputRate" type="number" onkeydown="return check_number(event);"  onkeyup="askTotalAmount()"
 											   value="" />
 									</td>
 
@@ -420,12 +417,12 @@ margin-bottom: 10%;
 						<table class="dataTable myorder" >
 						<thead class="thead-blu">
 						<tr>
-							<td width="20%">ORDER DATE	</td>
+							<td width="15%">ORDER DATE	</td>
 							<td width="10%">BID/ASK	</td>
-							<td width="10%">UNITS FILLED<?= $currency1;?></td>
+							<td width="10%">UNITS FILLED <?= $currency1;?></td>
 							<td width="10%">ACTUAL RATE	</td>
 							<td width="10%">UNITS TOTAL	<?= $currency1;?></td>
-							<td width="10%">UNITS TOTAL <?= $currency2;?>	</td>
+							<td width="10%">UNITS TOTAL <?= $currency2;?></td>
 							<td width="10%">ACTION</td>
 						</tr>
 						</thead>
@@ -455,11 +452,11 @@ margin-bottom: 10%;
 					<table class="dataTable myorder" >
 						<thead class="thead">
 						<tr>
-							<td width="20%">ORDER DATE	</td>
+							<td width="15%">ORDER DATE	</td>
 							<td width="10%">BID/ASK	</td>
 							<td width="10%">UNITS FILLED <?= $currency1;?></td>
 							<td width="10%">ACTUAL RATE	</td>
-							<td width="10%">UNITS TOTAL<?= $currency1;?></td>
+							<td width="10%">UNITS TOTAL <?= $currency1;?></td>
 							<td width="10%">UNITS TOTAL <?= $currency2;?></td>
 
 						</tr>

@@ -279,7 +279,7 @@ if (isset($_POST['btnlogin'])) {
 							<label for="password">Password</label>
 							<input type="password" class="form-control" name="emailpassword" id="password">
 							<div class="input-item-info">
-                <a href="#" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
+                <a href="<?= BASE_PATH;?>forgetpassword" style="line-height: 48px;margin-left: 5px;">Forgot password?</a></div>
 
 						</div>
 

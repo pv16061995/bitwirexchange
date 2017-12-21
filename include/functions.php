@@ -1,4 +1,4 @@
-
+<script src ="bignumber.js/bignumber.js/bignumber.js"></script>
 <script type="text/javascript" src="js/sails.io.js"></script>
 <script type="text/javascript">
   io.sails.url = 'http://209.188.21.216:1338';
@@ -17,43 +17,43 @@
 url_api = '<?php echo URL_API;?>';
 
  function bidAmount() {
-          var a = document.getElementById('bid_rate').value;
-          var b = document.getElementById('bid_vol').value;
-          var result = parseFloat(a) * parseFloat(b);
+          var a = new BigNumber(document.getElementById('bid_rate').value);
+          var b = new BigNumber(document.getElementById('bid_vol').value);
+          var result = (a).times(b);
           if (!isNaN(result)) {
-              total=document.getElementById('bid_amount').value = result;
+              document.getElementById('bid_amount').value = result;
           }
     }
      function bidAmountTotal()
       {
-          var res=document.getElementById('bid_amount').value;
-          var a = document.getElementById('bid_vol').value;
-          var b = document.getElementById('bid_rate').value;
+          var res= new BigNumber(document.getElementById('bid_amount').value);
+          var a = new BigNumber(document.getElementById('bid_vol').value);
+          var b = new BigNumber(document.getElementById('bid_rate').value);
           if(res)
           {
-            var equal=res/b;
+            var equal=(res).dividedBy(b);
             document.getElementById('bid_vol').value=equal;
           }
 
       }
       function askAmount() {
-          var a = document.getElementById('ask_rate').value;
-          var b = document.getElementById('ask_vol').value;
-          var result = parseFloat(a) * parseFloat(b);
+          var a = new BigNumber(document.getElementById('ask_rate').value);
+          var b = new BigNumber(document.getElementById('ask_vol').value);
+          var result = (a).times(b);
           if (!isNaN(result)) {
-              tatal=document.getElementById('ask_amount').value = result;
+              document.getElementById('ask_amount').value = result;
 
           }
       }
       function askTotalAmount()
       {
-        var a = document.getElementById('ask_amount').value;
-        var b = document.getElementById('ask_vol').value;
-        var res =document.getElementById('bid_rate').value;
+        var a = new BigNumber(document.getElementById('ask_amount').value);
+        var b = new BigNumber(document.getElementById('ask_vol').value);
+        var res = new BigNumber(document.getElementById('ask_rate').value);
           if(res)
           {
-            var equal=res/b;
-            document.getElementById('bid_vol').value=equal;
+            var equal=(res).dividedBy(b);
+            document.getElementById('ask_vol').value=equal;
           }
 
       }
@@ -400,7 +400,7 @@ function getAllAsk(){
           if(i==bid_orders.bids<?php echo substr($currency1,0,3);?>.length) break;
           if(data.bids<?php echo substr($currency1,0,3);?>[i].status != 1){
 
-          $('#bid-list').append('<tr><td> BID </td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidRate + '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo substr($currency1,0,3);?>+ '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo $currency2;?> + '</td></tr>')
+          $('#bid-list').append('<tr><td> BID </td><td>'+bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo substr($currency1,0,3);?>+ '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidRate + '</td><td>' +  bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo $currency2;?> + '</td></tr>')
         }
       }
     }
@@ -421,7 +421,7 @@ function getAllAsk(){
                 if(j==data.asks<?php echo substr($currency1,0,3);?>.length) break;
                 if(data.asks<?php echo substr($currency1,0,3);?>[j].status != 1){
 
-                $('#ask-list').append('<tr><td> ASK  </td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askRate + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo substr($currency1,0,3);?> + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo $currency2;?> + '</td></tr>');
+                $('#ask-list').append('<tr><td> ASK  </td><td>' +data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo substr($currency1,0,3);?> + '</td><td>' + data.asks<?php echo substr($currency1,0,3);?>[j].askRate + '</td><td>' +  data.asks<?php echo substr($currency1,0,3);?>[j].askAmount<?php echo $currency2;?> + '</td></tr>');
                 }
           }
         }
@@ -542,12 +542,14 @@ function userOpenOrders(){
         $('#my-fund-list').empty();
 
         var bid_orders = data;
+        if(bid_orders.bids<?php echo substr($currency1,0,3);?>){
 
         for (var i = 0; i < 30; i++) {
           if(i==bid_orders.bids<?php echo substr($currency1,0,3);?>.length) break;
-          $('#my-fund-list').append('<tr><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].createTimeUTC + '</td>'+
+          $('#my-fund-list').append('<tr><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].createdAt + '</td>'+
             '</td><td>BID</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo $currency2;?>+ '</td><td>' + bid_orders.bids<?php echo substr($currency1,0,3);?>[i].bidAmount<?php echo substr($currency1,0,3);?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo $currency2;?> + '</td><td>'+ bid_orders.bids<?php echo substr($currency1,0,3);?>[i].totalbidAmount<?php echo substr($currency1,0,3);?> + '</td></tr>')
         }
+      }
 
       }
     });
@@ -561,13 +563,14 @@ function userOpenOrders(){
       success: function(data){
         $('#my-fund-list').empty();
         var ask_orders = data;
+        if(data.asks<?php echo substr($currency1,0,3);?>){
 
         for (var i = 0; i < 30; i++){
           if(i==data.asks<?php echo substr($currency1,0,3);?>.length) break;
-          $('#market_ask_bch').append('<tr><td>' + ask_orders.asks<?php echo substr($currency1,0,3);?>[i].createTimeUTC + '</td>' +
+          $('#market_ask_bch').append('<tr><td>' + ask_orders.asks<?php echo substr($currency1,0,3);?>[i].createdAt + '</td>' +
             '</td><td>ASK</td><td>'+ ask_orders.asks<?php echo substr($currency1,0,3);?>[i].askAmount<?php echo $currency2;?> + '</td><td>' + ask_orders.asks<?php echo substr($currency1,0,3);?>[i].askAmount<?php echo substr($currency1,0,3);?> + '</td><td>'+ ask_orders.asks<?php echo substr($currency1,0,3);?>[i].totalaskAmount<?php echo $currency2;?> + '</td><td>'+ ask_orders.asks<?php echo substr($currency1,0,3);?>[i].totalaskAmount<?php echo substr($currency1,0,3);?> + '</td></tr>')
         }
-
+}
       }
     });
   }

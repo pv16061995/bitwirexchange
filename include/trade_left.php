@@ -49,7 +49,7 @@
 					?>
 				 <tr role="row" class="<?php if($i% 2 == 0){ echo "even";}else{echo "odd";}?>">
 				  <td><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>"><?php echo $subcatgory?></a></td>
-				  <td class="alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">Ask:<span style="color:red;"><?php echo $money['ask'.$pricecat[1].$pricecat[0]];?></span><br>Bid:<span style="color:green;"><?php echo $money['bid'.$pricecat[1].$pricecat[0]];?></span></a></td>
+				  <td class="alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">Ask:<span style="color:red;"><?php echo number_format($money['ask'.$pricecat[1].$pricecat[0]],5,'.',',');?></span><br>Bid:<span style="color:green;"><?php echo number_format($money['bid'.$pricecat[1].$pricecat[0]],5,'.',',');?></span></a></td>
 				  <!-- <td class=" alignRight"><a href="<?= BASE_PATH?>trade?curr=<?php echo base64_encode($subcatgory);?>">1231</a></td> -->
 				</tr>
 

@@ -561,7 +561,7 @@ ob_end_flush();
 								</tr>
 
 								<tr>
-					<td align="right">Amount (<?php echo $currencyname;?>):</td><td><input onkeypress="return isNumberKey(event)" type="number" value="" size="10" name="amount" id="amount"> <!-- Minimum 15.1 USDT, Maximum 100000 USDT --></td>
+					<td align="right">Amount (<?php echo $currencyname;?>):</td><td><input onkeypress="return check_number(event);" type="text" value="" name="amount" id=""> <!-- Minimum 15.1 USDT, Maximum 100000 USDT --></td>
 				</tr>
 
 
