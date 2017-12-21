@@ -13,3 +13,6 @@ RewriteRule ^deposit?$ deposit.php
 RewriteRule ^withdraw?$ withdraw.php
 RewriteRule ^transaction?$ transaction.php
 RewriteRule ^successsend?$ successsend.php
+RewriteRule ^forgetpassword?$ forgetpassword.php
+RewriteRule ^updateforgetpassword?$ updateforgetpassword.php
+RewriteRule ^verfiyforgetotp?$ verfiyforgetotp.php

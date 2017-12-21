@@ -64,13 +64,6 @@
     </div>
   </div>
 
-<style>
-.dataTable tbody tr:nth-child(odd) {    background-color:#fff;
-}
-
-.dataTable tbody tr:nth-child(even) {    background-color:#f8f8f8;
-}
-</style>
 
 
   <?php include 'include/functions.php';?>

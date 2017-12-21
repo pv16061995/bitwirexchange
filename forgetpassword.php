@@ -10,12 +10,12 @@ if(isset($_POST['btnforget']))
 {
 //  var_dump($_POST);
   $email_id = $_POST['email'];
-  
-  
+
+
 
 $postData = array(
    "userMailId" => $email_id,
-        
+
   );
 
 // Create the context for the request
@@ -42,7 +42,7 @@ $responseData = json_decode($response, TRUE);
 if(isset($responseData['userMailId']))
 {
   $message = $responseData['message'];
- 
+
 
   header("location:".BASE_PATH."verfiyforgetotp.php?f=".$message);
 }
@@ -74,7 +74,7 @@ else
 
                 <table>
 
-<label><h4>Enter Register Emial ID</label><h4><br>
+<label><h4>Enter Register Email ID</label><h4><br>
 <input type="text" name="email" /><br><br><br>
 <input type="submit" class="sub-btn" name="btnforget"/><br>
 <div style="width:50%;" id="alertmsg1"></div>

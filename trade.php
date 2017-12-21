@@ -247,7 +247,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
-							    <input type="number" id="bid_rate" class="inputRate"   onkeyup="bidAmount()" value=""/>
+							    <input type="text" id="bid_rate" class="inputRate"   onkeypress="return isNumberKey(event)"  onkeyup="bidAmount()" value=""/>
 								</td>
 
 							</tr>
@@ -255,7 +255,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title">Amount <?= $currency1;?></span>
-									<input type="number" id="bid_vol" class="inputRate" onkeyup="bidAmount()"
+									<input type="text"   id="bid_vol" class="inputRate"  onkeypress="return isNumberKey(event)" onkeyup="bidAmount()"
 										value="" />
 								</td>
 
@@ -264,7 +264,7 @@ margin-bottom: 10%;
 
 								<td colspan="3" class="input-td">
 								<span class="b-unit input-title" id='bid_total_label'>Total <?= $currency2;?></span>
-									<input type="number" id="bid_amount" class="inputRate" onkeydown="return check_number(event);"  onkeyup="bidAmountTotal()"
+									<input type="text" pattern="[0-9]" id="bid_amount" class="inputRate"   onkeypress="return isNumberKey(event)" onkeydown="return check_number(event);"  onkeyup="bidAmountTotal()"
 										value="" />
 								</td>
 
@@ -326,24 +326,23 @@ margin-bottom: 10%;
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit ask-bid-price input-title">Price <span><?= $currency2;?></span></span>
-										<input id="ask_rate" class="inputRate" type="number"  onkeyup="askAmount()"
+										<input id="ask_rate" class="inputRate" type="text"   onkeypress="return isNumberKey(event)"  onkeyup="askAmount()"
 											    />
 									</td>
 
 								</tr>
 								<tr>
 
-									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency2;?></span>
-										<input id="ask_vol" class="inputRate" type="number" 
-											   onkeyup="askAmount()"
-											   value="" />
+									<td colspan="3" class="input-td"><span class="b-unit input-title">Amount <?= $currency1;?></span>
+										<input id="ask_vol" class="inputRate" type="text"
+											   onkeyup="askAmount()"   onkeypress="return isNumberKey(event)" />
 									</td>
 
 								</tr>
 								<tr>
 
 									<td colspan="3" class="input-td"><span class="b-unit input-title" id='ask_total_label'>Total <?= $currency2;?></span>
-									<input id="ask_amount" class="inputRate" type="number" onkeydown="return check_number(event);"  onkeyup="askTotalAmount()"
+									<input id="ask_amount" class="inputRate" type="text"   onkeypress="return isNumberKey(event)" onkeydown="return check_number(event);"  onkeyup="askTotalAmount()"
 											   value="" />
 									</td>
 
@@ -482,13 +481,7 @@ margin-bottom: 10%;
 			</div>
 		</div>
   </div>
-<style>
-.dataTable tbody tr:nth-child(odd) {    background-color:#fff;
-}
 
-.dataTable tbody tr:nth-child(even) {    background-color:#f8f8f8;
-}
-</style>
 
 <script src='js/main.chart.js'></script>
 <script src="js/trader_en.js"></script>
@@ -500,6 +493,12 @@ margin-bottom: 10%;
 
 <?php include 'include/footer.php';?>
 <script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 46 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
 setInterval(function(){ $('.alert').hide(); }, 5000);
 </script>
 <script>

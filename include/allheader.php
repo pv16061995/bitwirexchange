@@ -54,11 +54,30 @@ $subcat=json_decode($datasub, true);
             </ul>
             <ul id="theme">
                 <span style="color:#dbe2e4;">Theme:</span>
-                <li id="dark" title="Dark">Dark</li>
-                <li id="light" title="Light">Light</li>
+                <li id="dark" title="Dark" value="dark" onclick="changetheme('dark');">Dark</li>
+                <li id="light" title="Light" value="light"  onclick="changetheme('light');">Light</li>
             </ul>
         </div>
     </div>
+
+    <script>
+    $( document ).ready(function() {
+      function changetheme(data)
+      {
+        
+        if(data=='light')
+        {
+          <style>
+          .dataTable tbody tr:nth-child(odd) {    background-color:#fff;}
+
+          .dataTable tbody tr:nth-child(even) {    background-color:#f8f8f8;}
+        }
+          </style>
+        }
+
+      }
+
+    </script>
     <div class="top-dn">
         <div class="logo">
             <a href="<?= BASE_PATH?>home" target="_top">

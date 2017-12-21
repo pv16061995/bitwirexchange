@@ -17,7 +17,8 @@
 			<?php
 				$i=1;
 			foreach($result as $cat) { ?>
-					<button value="<?php echo $cat->name;?>" class="tline_btn left_btn <?php if(($i==1) && ($currency2==$cat->name)){echo "tn_selected";} if($currency2==$cat->name){echo "tn_selected";}?>"><?php echo $cat->name;?></button>
+					<button value="<?php echo $cat->name;?>"
+						 class="tline_btn left_btn <?php if(($i==1) && ($currency2=='BTC')){echo "tn_selected";} if($currency2==$cat->name){echo "tn_selected";}?>"><?php echo $cat->name;?></button>
 					<?php $i++; }?>
 
                 </ul>
@@ -41,7 +42,7 @@
 			$i=1;
 			$money=getallaskbid();
 
-			
+
 			foreach($subcat[$cat->id]['subcat'] as $subcatgory)
 				{
 					$pricecat=explode("W/",$subcatgory);
@@ -144,11 +145,11 @@ $( document ).ready(function() {
 </script>
 
 
-<?php 
+<?php
 
 function getallaskbid()
   {
-  
+
       $content = file_get_contents( URL_API."/balance/getRatesAllBidAsk");
 
 	   $data=json_decode($content,true);
