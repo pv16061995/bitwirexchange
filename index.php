@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include 'config/config.php';?>
 <!DOCTYPE html>
 <html lang="en-US">
    <head>
@@ -49,12 +47,14 @@ session_start();
                </div>
                <div class="s-12 m-6 l-6">
                   <div class="social right">
-                     <a><i class="icon-facebook_circle"></i></a> <a><i class="icon-twitter_circle"></i></a> <a><i class="icon-google_plus_circle"></i></a> <a><i class="icon-instagram_circle"></i></a>
+                     <a><i class="icon-facebook_circle"></i></a> <a><i class="icon-twitter_circle"></i></a>
+                     <a><i class="icon-google_plus_circle"></i></a> <a><i class="icon-instagram_circle"></i></a>
                   </div>
                </div>
             </div>
          </div>
          <nav>
+
             <div class="line">
                <div class="s-12 l-2">
                   <img src="images/logo.png" style="margin-top: 12px;">
@@ -62,27 +62,37 @@ session_start();
                <div class="top-nav s-12 l-10">
                   <p class="nav-text"></p>
                   <ul class="right">
-                   <?php if(isset($_SESSION['user_id']))
-                        {?>
 
-                        <li class="toplogin" style="color:#dbe2e4;"><a href="myaccount.php"><?php echo  $_SESSION['user_session'];?></a> </li>
-                        <li class="toplogin" id="toplogin"><a href="logout.php">Logout</a></li>
-                        <?php }else 
-                        {?>
-                         <li class="active-item"><a href="#carousel">Home</a></li>
-                              <li><a href="#features">Why Bitwire-X</a></li>
+                    <li class="active-item"><a href="#carousel">Home</a></li>
+                    <li><a href="#features">Why Bitwire-X</a></li>
 
+                   <?php if(!isset($_SESSION['user_id'])){ ?>
 
-                     <li><a href="#services">Currencies</a></li>
-                     <li><a href="#contact">Contact</a></li>
-                     <li><a href="login.php">Sign In</a></li>
-                     <li><a href="login.php">Sign Up</a></li>
-                        <?php 
+                    <li><a href="#" onclick="loginfun();">Sign In</a></li>
+                     <li><a href="#" onclick="loginfun();">Sign Up</a></li>
 
-                        }
-                        ?>
-                    
+                        <?php }else{ ?>
 
+                          <li><a href="#"  onclick="myaccountfun();">My Account</a></li>
+                          <li><a href="#"  onclick="logoutfun();">Logout</a></li>
+
+                        <?php } ?>
+
+<script>
+function loginfun()
+{
+  window.location.href="<?php echo BASE_PATH?>login";
+}
+function myaccountfun()
+{
+  window.location.href="<?php echo BASE_PATH?>myaccount";
+}
+
+function logoutfun()
+{
+  window.location.href="<?php echo BASE_PATH?>logout";
+}
+</script>
                   </ul>
                </div>
             </div>
@@ -151,7 +161,7 @@ session_start();
                   </div>
                   <div class="s-12 m-6 l-4 margin-bottom">
                      <img src="images/1.png" class="whyicon">
-                     <h2>We Are Proffesional</h2>
+                     <h2>We Are Professional</h2>
                      <p>Professional technical team with many years of experience main-tain system stability.</p>
 
                   </div>
@@ -430,6 +440,8 @@ session_start();
       <script type="text/javascript" src="js/front/owl.carousel.js"></script>
       <script type="text/javascript">
          jQuery(document).ready(function($) {
+
+
             var theme_slider = $("#owl-demo");
             $("#owl-demo").owlCarousel({
                 navigation: false,
